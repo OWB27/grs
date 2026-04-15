@@ -2,16 +2,20 @@ from pydantic import BaseModel
 
 
 class AnswerItem(BaseModel):
-    question_id: int
-    option_id: int
+    questionId: int
+    optionId: int
+
+
+class LocalizedText(BaseModel):
+    zh: str
+    en: str
 
 
 class RecommendationItem(BaseModel):
-    game_id: int
-    name_zh: str | None = None
-    name_en: str
-    steam_url: str
-    reason: str
+    gameId: int
+    name: LocalizedText
+    steamUrl: str
+    reason: LocalizedText
 
 
 class RecommendRequest(BaseModel):
