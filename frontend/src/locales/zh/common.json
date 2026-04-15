@@ -1,0 +1,42 @@
+{
+  "startQuiz": "开始测试",
+  "previous": "上一题",
+  "next": "下一题",
+  "submit": "提交",
+  "submitting": "提交中...",
+  "retry": "重新测试",
+  "backHome": "返回首页",
+  "language.englishShort": "EN",
+  "language.chineseShort": "中文",
+  "language.switchToEnglish": "切换到英文",
+  "language.switchToChinese": "切换到中文",
+
+  "home.engineBadge": "Rule-based Recommendation Engine",
+  "home.heroTitleLine1": "GRS: 逻辑驱动的",
+  "home.heroTitleLine2": "游戏发现引擎",
+  "home.heroSubtitle": "通过透明的问卷分析和规则匹配，找到真正适合你的游戏。",
+  "home.methodology": "推荐方法论",
+
+  "pipeline.title": "推荐流程",
+  "pipeline.step.survey": "问卷",
+  "pipeline.step.tagWeighting": "标签权重",
+  "pipeline.step.retrieval": "候选召回",
+  "pipeline.step.results": "推荐结果",
+
+  "quiz.progressUnit": "题",
+  "quiz.error.selectOption": "请先选择一个选项。",
+
+  "result.pageCode": "RESULT_SET / TOP_3",
+  "result.title": "推荐结果",
+  "result.subtitle": "基于问卷回答、标签偏好和规则排序生成。",
+  "result.emptyCode": "EMPTY_RESULT",
+  "result.emptyText": "当前没有推荐结果，请先完成问卷。",
+
+  "result.whyThis": "为什么推荐?",
+  "result.steamStore": "Steam 商店",
+
+  "debug.title": "DEBUG",
+  "debug.analysis": "Tag Match Analysis",
+  "debug.expand": "展开调试面板",
+  "debug.collapse": "收起调试面板"
+}

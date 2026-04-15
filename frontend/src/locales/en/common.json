@@ -1,0 +1,42 @@
+{
+  "startQuiz": "Start Quiz",
+  "previous": "Previous",
+  "next": "Next",
+  "submit": "Submit",
+  "submitting": "Submitting...",
+  "retry": "Retry",
+  "backHome": "Back Home",
+  "language.englishShort": "EN",
+  "language.chineseShort": "中文",
+  "language.switchToEnglish": "Switch to English",
+  "language.switchToChinese": "Switch to Chinese",
+  
+  "home.engineBadge": "Rule-based Recommendation Engine",
+  "home.heroTitleLine1": "GRS: Logic-Based",
+  "home.heroTitleLine2": "Game Discovery",
+  "home.heroSubtitle": "Discover better-fitting games through transparent questionnaire analysis and rule-based matching.",
+  "home.methodology": "Methodology",
+
+  "pipeline.title": "Recommendation Pipeline",
+  "pipeline.step.survey": "Survey",
+  "pipeline.step.tagWeighting": "Tag Weighting",
+  "pipeline.step.retrieval": "Retrieval",
+  "pipeline.step.results": "Results",
+
+  "quiz.progressUnit": "questions",
+  "quiz.error.selectOption": "Please select an option first.",
+
+  "result.pageCode": "RESULT_SET / TOP_3",
+  "result.title": "Recommendation Results",
+  "result.subtitle": "Generated from questionnaire answers, tag preference weighting, and rule-based ranking.",
+  "result.emptyCode": "EMPTY_RESULT",
+  "result.emptyText": "No results available. Please finish the quiz first.",
+
+  "result.whyThis": "Why this?",
+  "result.steamStore": "Steam Store",
+
+  "debug.title": "DEBUG",
+  "debug.analysis": "Tag Match Analysis",
+  "debug.expand": "Expand debug panel",
+  "debug.collapse": "Collapse debug panel"
+}
