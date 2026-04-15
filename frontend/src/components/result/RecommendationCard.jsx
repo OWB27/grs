@@ -15,8 +15,10 @@ function CoverPlaceholder() {
 
 export default function RecommendationCard({ item, lang, actions, children }) {
   const { t } = useTranslation();
-  const displayName = item.name[lang] ?? item.name.en;
-  const cardActions = actions ?? <SteamButton href={item.steamUrl} />;
+
+  const displayName = item?.name?.[lang] ?? item?.name?.en ?? "Unknown Game";
+  const displayReason = item?.reason?.[lang] ?? item?.reason?.en ?? "";
+  const cardActions = actions ?? <SteamButton href={item?.steamUrl} />;
 
   return (
     <article className="overflow-hidden rounded-[26px] border border-cyan-400/20 bg-[#0b1220]/95 shadow-[0_8px_40px_rgba(0,0,0,0.28)]">
@@ -35,7 +37,7 @@ export default function RecommendationCard({ item, lang, actions, children }) {
           </div>
 
           <p className="text-base leading-8 text-slate-400">
-            {item.reason[lang]}
+            {displayReason}
           </p>
         </div>
 

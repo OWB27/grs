@@ -1,12 +1,9 @@
-def build_mock_recommendations(answers: list, lang: str) -> list[dict]:
+﻿def build_mock_recommendations(answers: list) -> list[dict]:
     first_answer_option_id = None
 
     for answer in answers:
-        option_id = answer.optionId if hasattr(answer, "optionId") else answer["optionId"]
-        question_id = answer.questionId if hasattr(answer, "questionId") else answer["questionId"]
-
-        if question_id == 1:
-            first_answer_option_id = option_id
+        if answer.questionId == 1:
+            first_answer_option_id = answer.optionId
             break
 
     if first_answer_option_id == 11:
@@ -35,6 +32,18 @@ def build_mock_recommendations(answers: list, lang: str) -> list[dict]:
                     "en": "Your answers show a strong preference for narrative and character-driven experiences.",
                 },
             },
+            {
+                "gameId": 103,
+                "name": {
+                    "zh": "赛博朋克 2077",
+                    "en": "Cyberpunk 2077",
+                },
+                "steamUrl": "https://store.steampowered.com/app/1091500/Cyberpunk_2077/",
+                "reason": {
+                    "zh": "如果你喜欢世界观完整、可探索内容丰富的作品，这类开放叙事游戏也会比较适合你。",
+                    "en": "If you enjoy rich world-building and explorable content, open narrative-heavy games are also a good fit.",
+                },
+            },
         ]
 
     return [
@@ -60,6 +69,18 @@ def build_mock_recommendations(answers: list, lang: str) -> list[dict]:
             "reason": {
                 "zh": "你更能接受挑战与成长循环，这类游戏会更适合你。",
                 "en": "You seem more comfortable with challenge and progression loops, which suits this kind of game.",
+            },
+        },
+        {
+            "gameId": 203,
+            "name": {
+                "zh": "Apex Legends",
+                "en": "Apex Legends",
+            },
+            "steamUrl": "https://store.steampowered.com/app/1172470/Apex_Legends/",
+            "reason": {
+                "zh": "如果你喜欢快速反馈、紧张节奏和对抗性体验，这类作品通常也会匹配得更好。",
+                "en": "If you like fast feedback, tension, and competitive play, this type of game usually fits better as well.",
             },
         },
     ]

@@ -15,7 +15,7 @@ export default function ResultPage() {
   const { i18n, t } = useTranslation();
   const location = useLocation();
   const RecommendationComponent =
-    import.meta.env.DEV || import.meta.env.VITE_SHOW_RESULT_DEBUG === "true"
+    import.meta.env.VITE_SHOW_RESULT_DEBUG === "true"
       ? RecommendationDebugCard
       : RecommendationCard;
 
@@ -41,13 +41,9 @@ export default function ResultPage() {
             message={t("result.emptyText")}
             actions={
               <ActionRow>
-                <SecondaryButton to="/">
-                  {t("backHome")}
-                </SecondaryButton>
+                <SecondaryButton to="/">{t("backHome")}</SecondaryButton>
 
-                <SecondaryButton to="/quiz">
-                  {t("retry")}
-                </SecondaryButton>
+                <SecondaryButton to="/quiz">{t("retry")}</SecondaryButton>
               </ActionRow>
             }
           />
@@ -55,18 +51,18 @@ export default function ResultPage() {
           <>
             <div className="grid gap-6 lg:grid-cols-3">
               {recommendations.map((item) => (
-                <RecommendationComponent key={item.gameId} item={item} lang={lang} />
+                <RecommendationComponent
+                  key={item.gameId}
+                  item={item}
+                  lang={lang}
+                />
               ))}
             </div>
 
             <ActionRow className="mt-10">
-              <SecondaryButton to="/quiz">
-                {t("retry")}
-              </SecondaryButton>
+              <SecondaryButton to="/quiz">{t("retry")}</SecondaryButton>
 
-              <SecondaryButton to="/">
-                {t("backHome")}
-              </SecondaryButton>
+              <SecondaryButton to="/">{t("backHome")}</SecondaryButton>
             </ActionRow>
           </>
         )}

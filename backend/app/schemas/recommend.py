@@ -1,14 +1,11 @@
-from pydantic import BaseModel
+﻿from pydantic import BaseModel
+
+from app.schemas.common import LocalizedText
 
 
 class AnswerItem(BaseModel):
     questionId: int
     optionId: int
-
-
-class LocalizedText(BaseModel):
-    zh: str
-    en: str
 
 
 class RecommendationItem(BaseModel):
@@ -20,8 +17,19 @@ class RecommendationItem(BaseModel):
 
 class RecommendRequest(BaseModel):
     answers: list[AnswerItem]
-    lang: str = "zh"
+
+
+class DebugTagItem(BaseModel):
+    tagCode: str
+    weight: int
+
+
+class DebugInfo(BaseModel):
+    score: float
+    rankingMode: str
+    matchedTags: list[DebugTagItem]
 
 
 class RecommendResponse(BaseModel):
     recommendations: list[RecommendationItem]
+    debug: DebugInfo | None = None

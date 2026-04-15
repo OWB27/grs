@@ -1,25 +1,43 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export default function useQuizFlow({
-  questions,
+  questions = [],
   validationMessage,
   onSubmit,
-  submitDelayMs = 700,
 }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({});
   const [submitError, setSubmitError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // 当题目数据变化时，重置流程
+  useEffect(() => {
+    setCurrentQuestionIndex(0);
+    setAnswers({});
+    setSubmitError("");
+    setIsSubmitting(false);
+  }, [questions]);
+
   const totalQuestions = questions.length;
-  const currentQuestion = questions[currentQuestionIndex];
-  const currentQuestionId = currentQuestion.id;
-  const selectedOptionId = answers[currentQuestionId];
-  const currentStep = currentQuestionIndex + 1;
+
+  const currentQuestion = useMemo(() => {
+    if (totalQuestions === 0) return null;
+    return questions[currentQuestionIndex] ?? null;
+  }, [questions, currentQuestionIndex, totalQuestions]);
+
+  const currentQuestionId = currentQuestion?.id;
+  const selectedOptionId = currentQuestionId ? answers[currentQuestionId] : undefined;
+  const currentStep = totalQuestions === 0 ? 0 : currentQuestionIndex + 1;
   const isFirstQuestion = currentQuestionIndex === 0;
-  const isLastQuestion = currentQuestionIndex === totalQuestions - 1;
+  const isLastQuestion =
+    totalQuestions > 0 && currentQuestionIndex === totalQuestions - 1;
 
   function validateCurrentSelection() {
+    if (!currentQuestion) {
+      setSubmitError(validationMessage);
+      return false;
+    }
+
     if (selectedOptionId) {
       return true;
     }
@@ -29,6 +47,8 @@ export default function useQuizFlow({
   }
 
   function handleSelect(optionId) {
+    if (!currentQuestionId) return;
+
     setAnswers((prev) => ({
       ...prev,
       [currentQuestionId]: optionId,
@@ -47,15 +67,20 @@ export default function useQuizFlow({
 
   function handleNext() {
     if (!validateCurrentSelection()) {
-      return;
+      return false;
     }
 
     setCurrentQuestionIndex((prev) => prev + 1);
     setSubmitError("");
+    return true;
   }
 
-  function handleSubmit() {
+  async function handleSubmit() {
     if (!validateCurrentSelection()) {
+      return;
+    }
+
+    if (!currentQuestionId) {
       return;
     }
 
@@ -67,9 +92,13 @@ export default function useQuizFlow({
       [currentQuestionId]: selectedOptionId,
     };
 
-    setTimeout(() => {
-      onSubmit(finalAnswers);
-    }, submitDelayMs);
+    try {
+      await onSubmit(finalAnswers);
+    } catch (error) {
+      setSubmitError(error?.message || validationMessage);
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return {

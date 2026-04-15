@@ -38,5 +38,8 @@
   "debug.title": "DEBUG",
   "debug.analysis": "Tag Match Analysis",
   "debug.expand": "展开调试面板",
-  "debug.collapse": "收起调试面板"
+  "debug.collapse": "收起调试面板",
+
+  "loadingQuestions": "题目加载中...",
+  "questionsLoadError": "获取题目失败，请稍后重试。"
 }

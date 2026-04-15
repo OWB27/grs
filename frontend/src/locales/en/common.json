@@ -38,5 +38,8 @@
   "debug.title": "DEBUG",
   "debug.analysis": "Tag Match Analysis",
   "debug.expand": "Expand debug panel",
-  "debug.collapse": "Collapse debug panel"
+  "debug.collapse": "Collapse debug panel",
+
+  "loadingQuestions": "Loading questions...",
+  "questionsLoadError": "Failed to load questions. Please try again later."
 }
