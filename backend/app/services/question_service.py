@@ -1,79 +1,44 @@
-def get_questions() -> list[dict]:
-    return [
-        {
-            "id": 1,
-            "code": "preferred_experience",
-            "sortOrder": 1,
-            "title": {
-                "zh": "你更喜欢哪种游戏体验？",
-                "en": "What kind of game experience do you prefer?",
-            },
-            "options": [
-                {
-                    "id": 11,
-                    "code": "story_immersion",
-                    "sortOrder": 1,
-                    "text": {
-                        "zh": "沉浸剧情",
-                        "en": "Immersive story",
-                    },
-                },
-                {
-                    "id": 12,
-                    "code": "free_exploration",
-                    "sortOrder": 2,
-                    "text": {
-                        "zh": "自由探索",
-                        "en": "Free exploration",
-                    },
-                },
-                {
-                    "id": 13,
-                    "code": "competitive_challenge",
-                    "sortOrder": 3,
-                    "text": {
-                        "zh": "挑战与对抗",
-                        "en": "Challenge and competition",
-                    },
-                },
-            ],
+from sqlmodel import Session, select
+
+from app.db.models import Question, QuestionOption
+
+
+def serialize_question(question: Question, options: list[QuestionOption]) -> dict:
+    return {
+        "id": question.id,
+        "code": question.code,
+        "sortOrder": question.sort_order,
+        "title": {
+            "zh": question.title_zh,
+            "en": question.title_en,
         },
-        {
-            "id": 2,
-            "code": "game_pace",
-            "sortOrder": 2,
-            "title": {
-                "zh": "你更喜欢什么节奏？",
-                "en": "What pace do you prefer?",
-            },
-            "options": [
-                {
-                    "id": 21,
-                    "code": "slow_relaxed",
-                    "sortOrder": 1,
-                    "text": {
-                        "zh": "慢节奏、轻松一些",
-                        "en": "Slow and relaxed",
-                    },
+        "options": [
+            {
+                "id": option.id,
+                "code": option.code,
+                "sortOrder": option.sort_order,
+                "text": {
+                    "zh": option.text_zh,
+                    "en": option.text_en,
                 },
-                {
-                    "id": 22,
-                    "code": "balanced_pace",
-                    "sortOrder": 2,
-                    "text": {
-                        "zh": "节奏均衡",
-                        "en": "Balanced pace",
-                    },
-                },
-                {
-                    "id": 23,
-                    "code": "fast_intense",
-                    "sortOrder": 3,
-                    "text": {
-                        "zh": "快节奏、刺激一些",
-                        "en": "Fast and intense",
-                    },
-                },
-            ],
-        },
-    ]
+            }
+            for option in sorted(options, key=lambda item: item.sort_order)
+        ],
+    }
+
+
+def get_questions(session: Session) -> list[dict]:
+    questions = session.exec(
+        select(Question).order_by(Question.sort_order)
+    ).all()
+
+    result = []
+
+    for question in questions:
+        options = session.exec(
+            select(QuestionOption).where(QuestionOption.question_id == question.id)
+        ).all()
+
+        result.append(serialize_question(question, options))
+
+    return result
