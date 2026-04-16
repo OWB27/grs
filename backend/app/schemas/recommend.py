@@ -1,4 +1,4 @@
-﻿from pydantic import BaseModel
+from pydantic import BaseModel
 
 from app.schemas.common import LocalizedText
 
@@ -6,17 +6,6 @@ from app.schemas.common import LocalizedText
 class AnswerItem(BaseModel):
     questionId: int
     optionId: int
-
-
-class RecommendationItem(BaseModel):
-    gameId: int
-    name: LocalizedText
-    steamUrl: str
-    reason: LocalizedText
-
-
-class RecommendRequest(BaseModel):
-    answers: list[AnswerItem]
 
 
 class DebugTagItem(BaseModel):
@@ -30,6 +19,17 @@ class DebugInfo(BaseModel):
     matchedTags: list[DebugTagItem]
 
 
+class RecommendationItem(BaseModel):
+    gameId: int
+    name: LocalizedText
+    steamUrl: str
+    reason: LocalizedText
+    debug: DebugInfo | None = None
+
+
+class RecommendRequest(BaseModel):
+    answers: list[AnswerItem]
+
+
 class RecommendResponse(BaseModel):
     recommendations: list[RecommendationItem]
-    debug: DebugInfo | None = None

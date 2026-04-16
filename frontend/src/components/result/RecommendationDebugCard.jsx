@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { getMockRecommendationDebug } from "../../data/mockResults";
 import DebugToggleButton from "../ui/DebugToggleButton";
 import SteamButton from "../ui/SteamButton";
 import DebugPanel from "./DebugPanel";
@@ -10,7 +9,6 @@ import RecommendationCard from "./RecommendationCard";
 export default function RecommendationDebugCard({ item, lang }) {
   const { t } = useTranslation();
   const [isDebugOpen, setIsDebugOpen] = useState(false);
-  const debug = getMockRecommendationDebug(item);
 
   return (
     <RecommendationCard
@@ -27,7 +25,7 @@ export default function RecommendationDebugCard({ item, lang }) {
         </>
       }
     >
-      {isDebugOpen ? <DebugPanel debug={debug} gameId={item.gameId} /> : null}
+      {isDebugOpen ? <DebugPanel debug={item?.debug} gameId={item.gameId} /> : null}
     </RecommendationCard>
   );
 }

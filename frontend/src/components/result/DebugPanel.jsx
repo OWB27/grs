@@ -3,6 +3,23 @@ import { useTranslation } from "react-i18next";
 export default function DebugPanel({ debug, gameId }) {
   const { t } = useTranslation();
 
+  if (!debug) {
+    return (
+      <div className="border-t border-white/8 bg-white/[0.02] px-5 py-5">
+        <div className="mb-4 flex items-center gap-3 font-mono">
+          <span className="rounded-md bg-cyan-400/12 px-2.5 py-1 text-xs text-cyan-300">
+            {t("debug.title")}
+          </span>
+          <span className="text-xs text-slate-400">{t("debug.analysis")}</span>
+        </div>
+
+        <div className="rounded-xl border border-white/6 bg-black/25 p-4 font-mono text-xs text-slate-400">
+          No debug data
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="border-t border-white/8 bg-white/[0.02] px-5 py-5">
       <div className="mb-4 flex items-center gap-3 font-mono">

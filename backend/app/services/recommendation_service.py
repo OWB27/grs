@@ -1,4 +1,18 @@
-﻿def build_mock_recommendations(answers: list) -> list[dict]:
+def attach_debug_info(recommendations: list[dict], debug_items: list[dict]) -> list[dict]:
+    combined = []
+
+    for index, recommendation in enumerate(recommendations):
+        combined.append(
+            {
+                **recommendation,
+                "debug": debug_items[index] if index < len(debug_items) else None,
+            }
+        )
+
+    return combined
+
+
+def build_mock_recommendations(answers: list) -> dict:
     first_answer_option_id = None
 
     for answer in answers:
@@ -7,7 +21,7 @@
             break
 
     if first_answer_option_id == 11:
-        return [
+        recommendations = [
             {
                 "gameId": 101,
                 "name": {
@@ -45,8 +59,35 @@
                 },
             },
         ]
+        debug = [
+            {
+                "score": 18.5,
+                "rankingMode": "rule_based",
+                "matchedTags": [
+                    {"tagCode": "story_rich", "weight": 5},
+                    {"tagCode": "open_world", "weight": 4},
+                ],
+            },
+            {
+                "score": 17.2,
+                "rankingMode": "rule_based",
+                "matchedTags": [
+                    {"tagCode": "narrative", "weight": 5},
+                    {"tagCode": "character", "weight": 4},
+                ],
+            },
+            {
+                "score": 16.4,
+                "rankingMode": "rule_based",
+                "matchedTags": [
+                    {"tagCode": "open_world", "weight": 4},
+                    {"tagCode": "world_building", "weight": 4},
+                ],
+            },
+        ]
+        return {"recommendations": attach_debug_info(recommendations, debug)}
 
-    return [
+    recommendations = [
         {
             "gameId": 201,
             "name": {
@@ -84,3 +125,30 @@
             },
         },
     ]
+    debug = [
+        {
+            "score": 18.1,
+            "rankingMode": "rule_based",
+            "matchedTags": [
+                {"tagCode": "fast_paced", "weight": 5},
+                {"tagCode": "combat", "weight": 4},
+            ],
+        },
+        {
+            "score": 17.0,
+            "rankingMode": "rule_based",
+            "matchedTags": [
+                {"tagCode": "challenge", "weight": 5},
+                {"tagCode": "progression", "weight": 4},
+            ],
+        },
+        {
+            "score": 16.3,
+            "rankingMode": "rule_based",
+            "matchedTags": [
+                {"tagCode": "competitive", "weight": 4},
+                {"tagCode": "action", "weight": 4},
+            ],
+        },
+    ]
+    return {"recommendations": attach_debug_info(recommendations, debug)}
