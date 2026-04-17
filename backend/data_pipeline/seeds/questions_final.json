@@ -1,0 +1,482 @@
+[
+  {
+    "code": "preferred_core_experience",
+    "sort_order": 1,
+    "title_zh": "你最希望游戏首先带给你什么？",
+    "title_en": "What do you want a game to deliver first and foremost?",
+    "options": [
+      {
+        "code": "core_story_immersion",
+        "sort_order": 1,
+        "text_zh": "沉浸剧情与角色",
+        "text_en": "Immersive story and characters"
+      },
+      {
+        "code": "core_free_exploration",
+        "sort_order": 2,
+        "text_zh": "自由探索未知世界",
+        "text_en": "Freely exploring an unknown world"
+      },
+      {
+        "code": "core_intense_action",
+        "sort_order": 3,
+        "text_zh": "高强度动作与爽感",
+        "text_en": "High-intensity action and thrill"
+      },
+      {
+        "code": "core_cozy_daily_life",
+        "sort_order": 4,
+        "text_zh": "轻松治愈的日常感",
+        "text_en": "A cozy, healing daily-life vibe"
+      }
+    ]
+  },
+  {
+    "code": "narrative_agency",
+    "sort_order": 2,
+    "title_zh": "你希望自己如何影响游戏内容？",
+    "title_en": "How do you want to influence the game?",
+    "options": [
+      {
+        "code": "agency_authored_story",
+        "sort_order": 1,
+        "text_zh": "主要体验作者写好的故事",
+        "text_en": "Primarily follow a crafted story"
+      },
+      {
+        "code": "agency_choices_change_outcome",
+        "sort_order": 2,
+        "text_zh": "我的选择应改变结果",
+        "text_en": "My choices should change the outcome"
+      },
+      {
+        "code": "agency_build_defines_playstyle",
+        "sort_order": 3,
+        "text_zh": "我的构筑决定玩法",
+        "text_en": "My build should define how I play"
+      },
+      {
+        "code": "agency_systems_create_fun",
+        "sort_order": 4,
+        "text_zh": "我更喜欢系统互动自己产生乐趣",
+        "text_en": "I prefer systems generating their own fun"
+      }
+    ]
+  },
+  {
+    "code": "pace_preference",
+    "sort_order": 3,
+    "title_zh": "你更喜欢怎样的游玩节奏？",
+    "title_en": "What pacing do you prefer?",
+    "options": [
+      {
+        "code": "pace_slow_and_deliberate",
+        "sort_order": 1,
+        "text_zh": "慢一些，给我思考和沉浸空间",
+        "text_en": "Slower, with room to think and immerse"
+      },
+      {
+        "code": "pace_balanced_journey",
+        "sort_order": 2,
+        "text_zh": "张弛有度，剧情与探索并行",
+        "text_en": "Balanced, with story and exploration together"
+      },
+      {
+        "code": "pace_fast_and_intense",
+        "sort_order": 3,
+        "text_zh": "越快越刺激越好",
+        "text_en": "The faster and more intense, the better"
+      },
+      {
+        "code": "pace_turns_and_planning",
+        "sort_order": 4,
+        "text_zh": "我接受回合/规划型节奏",
+        "text_en": "I enjoy turn-based or planning-heavy pacing"
+      }
+    ]
+  },
+  {
+    "code": "challenge_preference",
+    "sort_order": 4,
+    "title_zh": "你希望游戏给你多大压力？",
+    "title_en": "How much pressure do you want from a game?",
+    "options": [
+      {
+        "code": "challenge_low_pressure",
+        "sort_order": 1,
+        "text_zh": "尽量轻松，不想被压迫",
+        "text_en": "Keep it low-pressure"
+      },
+      {
+        "code": "challenge_moderate",
+        "sort_order": 2,
+        "text_zh": "有点挑战就好",
+        "text_en": "A moderate amount of challenge"
+      },
+      {
+        "code": "challenge_tough_but_fair",
+        "sort_order": 3,
+        "text_zh": "困难但公平，我愿意学",
+        "text_en": "Tough but fair; I want to improve"
+      },
+      {
+        "code": "challenge_punishing_mastery",
+        "sort_order": 4,
+        "text_zh": "越硬核越好，我想追求精通",
+        "text_en": "The harsher the better; I want mastery"
+      }
+    ]
+  },
+  {
+    "code": "combat_preference",
+    "sort_order": 5,
+    "title_zh": "面对核心玩法时，你更偏好哪种方式？",
+    "title_en": "When it comes to core gameplay, which style do you prefer?",
+    "options": [
+      {
+        "code": "combat_tactical_planning",
+        "sort_order": 1,
+        "text_zh": "靠策略与布局取胜",
+        "text_en": "Win through tactics and planning"
+      },
+      {
+        "code": "combat_build_experimentation",
+        "sort_order": 2,
+        "text_zh": "靠流派搭配与构筑取胜",
+        "text_en": "Win through builds and synergies"
+      },
+      {
+        "code": "combat_direct_execution",
+        "sort_order": 3,
+        "text_zh": "靠操作、反应和手感取胜",
+        "text_en": "Win through execution, reactions, and feel"
+      },
+      {
+        "code": "combat_minimal_fighting",
+        "sort_order": 4,
+        "text_zh": "我更想少打架，多体验别的内容",
+        "text_en": "I prefer minimal fighting and more other content"
+      }
+    ]
+  },
+  {
+    "code": "world_structure_preference",
+    "sort_order": 6,
+    "title_zh": "哪种世界结构最吸引你？",
+    "title_en": "Which world structure attracts you the most?",
+    "options": [
+      {
+        "code": "world_vast_open_map",
+        "sort_order": 1,
+        "text_zh": "辽阔开放的大地图",
+        "text_en": "A vast open map"
+      },
+      {
+        "code": "world_dense_interconnected_spaces",
+        "sort_order": 2,
+        "text_zh": "紧凑但层层相连的空间",
+        "text_en": "Dense, interconnected spaces"
+      },
+      {
+        "code": "world_short_runs_or_matches",
+        "sort_order": 3,
+        "text_zh": "短局制/一局一局反复玩",
+        "text_en": "Short runs or match-based sessions"
+      },
+      {
+        "code": "world_shared_social_spaces",
+        "sort_order": 4,
+        "text_zh": "能和别人一起互动的共享空间",
+        "text_en": "Shared spaces with other people"
+      }
+    ]
+  },
+  {
+    "code": "puzzle_preference",
+    "sort_order": 7,
+    "title_zh": "你对解谜元素的接受度如何？",
+    "title_en": "How much puzzle-solving do you want?",
+    "options": [
+      {
+        "code": "puzzle_almost_none",
+        "sort_order": 1,
+        "text_zh": "越少越好，不想被卡住",
+        "text_en": "As little as possible"
+      },
+      {
+        "code": "puzzle_light_variety",
+        "sort_order": 2,
+        "text_zh": "少量点缀就好",
+        "text_en": "A light amount as variety"
+      },
+      {
+        "code": "puzzle_dedicated_logic",
+        "sort_order": 3,
+        "text_zh": "我愿意专门动脑解谜",
+        "text_en": "I want dedicated logic puzzles"
+      },
+      {
+        "code": "puzzle_environmental_mystery",
+        "sort_order": 4,
+        "text_zh": "喜欢通过观察世界本身来解谜",
+        "text_en": "I like solving mysteries by reading the world"
+      }
+    ]
+  },
+  {
+    "code": "social_play_preference",
+    "sort_order": 8,
+    "title_zh": "你理想中的社交参与方式是什么？",
+    "title_en": "What is your ideal level of social involvement?",
+    "options": [
+      {
+        "code": "social_mostly_solo",
+        "sort_order": 1,
+        "text_zh": "主要单人体验",
+        "text_en": "Mostly solo play"
+      },
+      {
+        "code": "social_small_group_coop",
+        "sort_order": 2,
+        "text_zh": "和少数朋友合作最好",
+        "text_en": "Small-group co-op with friends"
+      },
+      {
+        "code": "social_party_coordination",
+        "sort_order": 3,
+        "text_zh": "喜欢热闹混乱的团队配合",
+        "text_en": "Chaotic team coordination is fun"
+      },
+      {
+        "code": "social_reading_people",
+        "sort_order": 4,
+        "text_zh": "喜欢猜人心、博弈与社交推理",
+        "text_en": "I enjoy reading people and social deduction"
+      }
+    ]
+  },
+  {
+    "code": "competition_preference",
+    "sort_order": 9,
+    "title_zh": "你对玩家之间的竞争怎么看？",
+    "title_en": "How do you feel about competition between players?",
+    "options": [
+      {
+        "code": "competition_none",
+        "sort_order": 1,
+        "text_zh": "不想竞争",
+        "text_en": "I do not want competition"
+      },
+      {
+        "code": "competition_light_friendly",
+        "sort_order": 2,
+        "text_zh": "轻度对抗可以接受",
+        "text_en": "Light, friendly competition is fine"
+      },
+      {
+        "code": "competition_ranked_teamplay",
+        "sort_order": 3,
+        "text_zh": "我喜欢认真打团队对抗",
+        "text_en": "I like serious team-based competition"
+      },
+      {
+        "code": "competition_high_stakes_survival",
+        "sort_order": 4,
+        "text_zh": "我喜欢高风险、活到最后的对抗",
+        "text_en": "I like high-stakes last-one-standing competition"
+      }
+    ]
+  },
+  {
+    "code": "management_preference",
+    "sort_order": 10,
+    "title_zh": "你对经营与资源系统的态度是？",
+    "title_en": "How do you feel about management and resource systems?",
+    "options": [
+      {
+        "code": "management_none",
+        "sort_order": 1,
+        "text_zh": "最好别太多系统负担",
+        "text_en": "I prefer very little system overhead"
+      },
+      {
+        "code": "management_light_optimization",
+        "sort_order": 2,
+        "text_zh": "可以有一点优化，但别太复杂",
+        "text_en": "A bit of optimization is fine, but not too much"
+      },
+      {
+        "code": "management_city_or_colony",
+        "sort_order": 3,
+        "text_zh": "我喜欢建设、规划与布局",
+        "text_en": "I enjoy building, planning, and layout design"
+      },
+      {
+        "code": "management_scarcity_tradeoffs",
+        "sort_order": 4,
+        "text_zh": "我喜欢资源紧缺下的艰难取舍",
+        "text_en": "I like hard trade-offs under scarcity"
+      }
+    ]
+  },
+  {
+    "code": "survival_pressure_preference",
+    "sort_order": 11,
+    "title_zh": "你对生存压力的接受度如何？",
+    "title_en": "How much survival pressure do you enjoy?",
+    "options": [
+      {
+        "code": "survival_none",
+        "sort_order": 1,
+        "text_zh": "最好没有",
+        "text_en": "Ideally none"
+      },
+      {
+        "code": "survival_light",
+        "sort_order": 2,
+        "text_zh": "一点点就够了",
+        "text_en": "A little is enough"
+      },
+      {
+        "code": "survival_preparing_and_enduring",
+        "sort_order": 3,
+        "text_zh": "我喜欢准备、维持和熬过去",
+        "text_en": "I enjoy preparing, maintaining, and enduring"
+      },
+      {
+        "code": "survival_real_consequences",
+        "sort_order": 4,
+        "text_zh": "我要真实后果和长期压力",
+        "text_en": "I want real consequences and lasting pressure"
+      }
+    ]
+  },
+  {
+    "code": "horror_tolerance",
+    "sort_order": 12,
+    "title_zh": "你能接受多强的恐怖氛围？",
+    "title_en": "How much horror can you tolerate?",
+    "options": [
+      {
+        "code": "horror_avoid",
+        "sort_order": 1,
+        "text_zh": "尽量不要恐怖",
+        "text_en": "Avoid horror as much as possible"
+      },
+      {
+        "code": "horror_light_tension",
+        "sort_order": 2,
+        "text_zh": "可以有一点紧张感",
+        "text_en": "A little tension is fine"
+      },
+      {
+        "code": "horror_sustained_dread",
+        "sort_order": 3,
+        "text_zh": "持续压迫感我可以接受",
+        "text_en": "I can handle sustained dread"
+      },
+      {
+        "code": "horror_terror_under_pressure",
+        "sort_order": 4,
+        "text_zh": "越恐怖越刺激",
+        "text_en": "The more terrifying, the better"
+      }
+    ]
+  },
+  {
+    "code": "replayability_source",
+    "sort_order": 13,
+    "title_zh": "如果一款游戏要让我反复玩，最好是因为什么？",
+    "title_en": "If a game is going to keep you coming back, why should it be?",
+    "options": [
+      {
+        "code": "replay_one_memorable_journey",
+        "sort_order": 1,
+        "text_zh": "一次完整难忘的旅程就够了",
+        "text_en": "One memorable journey is enough"
+      },
+      {
+        "code": "replay_different_paths",
+        "sort_order": 2,
+        "text_zh": "我想看不同选择与结局",
+        "text_en": "I want to see different choices and endings"
+      },
+      {
+        "code": "replay_new_builds_each_run",
+        "sort_order": 3,
+        "text_zh": "我想不断尝试新构筑和套路",
+        "text_en": "I want to try new builds and synergies"
+      },
+      {
+        "code": "replay_endless_optimization",
+        "sort_order": 4,
+        "text_zh": "我喜欢长期优化系统和效率",
+        "text_en": "I enjoy endlessly optimizing systems and efficiency"
+      }
+    ]
+  },
+  {
+    "code": "character_connection",
+    "sort_order": 14,
+    "title_zh": "你更容易对哪一类内容投入感情？",
+    "title_en": "What are you most likely to emotionally invest in?",
+    "options": [
+      {
+        "code": "character_world_over_people",
+        "sort_order": 1,
+        "text_zh": "世界本身，比角色更重要",
+        "text_en": "The world itself matters more than the people"
+      },
+      {
+        "code": "character_party_bonds",
+        "sort_order": 2,
+        "text_zh": "队友关系、互动与羁绊",
+        "text_en": "Party bonds, interactions, and relationships"
+      },
+      {
+        "code": "character_personal_growth_arc",
+        "sort_order": 3,
+        "text_zh": "主角明确的成长弧线",
+        "text_en": "A clear personal growth arc"
+      },
+      {
+        "code": "character_self_shaped_identity",
+        "sort_order": 4,
+        "text_zh": "让我塑造自己的身份与路线",
+        "text_en": "Let me shape my own identity and path"
+      }
+    ]
+  },
+  {
+    "code": "emotional_tone_preference",
+    "sort_order": 15,
+    "title_zh": "你整体更偏爱哪种情绪基调？",
+    "title_en": "Which overall emotional tone do you prefer?",
+    "options": [
+      {
+        "code": "tone_calm_and_healing",
+        "sort_order": 1,
+        "text_zh": "平静、疗愈、可长期陪伴",
+        "text_en": "Calm, healing, and long-term comforting"
+      },
+      {
+        "code": "tone_cinematic_and_absorbing",
+        "sort_order": 2,
+        "text_zh": "电影感强、很有代入感",
+        "text_en": "Cinematic and deeply absorbing"
+      },
+      {
+        "code": "tone_dark_and_oppressive",
+        "sort_order": 3,
+        "text_zh": "压抑、危险、令人不安",
+        "text_en": "Dark, oppressive, and unsettling"
+      },
+      {
+        "code": "tone_adrenaline_first",
+        "sort_order": 4,
+        "text_zh": "肾上腺素优先，先爽再说",
+        "text_en": "Adrenaline first"
+      }
+    ]
+  }
+]

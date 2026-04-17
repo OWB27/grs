@@ -1,0 +1,122 @@
+[
+  {
+    "code": "story_rich",
+    "name_zh": "剧情沉浸",
+    "name_en": "Story Rich",
+    "is_active": true
+  },
+  {
+    "code": "character_growth",
+    "name_zh": "角色成长",
+    "name_en": "Character Growth",
+    "is_active": true
+  },
+  {
+    "code": "open_world",
+    "name_zh": "开放世界",
+    "name_en": "Open World",
+    "is_active": true
+  },
+  {
+    "code": "exploration",
+    "name_zh": "自由探索",
+    "name_en": "Exploration",
+    "is_active": true
+  },
+  {
+    "code": "fast_paced",
+    "name_zh": "快节奏",
+    "name_en": "Fast-Paced",
+    "is_active": true
+  },
+  {
+    "code": "combat",
+    "name_zh": "战斗驱动",
+    "name_en": "Combat",
+    "is_active": true
+  },
+  {
+    "code": "challenge",
+    "name_zh": "高难挑战",
+    "name_en": "Challenge",
+    "is_active": true
+  },
+  {
+    "code": "competitive",
+    "name_zh": "竞技对抗",
+    "name_en": "Competitive",
+    "is_active": true
+  },
+  {
+    "code": "relaxed",
+    "name_zh": "轻松休闲",
+    "name_en": "Relaxed",
+    "is_active": true
+  },
+  {
+    "code": "choices_matter",
+    "name_zh": "选择导向",
+    "name_en": "Choices Matter",
+    "is_active": true
+  },
+  {
+    "code": "immersive",
+    "name_zh": "沉浸体验",
+    "name_en": "Immersive",
+    "is_active": true
+  },
+  {
+    "code": "strategy",
+    "name_zh": "策略规划",
+    "name_en": "Strategy",
+    "is_active": true
+  },
+  {
+    "code": "resource_management",
+    "name_zh": "资源管理",
+    "name_en": "Resource Management",
+    "is_active": true
+  },
+  {
+    "code": "build_variety",
+    "name_zh": "流派构筑",
+    "name_en": "Build Variety",
+    "is_active": true
+  },
+  {
+    "code": "replayable",
+    "name_zh": "重复可玩",
+    "name_en": "Replayable",
+    "is_active": true
+  },
+  {
+    "code": "cozy",
+    "name_zh": "轻松治愈",
+    "name_en": "Cozy",
+    "is_active": true
+  },
+  {
+    "code": "puzzle_solving",
+    "name_zh": "解谜思考",
+    "name_en": "Puzzle Solving",
+    "is_active": true
+  },
+  {
+    "code": "survival",
+    "name_zh": "生存挑战",
+    "name_en": "Survival",
+    "is_active": true
+  },
+  {
+    "code": "social_sim",
+    "name_zh": "社交模拟",
+    "name_en": "Social Sim",
+    "is_active": true
+  },
+  {
+    "code": "horror_tension",
+    "name_zh": "恐怖压迫",
+    "name_en": "Horror Tension",
+    "is_active": true
+  }
+]

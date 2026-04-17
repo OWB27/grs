@@ -1,0 +1,1447 @@
+[
+  {
+    "game_code": "baldurs_gate_3",
+    "tag_code": "story_rich",
+    "weight": 5
+  },
+  {
+    "game_code": "baldurs_gate_3",
+    "tag_code": "choices_matter",
+    "weight": 5
+  },
+  {
+    "game_code": "baldurs_gate_3",
+    "tag_code": "build_variety",
+    "weight": 5
+  },
+  {
+    "game_code": "baldurs_gate_3",
+    "tag_code": "character_growth",
+    "weight": 4
+  },
+  {
+    "game_code": "baldurs_gate_3",
+    "tag_code": "strategy",
+    "weight": 4
+  },
+  {
+    "game_code": "baldurs_gate_3",
+    "tag_code": "immersive",
+    "weight": 4
+  },
+  {
+    "game_code": "detroit_become_human",
+    "tag_code": "story_rich",
+    "weight": 5
+  },
+  {
+    "game_code": "detroit_become_human",
+    "tag_code": "choices_matter",
+    "weight": 5
+  },
+  {
+    "game_code": "detroit_become_human",
+    "tag_code": "immersive",
+    "weight": 4
+  },
+  {
+    "game_code": "detroit_become_human",
+    "tag_code": "character_growth",
+    "weight": 3
+  },
+  {
+    "game_code": "life_is_strange",
+    "tag_code": "story_rich",
+    "weight": 5
+  },
+  {
+    "game_code": "life_is_strange",
+    "tag_code": "choices_matter",
+    "weight": 4
+  },
+  {
+    "game_code": "life_is_strange",
+    "tag_code": "character_growth",
+    "weight": 4
+  },
+  {
+    "game_code": "life_is_strange",
+    "tag_code": "immersive",
+    "weight": 4
+  },
+  {
+    "game_code": "heavy_rain",
+    "tag_code": "story_rich",
+    "weight": 4
+  },
+  {
+    "game_code": "heavy_rain",
+    "tag_code": "choices_matter",
+    "weight": 5
+  },
+  {
+    "game_code": "heavy_rain",
+    "tag_code": "immersive",
+    "weight": 4
+  },
+  {
+    "game_code": "heavy_rain",
+    "tag_code": "character_growth",
+    "weight": 3
+  },
+  {
+    "game_code": "red_dead_redemption_2",
+    "tag_code": "story_rich",
+    "weight": 5
+  },
+  {
+    "game_code": "red_dead_redemption_2",
+    "tag_code": "open_world",
+    "weight": 5
+  },
+  {
+    "game_code": "red_dead_redemption_2",
+    "tag_code": "immersive",
+    "weight": 5
+  },
+  {
+    "game_code": "red_dead_redemption_2",
+    "tag_code": "exploration",
+    "weight": 4
+  },
+  {
+    "game_code": "red_dead_redemption_2",
+    "tag_code": "character_growth",
+    "weight": 4
+  },
+  {
+    "game_code": "mass_effect_legendary_edition",
+    "tag_code": "story_rich",
+    "weight": 5
+  },
+  {
+    "game_code": "mass_effect_legendary_edition",
+    "tag_code": "choices_matter",
+    "weight": 4
+  },
+  {
+    "game_code": "mass_effect_legendary_edition",
+    "tag_code": "character_growth",
+    "weight": 4
+  },
+  {
+    "game_code": "mass_effect_legendary_edition",
+    "tag_code": "combat",
+    "weight": 4
+  },
+  {
+    "game_code": "mass_effect_legendary_edition",
+    "tag_code": "immersive",
+    "weight": 4
+  },
+  {
+    "game_code": "nier_automata",
+    "tag_code": "story_rich",
+    "weight": 5
+  },
+  {
+    "game_code": "nier_automata",
+    "tag_code": "combat",
+    "weight": 4
+  },
+  {
+    "game_code": "nier_automata",
+    "tag_code": "character_growth",
+    "weight": 4
+  },
+  {
+    "game_code": "nier_automata",
+    "tag_code": "immersive",
+    "weight": 4
+  },
+  {
+    "game_code": "nier_automata",
+    "tag_code": "fast_paced",
+    "weight": 3
+  },
+  {
+    "game_code": "persona_5_royal",
+    "tag_code": "story_rich",
+    "weight": 5
+  },
+  {
+    "game_code": "persona_5_royal",
+    "tag_code": "character_growth",
+    "weight": 5
+  },
+  {
+    "game_code": "persona_5_royal",
+    "tag_code": "social_sim",
+    "weight": 4
+  },
+  {
+    "game_code": "persona_5_royal",
+    "tag_code": "strategy",
+    "weight": 3
+  },
+  {
+    "game_code": "persona_5_royal",
+    "tag_code": "build_variety",
+    "weight": 3
+  },
+  {
+    "game_code": "elden_ring",
+    "tag_code": "challenge",
+    "weight": 5
+  },
+  {
+    "game_code": "elden_ring",
+    "tag_code": "exploration",
+    "weight": 5
+  },
+  {
+    "game_code": "elden_ring",
+    "tag_code": "build_variety",
+    "weight": 5
+  },
+  {
+    "game_code": "elden_ring",
+    "tag_code": "combat",
+    "weight": 4
+  },
+  {
+    "game_code": "elden_ring",
+    "tag_code": "open_world",
+    "weight": 4
+  },
+  {
+    "game_code": "skyrim_special_edition",
+    "tag_code": "open_world",
+    "weight": 5
+  },
+  {
+    "game_code": "skyrim_special_edition",
+    "tag_code": "exploration",
+    "weight": 5
+  },
+  {
+    "game_code": "skyrim_special_edition",
+    "tag_code": "build_variety",
+    "weight": 4
+  },
+  {
+    "game_code": "skyrim_special_edition",
+    "tag_code": "immersive",
+    "weight": 4
+  },
+  {
+    "game_code": "skyrim_special_edition",
+    "tag_code": "story_rich",
+    "weight": 3
+  },
+  {
+    "game_code": "gta_v",
+    "tag_code": "open_world",
+    "weight": 5
+  },
+  {
+    "game_code": "gta_v",
+    "tag_code": "fast_paced",
+    "weight": 4
+  },
+  {
+    "game_code": "gta_v",
+    "tag_code": "combat",
+    "weight": 4
+  },
+  {
+    "game_code": "gta_v",
+    "tag_code": "immersive",
+    "weight": 3
+  },
+  {
+    "game_code": "gta_v",
+    "tag_code": "story_rich",
+    "weight": 3
+  },
+  {
+    "game_code": "no_mans_sky",
+    "tag_code": "exploration",
+    "weight": 5
+  },
+  {
+    "game_code": "no_mans_sky",
+    "tag_code": "open_world",
+    "weight": 5
+  },
+  {
+    "game_code": "no_mans_sky",
+    "tag_code": "immersive",
+    "weight": 4
+  },
+  {
+    "game_code": "no_mans_sky",
+    "tag_code": "survival",
+    "weight": 3
+  },
+  {
+    "game_code": "no_mans_sky",
+    "tag_code": "resource_management",
+    "weight": 3
+  },
+  {
+    "game_code": "no_mans_sky",
+    "tag_code": "relaxed",
+    "weight": 3
+  },
+  {
+    "game_code": "subnautica",
+    "tag_code": "exploration",
+    "weight": 5
+  },
+  {
+    "game_code": "subnautica",
+    "tag_code": "survival",
+    "weight": 5
+  },
+  {
+    "game_code": "subnautica",
+    "tag_code": "immersive",
+    "weight": 4
+  },
+  {
+    "game_code": "subnautica",
+    "tag_code": "horror_tension",
+    "weight": 3
+  },
+  {
+    "game_code": "subnautica",
+    "tag_code": "resource_management",
+    "weight": 3
+  },
+  {
+    "game_code": "dying_light",
+    "tag_code": "combat",
+    "weight": 4
+  },
+  {
+    "game_code": "dying_light",
+    "tag_code": "fast_paced",
+    "weight": 4
+  },
+  {
+    "game_code": "dying_light",
+    "tag_code": "open_world",
+    "weight": 4
+  },
+  {
+    "game_code": "dying_light",
+    "tag_code": "survival",
+    "weight": 3
+  },
+  {
+    "game_code": "dying_light",
+    "tag_code": "horror_tension",
+    "weight": 3
+  },
+  {
+    "game_code": "dying_light",
+    "tag_code": "challenge",
+    "weight": 3
+  },
+  {
+    "game_code": "hollow_knight",
+    "tag_code": "exploration",
+    "weight": 5
+  },
+  {
+    "game_code": "hollow_knight",
+    "tag_code": "challenge",
+    "weight": 5
+  },
+  {
+    "game_code": "hollow_knight",
+    "tag_code": "combat",
+    "weight": 4
+  },
+  {
+    "game_code": "hollow_knight",
+    "tag_code": "immersive",
+    "weight": 4
+  },
+  {
+    "game_code": "sekiro",
+    "tag_code": "challenge",
+    "weight": 5
+  },
+  {
+    "game_code": "sekiro",
+    "tag_code": "combat",
+    "weight": 5
+  },
+  {
+    "game_code": "sekiro",
+    "tag_code": "fast_paced",
+    "weight": 4
+  },
+  {
+    "game_code": "sekiro",
+    "tag_code": "immersive",
+    "weight": 3
+  },
+  {
+    "game_code": "dead_cells",
+    "tag_code": "fast_paced",
+    "weight": 5
+  },
+  {
+    "game_code": "dead_cells",
+    "tag_code": "replayable",
+    "weight": 5
+  },
+  {
+    "game_code": "dead_cells",
+    "tag_code": "build_variety",
+    "weight": 4
+  },
+  {
+    "game_code": "dead_cells",
+    "tag_code": "combat",
+    "weight": 4
+  },
+  {
+    "game_code": "dead_cells",
+    "tag_code": "challenge",
+    "weight": 4
+  },
+  {
+    "game_code": "cuphead",
+    "tag_code": "challenge",
+    "weight": 5
+  },
+  {
+    "game_code": "cuphead",
+    "tag_code": "combat",
+    "weight": 4
+  },
+  {
+    "game_code": "cuphead",
+    "tag_code": "fast_paced",
+    "weight": 4
+  },
+  {
+    "game_code": "cuphead",
+    "tag_code": "replayable",
+    "weight": 3
+  },
+  {
+    "game_code": "celeste",
+    "tag_code": "challenge",
+    "weight": 5
+  },
+  {
+    "game_code": "celeste",
+    "tag_code": "character_growth",
+    "weight": 4
+  },
+  {
+    "game_code": "celeste",
+    "tag_code": "fast_paced",
+    "weight": 3
+  },
+  {
+    "game_code": "celeste",
+    "tag_code": "story_rich",
+    "weight": 3
+  },
+  {
+    "game_code": "celeste",
+    "tag_code": "replayable",
+    "weight": 3
+  },
+  {
+    "game_code": "ghostrunner",
+    "tag_code": "fast_paced",
+    "weight": 5
+  },
+  {
+    "game_code": "ghostrunner",
+    "tag_code": "challenge",
+    "weight": 4
+  },
+  {
+    "game_code": "ghostrunner",
+    "tag_code": "combat",
+    "weight": 4
+  },
+  {
+    "game_code": "ghostrunner",
+    "tag_code": "immersive",
+    "weight": 3
+  },
+  {
+    "game_code": "counter_strike_2",
+    "tag_code": "competitive",
+    "weight": 5
+  },
+  {
+    "game_code": "counter_strike_2",
+    "tag_code": "fast_paced",
+    "weight": 5
+  },
+  {
+    "game_code": "counter_strike_2",
+    "tag_code": "combat",
+    "weight": 5
+  },
+  {
+    "game_code": "counter_strike_2",
+    "tag_code": "replayable",
+    "weight": 4
+  },
+  {
+    "game_code": "dota_2",
+    "tag_code": "competitive",
+    "weight": 5
+  },
+  {
+    "game_code": "dota_2",
+    "tag_code": "strategy",
+    "weight": 5
+  },
+  {
+    "game_code": "dota_2",
+    "tag_code": "replayable",
+    "weight": 5
+  },
+  {
+    "game_code": "dota_2",
+    "tag_code": "challenge",
+    "weight": 4
+  },
+  {
+    "game_code": "dota_2",
+    "tag_code": "fast_paced",
+    "weight": 3
+  },
+  {
+    "game_code": "pubg_battlegrounds",
+    "tag_code": "competitive",
+    "weight": 5
+  },
+  {
+    "game_code": "pubg_battlegrounds",
+    "tag_code": "survival",
+    "weight": 4
+  },
+  {
+    "game_code": "pubg_battlegrounds",
+    "tag_code": "fast_paced",
+    "weight": 4
+  },
+  {
+    "game_code": "pubg_battlegrounds",
+    "tag_code": "combat",
+    "weight": 4
+  },
+  {
+    "game_code": "pubg_battlegrounds",
+    "tag_code": "replayable",
+    "weight": 4
+  },
+  {
+    "game_code": "brawlhalla",
+    "tag_code": "competitive",
+    "weight": 5
+  },
+  {
+    "game_code": "brawlhalla",
+    "tag_code": "fast_paced",
+    "weight": 4
+  },
+  {
+    "game_code": "brawlhalla",
+    "tag_code": "combat",
+    "weight": 4
+  },
+  {
+    "game_code": "brawlhalla",
+    "tag_code": "replayable",
+    "weight": 4
+  },
+  {
+    "game_code": "for_honor",
+    "tag_code": "combat",
+    "weight": 5
+  },
+  {
+    "game_code": "for_honor",
+    "tag_code": "competitive",
+    "weight": 4
+  },
+  {
+    "game_code": "for_honor",
+    "tag_code": "challenge",
+    "weight": 4
+  },
+  {
+    "game_code": "for_honor",
+    "tag_code": "fast_paced",
+    "weight": 3
+  },
+  {
+    "game_code": "team_fortress_2",
+    "tag_code": "competitive",
+    "weight": 4
+  },
+  {
+    "game_code": "team_fortress_2",
+    "tag_code": "fast_paced",
+    "weight": 4
+  },
+  {
+    "game_code": "team_fortress_2",
+    "tag_code": "combat",
+    "weight": 4
+  },
+  {
+    "game_code": "team_fortress_2",
+    "tag_code": "replayable",
+    "weight": 4
+  },
+  {
+    "game_code": "rocket_league",
+    "tag_code": "competitive",
+    "weight": 5
+  },
+  {
+    "game_code": "rocket_league",
+    "tag_code": "fast_paced",
+    "weight": 5
+  },
+  {
+    "game_code": "rocket_league",
+    "tag_code": "replayable",
+    "weight": 4
+  },
+  {
+    "game_code": "rocket_league",
+    "tag_code": "challenge",
+    "weight": 3
+  },
+  {
+    "game_code": "paladins",
+    "tag_code": "competitive",
+    "weight": 4
+  },
+  {
+    "game_code": "paladins",
+    "tag_code": "fast_paced",
+    "weight": 4
+  },
+  {
+    "game_code": "paladins",
+    "tag_code": "combat",
+    "weight": 4
+  },
+  {
+    "game_code": "paladins",
+    "tag_code": "build_variety",
+    "weight": 3
+  },
+  {
+    "game_code": "paladins",
+    "tag_code": "replayable",
+    "weight": 4
+  },
+  {
+    "game_code": "civilization_vi",
+    "tag_code": "strategy",
+    "weight": 5
+  },
+  {
+    "game_code": "civilization_vi",
+    "tag_code": "replayable",
+    "weight": 5
+  },
+  {
+    "game_code": "civilization_vi",
+    "tag_code": "resource_management",
+    "weight": 4
+  },
+  {
+    "game_code": "civilization_vi",
+    "tag_code": "challenge",
+    "weight": 3
+  },
+  {
+    "game_code": "civilization_vi",
+    "tag_code": "choices_matter",
+    "weight": 3
+  },
+  {
+    "game_code": "rimworld",
+    "tag_code": "strategy",
+    "weight": 5
+  },
+  {
+    "game_code": "rimworld",
+    "tag_code": "resource_management",
+    "weight": 5
+  },
+  {
+    "game_code": "rimworld",
+    "tag_code": "replayable",
+    "weight": 5
+  },
+  {
+    "game_code": "rimworld",
+    "tag_code": "survival",
+    "weight": 4
+  },
+  {
+    "game_code": "rimworld",
+    "tag_code": "social_sim",
+    "weight": 3
+  },
+  {
+    "game_code": "factorio",
+    "tag_code": "strategy",
+    "weight": 5
+  },
+  {
+    "game_code": "factorio",
+    "tag_code": "resource_management",
+    "weight": 5
+  },
+  {
+    "game_code": "factorio",
+    "tag_code": "build_variety",
+    "weight": 4
+  },
+  {
+    "game_code": "factorio",
+    "tag_code": "replayable",
+    "weight": 4
+  },
+  {
+    "game_code": "factorio",
+    "tag_code": "challenge",
+    "weight": 3
+  },
+  {
+    "game_code": "cities_skylines",
+    "tag_code": "strategy",
+    "weight": 4
+  },
+  {
+    "game_code": "cities_skylines",
+    "tag_code": "resource_management",
+    "weight": 4
+  },
+  {
+    "game_code": "cities_skylines",
+    "tag_code": "relaxed",
+    "weight": 4
+  },
+  {
+    "game_code": "cities_skylines",
+    "tag_code": "build_variety",
+    "weight": 3
+  },
+  {
+    "game_code": "frostpunk",
+    "tag_code": "strategy",
+    "weight": 5
+  },
+  {
+    "game_code": "frostpunk",
+    "tag_code": "resource_management",
+    "weight": 5
+  },
+  {
+    "game_code": "frostpunk",
+    "tag_code": "survival",
+    "weight": 4
+  },
+  {
+    "game_code": "frostpunk",
+    "tag_code": "challenge",
+    "weight": 4
+  },
+  {
+    "game_code": "frostpunk",
+    "tag_code": "choices_matter",
+    "weight": 3
+  },
+  {
+    "game_code": "planet_zoo",
+    "tag_code": "cozy",
+    "weight": 4
+  },
+  {
+    "game_code": "planet_zoo",
+    "tag_code": "relaxed",
+    "weight": 4
+  },
+  {
+    "game_code": "planet_zoo",
+    "tag_code": "strategy",
+    "weight": 4
+  },
+  {
+    "game_code": "planet_zoo",
+    "tag_code": "resource_management",
+    "weight": 4
+  },
+  {
+    "game_code": "planet_zoo",
+    "tag_code": "immersive",
+    "weight": 3
+  },
+  {
+    "game_code": "oxygen_not_included",
+    "tag_code": "strategy",
+    "weight": 5
+  },
+  {
+    "game_code": "oxygen_not_included",
+    "tag_code": "resource_management",
+    "weight": 5
+  },
+  {
+    "game_code": "oxygen_not_included",
+    "tag_code": "survival",
+    "weight": 4
+  },
+  {
+    "game_code": "oxygen_not_included",
+    "tag_code": "challenge",
+    "weight": 4
+  },
+  {
+    "game_code": "oxygen_not_included",
+    "tag_code": "replayable",
+    "weight": 3
+  },
+  {
+    "game_code": "total_war_warhammer_3",
+    "tag_code": "strategy",
+    "weight": 5
+  },
+  {
+    "game_code": "total_war_warhammer_3",
+    "tag_code": "combat",
+    "weight": 4
+  },
+  {
+    "game_code": "total_war_warhammer_3",
+    "tag_code": "build_variety",
+    "weight": 4
+  },
+  {
+    "game_code": "total_war_warhammer_3",
+    "tag_code": "replayable",
+    "weight": 4
+  },
+  {
+    "game_code": "total_war_warhammer_3",
+    "tag_code": "resource_management",
+    "weight": 3
+  },
+  {
+    "game_code": "stardew_valley",
+    "tag_code": "cozy",
+    "weight": 5
+  },
+  {
+    "game_code": "stardew_valley",
+    "tag_code": "relaxed",
+    "weight": 5
+  },
+  {
+    "game_code": "stardew_valley",
+    "tag_code": "social_sim",
+    "weight": 4
+  },
+  {
+    "game_code": "stardew_valley",
+    "tag_code": "resource_management",
+    "weight": 3
+  },
+  {
+    "game_code": "stardew_valley",
+    "tag_code": "character_growth",
+    "weight": 3
+  },
+  {
+    "game_code": "among_us",
+    "tag_code": "social_sim",
+    "weight": 5
+  },
+  {
+    "game_code": "among_us",
+    "tag_code": "competitive",
+    "weight": 4
+  },
+  {
+    "game_code": "among_us",
+    "tag_code": "replayable",
+    "weight": 4
+  },
+  {
+    "game_code": "among_us",
+    "tag_code": "fast_paced",
+    "weight": 3
+  },
+  {
+    "game_code": "overcooked_2",
+    "tag_code": "social_sim",
+    "weight": 4
+  },
+  {
+    "game_code": "overcooked_2",
+    "tag_code": "fast_paced",
+    "weight": 4
+  },
+  {
+    "game_code": "overcooked_2",
+    "tag_code": "challenge",
+    "weight": 3
+  },
+  {
+    "game_code": "overcooked_2",
+    "tag_code": "replayable",
+    "weight": 3
+  },
+  {
+    "game_code": "the_escapists_2",
+    "tag_code": "strategy",
+    "weight": 4
+  },
+  {
+    "game_code": "the_escapists_2",
+    "tag_code": "resource_management",
+    "weight": 3
+  },
+  {
+    "game_code": "the_escapists_2",
+    "tag_code": "social_sim",
+    "weight": 3
+  },
+  {
+    "game_code": "the_escapists_2",
+    "tag_code": "replayable",
+    "weight": 3
+  },
+  {
+    "game_code": "the_escapists_2",
+    "tag_code": "challenge",
+    "weight": 3
+  },
+  {
+    "game_code": "risk_of_rain_2",
+    "tag_code": "fast_paced",
+    "weight": 5
+  },
+  {
+    "game_code": "risk_of_rain_2",
+    "tag_code": "replayable",
+    "weight": 5
+  },
+  {
+    "game_code": "risk_of_rain_2",
+    "tag_code": "build_variety",
+    "weight": 4
+  },
+  {
+    "game_code": "risk_of_rain_2",
+    "tag_code": "combat",
+    "weight": 4
+  },
+  {
+    "game_code": "risk_of_rain_2",
+    "tag_code": "challenge",
+    "weight": 4
+  },
+  {
+    "game_code": "dont_starve_together",
+    "tag_code": "survival",
+    "weight": 5
+  },
+  {
+    "game_code": "dont_starve_together",
+    "tag_code": "resource_management",
+    "weight": 4
+  },
+  {
+    "game_code": "dont_starve_together",
+    "tag_code": "social_sim",
+    "weight": 4
+  },
+  {
+    "game_code": "dont_starve_together",
+    "tag_code": "challenge",
+    "weight": 4
+  },
+  {
+    "game_code": "dont_starve_together",
+    "tag_code": "replayable",
+    "weight": 4
+  },
+  {
+    "game_code": "portal_2",
+    "tag_code": "puzzle_solving",
+    "weight": 5
+  },
+  {
+    "game_code": "portal_2",
+    "tag_code": "immersive",
+    "weight": 4
+  },
+  {
+    "game_code": "portal_2",
+    "tag_code": "story_rich",
+    "weight": 3
+  },
+  {
+    "game_code": "the_witness",
+    "tag_code": "puzzle_solving",
+    "weight": 5
+  },
+  {
+    "game_code": "the_witness",
+    "tag_code": "exploration",
+    "weight": 4
+  },
+  {
+    "game_code": "the_witness",
+    "tag_code": "immersive",
+    "weight": 4
+  },
+  {
+    "game_code": "the_witness",
+    "tag_code": "relaxed",
+    "weight": 3
+  },
+  {
+    "game_code": "the_talos_principle",
+    "tag_code": "puzzle_solving",
+    "weight": 5
+  },
+  {
+    "game_code": "the_talos_principle",
+    "tag_code": "immersive",
+    "weight": 4
+  },
+  {
+    "game_code": "the_talos_principle",
+    "tag_code": "story_rich",
+    "weight": 3
+  },
+  {
+    "game_code": "the_talos_principle",
+    "tag_code": "exploration",
+    "weight": 3
+  },
+  {
+    "game_code": "outer_wilds",
+    "tag_code": "exploration",
+    "weight": 5
+  },
+  {
+    "game_code": "outer_wilds",
+    "tag_code": "immersive",
+    "weight": 5
+  },
+  {
+    "game_code": "outer_wilds",
+    "tag_code": "puzzle_solving",
+    "weight": 4
+  },
+  {
+    "game_code": "outer_wilds",
+    "tag_code": "story_rich",
+    "weight": 4
+  },
+  {
+    "game_code": "human_fall_flat",
+    "tag_code": "puzzle_solving",
+    "weight": 4
+  },
+  {
+    "game_code": "human_fall_flat",
+    "tag_code": "social_sim",
+    "weight": 3
+  },
+  {
+    "game_code": "human_fall_flat",
+    "tag_code": "relaxed",
+    "weight": 3
+  },
+  {
+    "game_code": "human_fall_flat",
+    "tag_code": "replayable",
+    "weight": 3
+  },
+  {
+    "game_code": "resident_evil_7",
+    "tag_code": "horror_tension",
+    "weight": 5
+  },
+  {
+    "game_code": "resident_evil_7",
+    "tag_code": "survival",
+    "weight": 4
+  },
+  {
+    "game_code": "resident_evil_7",
+    "tag_code": "immersive",
+    "weight": 4
+  },
+  {
+    "game_code": "resident_evil_7",
+    "tag_code": "challenge",
+    "weight": 3
+  },
+  {
+    "game_code": "alien_isolation",
+    "tag_code": "horror_tension",
+    "weight": 5
+  },
+  {
+    "game_code": "alien_isolation",
+    "tag_code": "immersive",
+    "weight": 5
+  },
+  {
+    "game_code": "alien_isolation",
+    "tag_code": "survival",
+    "weight": 4
+  },
+  {
+    "game_code": "alien_isolation",
+    "tag_code": "challenge",
+    "weight": 4
+  },
+  {
+    "game_code": "the_forest",
+    "tag_code": "survival",
+    "weight": 5
+  },
+  {
+    "game_code": "the_forest",
+    "tag_code": "horror_tension",
+    "weight": 4
+  },
+  {
+    "game_code": "the_forest",
+    "tag_code": "resource_management",
+    "weight": 4
+  },
+  {
+    "game_code": "the_forest",
+    "tag_code": "exploration",
+    "weight": 3
+  },
+  {
+    "game_code": "the_forest",
+    "tag_code": "social_sim",
+    "weight": 3
+  },
+  {
+    "game_code": "sons_of_the_forest",
+    "tag_code": "survival",
+    "weight": 5
+  },
+  {
+    "game_code": "sons_of_the_forest",
+    "tag_code": "horror_tension",
+    "weight": 4
+  },
+  {
+    "game_code": "sons_of_the_forest",
+    "tag_code": "resource_management",
+    "weight": 4
+  },
+  {
+    "game_code": "sons_of_the_forest",
+    "tag_code": "exploration",
+    "weight": 4
+  },
+  {
+    "game_code": "sons_of_the_forest",
+    "tag_code": "social_sim",
+    "weight": 3
+  },
+  {
+    "game_code": "phasmophobia",
+    "tag_code": "horror_tension",
+    "weight": 5
+  },
+  {
+    "game_code": "phasmophobia",
+    "tag_code": "social_sim",
+    "weight": 4
+  },
+  {
+    "game_code": "phasmophobia",
+    "tag_code": "immersive",
+    "weight": 4
+  },
+  {
+    "game_code": "phasmophobia",
+    "tag_code": "replayable",
+    "weight": 4
+  },
+  {
+    "game_code": "phasmophobia",
+    "tag_code": "challenge",
+    "weight": 3
+  },
+  {
+    "game_code": "project_zomboid",
+    "tag_code": "survival",
+    "weight": 5
+  },
+  {
+    "game_code": "project_zomboid",
+    "tag_code": "resource_management",
+    "weight": 5
+  },
+  {
+    "game_code": "project_zomboid",
+    "tag_code": "challenge",
+    "weight": 4
+  },
+  {
+    "game_code": "project_zomboid",
+    "tag_code": "replayable",
+    "weight": 4
+  },
+  {
+    "game_code": "project_zomboid",
+    "tag_code": "social_sim",
+    "weight": 3
+  },
+  {
+    "game_code": "dayz",
+    "tag_code": "survival",
+    "weight": 5
+  },
+  {
+    "game_code": "dayz",
+    "tag_code": "resource_management",
+    "weight": 4
+  },
+  {
+    "game_code": "dayz",
+    "tag_code": "immersive",
+    "weight": 4
+  },
+  {
+    "game_code": "dayz",
+    "tag_code": "competitive",
+    "weight": 3
+  },
+  {
+    "game_code": "dayz",
+    "tag_code": "social_sim",
+    "weight": 3
+  },
+  {
+    "game_code": "rust",
+    "tag_code": "survival",
+    "weight": 5
+  },
+  {
+    "game_code": "rust",
+    "tag_code": "competitive",
+    "weight": 4
+  },
+  {
+    "game_code": "rust",
+    "tag_code": "resource_management",
+    "weight": 4
+  },
+  {
+    "game_code": "rust",
+    "tag_code": "replayable",
+    "weight": 4
+  },
+  {
+    "game_code": "rust",
+    "tag_code": "combat",
+    "weight": 3
+  },
+  {
+    "game_code": "witcher_3",
+    "tag_code": "story_rich",
+    "weight": 5
+  },
+  {
+    "game_code": "witcher_3",
+    "tag_code": "open_world",
+    "weight": 5
+  },
+  {
+    "game_code": "witcher_3",
+    "tag_code": "character_growth",
+    "weight": 4
+  },
+  {
+    "game_code": "witcher_3",
+    "tag_code": "exploration",
+    "weight": 4
+  },
+  {
+    "game_code": "witcher_3",
+    "tag_code": "immersive",
+    "weight": 4
+  },
+  {
+    "game_code": "witcher_3",
+    "tag_code": "choices_matter",
+    "weight": 3
+  },
+  {
+    "game_code": "cyberpunk_2077",
+    "tag_code": "open_world",
+    "weight": 5
+  },
+  {
+    "game_code": "cyberpunk_2077",
+    "tag_code": "immersive",
+    "weight": 5
+  },
+  {
+    "game_code": "cyberpunk_2077",
+    "tag_code": "story_rich",
+    "weight": 4
+  },
+  {
+    "game_code": "cyberpunk_2077",
+    "tag_code": "combat",
+    "weight": 4
+  },
+  {
+    "game_code": "cyberpunk_2077",
+    "tag_code": "character_growth",
+    "weight": 3
+  },
+  {
+    "game_code": "cyberpunk_2077",
+    "tag_code": "build_variety",
+    "weight": 3
+  },
+  {
+    "game_code": "apex_legends",
+    "tag_code": "competitive",
+    "weight": 5
+  },
+  {
+    "game_code": "apex_legends",
+    "tag_code": "fast_paced",
+    "weight": 5
+  },
+  {
+    "game_code": "apex_legends",
+    "tag_code": "combat",
+    "weight": 5
+  },
+  {
+    "game_code": "apex_legends",
+    "tag_code": "replayable",
+    "weight": 4
+  },
+  {
+    "game_code": "apex_legends",
+    "tag_code": "strategy",
+    "weight": 3
+  },
+  {
+    "game_code": "monster_hunter_world",
+    "tag_code": "combat",
+    "weight": 5
+  },
+  {
+    "game_code": "monster_hunter_world",
+    "tag_code": "challenge",
+    "weight": 4
+  },
+  {
+    "game_code": "monster_hunter_world",
+    "tag_code": "build_variety",
+    "weight": 4
+  },
+  {
+    "game_code": "monster_hunter_world",
+    "tag_code": "replayable",
+    "weight": 4
+  },
+  {
+    "game_code": "monster_hunter_world",
+    "tag_code": "character_growth",
+    "weight": 3
+  },
+  {
+    "game_code": "monster_hunter_world",
+    "tag_code": "strategy",
+    "weight": 3
+  },
+  {
+    "game_code": "disco_elysium",
+    "tag_code": "story_rich",
+    "weight": 5
+  },
+  {
+    "game_code": "disco_elysium",
+    "tag_code": "choices_matter",
+    "weight": 5
+  },
+  {
+    "game_code": "disco_elysium",
+    "tag_code": "character_growth",
+    "weight": 4
+  },
+  {
+    "game_code": "disco_elysium",
+    "tag_code": "immersive",
+    "weight": 4
+  },
+  {
+    "game_code": "disco_elysium",
+    "tag_code": "strategy",
+    "weight": 3
+  },
+  {
+    "game_code": "hades",
+    "tag_code": "replayable",
+    "weight": 5
+  },
+  {
+    "game_code": "hades",
+    "tag_code": "fast_paced",
+    "weight": 4
+  },
+  {
+    "game_code": "hades",
+    "tag_code": "combat",
+    "weight": 4
+  },
+  {
+    "game_code": "hades",
+    "tag_code": "build_variety",
+    "weight": 4
+  },
+  {
+    "game_code": "hades",
+    "tag_code": "character_growth",
+    "weight": 3
+  },
+  {
+    "game_code": "hades",
+    "tag_code": "story_rich",
+    "weight": 3
+  }
+]
