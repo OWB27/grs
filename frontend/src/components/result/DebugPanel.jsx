@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 
 export default function DebugPanel({ debug, gameId }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   if (!debug) {
     return (
@@ -14,7 +14,7 @@ export default function DebugPanel({ debug, gameId }) {
         </div>
 
         <div className="rounded-xl border border-white/6 bg-black/25 p-4 font-mono text-xs text-slate-400">
-          No debug data
+          {t("debug.noData")}
         </div>
       </div>
     );
@@ -31,15 +31,23 @@ export default function DebugPanel({ debug, gameId }) {
 
       <div className="space-y-3">
         {debug.matchedTags.map((tag) => {
-          const percent = Math.min(Math.max(tag.weight * 18, 20), 100);
+          const label =
+            i18n.language === "zh"
+              ? tag.tagNameZh || tag.tagCode
+              : tag.tagNameEn || tag.tagCode;
+
+          const percent = Math.min(
+            Math.max(tag.contribution * 4, 20),
+            100
+          );
 
           return (
             <div
               key={tag.tagCode}
-              className="grid grid-cols-[96px_1fr_36px] items-center gap-3"
+              className="grid grid-cols-[96px_1fr_52px] items-center gap-3"
             >
               <div className="font-mono text-xs text-slate-400">
-                {tag.tagCode}:
+                {label}:
               </div>
 
               <div className="h-2 rounded-full bg-white/[0.05]">
@@ -50,7 +58,7 @@ export default function DebugPanel({ debug, gameId }) {
               </div>
 
               <div className="text-right font-mono text-xs text-[#47d85a]">
-                {tag.weight > 0 ? `+${tag.weight}` : tag.weight}
+                +{tag.contribution}
               </div>
             </div>
           );
@@ -59,11 +67,22 @@ export default function DebugPanel({ debug, gameId }) {
 
       <div className="mt-5 overflow-x-auto rounded-xl border border-white/6 bg-black/25 p-4">
         <pre className="font-mono text-xs leading-6 text-slate-400">
-          {`{
+{`{
   "game_id": ${gameId},
   "match_score": ${debug.score},
   "ranking_mode": "${debug.rankingMode}",
-  "matched_tags": [${debug.matchedTags.map((tag) => `"${tag.tagCode}"`).join(", ")}]
+  "matched_tags": [
+${debug.matchedTags
+  .map(
+    (tag) => `    {
+      "tag_code": "${tag.tagCode}",
+      "game_weight": ${tag.gameWeight},
+      "user_weight": ${tag.userWeight},
+      "contribution": ${tag.contribution}
+    }`
+  )
+  .join(",\n")}
+  ]
 }`}
         </pre>
       </div>

@@ -42,4 +42,10 @@
 
   "loadingQuestions": "题目加载中...",
   "questionsLoadError": "获取题目失败，请稍后重试。"
+  ,
+  "debug": {
+    "title": "DEBUG",
+    "analysis": "分析信息",
+    "noData": "暂无调试数据"
+  }
 }

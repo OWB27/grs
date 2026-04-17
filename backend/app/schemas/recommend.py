@@ -10,7 +10,11 @@ class AnswerItem(BaseModel):
 
 class DebugTagItem(BaseModel):
     tagCode: str
-    weight: int
+    tagNameZh: str
+    tagNameEn: str
+    gameWeight: int
+    userWeight: int
+    contribution: int
 
 
 class DebugInfo(BaseModel):
@@ -23,6 +27,7 @@ class RecommendationItem(BaseModel):
     gameId: int
     name: LocalizedText
     steamUrl: str
+    coverImageUrl: str | None = None
     reason: LocalizedText
     debug: DebugInfo | None = None
 

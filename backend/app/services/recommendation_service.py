@@ -1,154 +1,103 @@
-def attach_debug_info(recommendations: list[dict], debug_items: list[dict]) -> list[dict]:
-    combined = []
+from sqlmodel import Session, select
 
-    for index, recommendation in enumerate(recommendations):
-        combined.append(
+from app.db.models import Game, GameTag, Tag
+from app.schemas.recommend import RecommendResponse
+
+def score_games(session: Session, user_profile: dict[str, int]) -> list[dict]:
+    games = session.exec(
+        select(Game).where(Game.is_active == True)  # noqa: E712
+    ).all()
+
+    scored_candidates: list[dict] = []
+
+    for game in games:
+        statement = (
+            select(GameTag, Tag)
+            .join(Tag, Tag.id == GameTag.tag_id)
+            .where(GameTag.game_id == game.id)
+        )
+        rows = session.exec(statement).all()
+
+        total_score = 0
+        matched_tags: list[dict] = []
+
+        for game_tag, tag in rows:
+            user_weight = user_profile.get(tag.code, 0)
+
+            if user_weight <= 0:
+                continue
+
+            contribution = user_weight * game_tag.weight
+            total_score += contribution
+
+            matched_tags.append(
+                {
+                    "tagCode": tag.code,
+                    "tagNameZh": tag.name_zh,
+                    "tagNameEn": tag.name_en,
+                    "gameWeight": game_tag.weight,
+                    "userWeight": user_weight,
+                    "contribution": contribution,
+                }
+            )
+
+        scored_candidates.append(
             {
-                **recommendation,
-                "debug": debug_items[index] if index < len(debug_items) else None,
+                "game": game,
+                "score": total_score,
+                "matchedTags": sorted(
+                    matched_tags,
+                    key=lambda item: item["contribution"],
+                    reverse=True,
+                ),
             }
         )
 
-    return combined
+    scored_candidates.sort(key=lambda item: item["score"], reverse=True)
+    return scored_candidates
 
+def select_top_candidates(scored_candidates: list[dict], limit: int = 3) -> list[dict]:
+    if limit <= 0:
+        return []
 
-def build_mock_recommendations(answers: list) -> dict:
-    first_answer_option_id = None
-
-    for answer in answers:
-        if answer.questionId == 1:
-            first_answer_option_id = answer.optionId
-            break
-
-    if first_answer_option_id == 11:
-        recommendations = [
-            {
-                "gameId": 101,
-                "name": {
-                    "zh": "巫师 3：狂猎",
-                    "en": "The Witcher 3: Wild Hunt",
-                },
-                "steamUrl": "https://store.steampowered.com/app/292030/The_Witcher_3_Wild_Hunt/",
-                "reason": {
-                    "zh": "你偏好剧情沉浸、角色成长和世界探索，因此这款作品很适合作为你的第一推荐。",
-                    "en": "You seem to like immersive storytelling, character growth, and exploration, so this is a strong first pick.",
-                },
-            },
-            {
-                "gameId": 102,
-                "name": {
-                    "zh": "极乐迪斯科",
-                    "en": "Disco Elysium",
-                },
-                "steamUrl": "https://store.steampowered.com/app/632470/Disco_Elysium__The_Final_Cut/",
-                "reason": {
-                    "zh": "你对叙事和角色塑造的偏好比较明显，这类文本与剧情驱动作品会更适合你。",
-                    "en": "Your answers show a strong preference for narrative and character-driven experiences.",
-                },
-            },
-            {
-                "gameId": 103,
-                "name": {
-                    "zh": "赛博朋克 2077",
-                    "en": "Cyberpunk 2077",
-                },
-                "steamUrl": "https://store.steampowered.com/app/1091500/Cyberpunk_2077/",
-                "reason": {
-                    "zh": "如果你喜欢世界观完整、可探索内容丰富的作品，这类开放叙事游戏也会比较适合你。",
-                    "en": "If you enjoy rich world-building and explorable content, open narrative-heavy games are also a good fit.",
-                },
-            },
-        ]
-        debug = [
-            {
-                "score": 18.5,
-                "rankingMode": "rule_based",
-                "matchedTags": [
-                    {"tagCode": "story_rich", "weight": 5},
-                    {"tagCode": "open_world", "weight": 4},
-                ],
-            },
-            {
-                "score": 17.2,
-                "rankingMode": "rule_based",
-                "matchedTags": [
-                    {"tagCode": "narrative", "weight": 5},
-                    {"tagCode": "character", "weight": 4},
-                ],
-            },
-            {
-                "score": 16.4,
-                "rankingMode": "rule_based",
-                "matchedTags": [
-                    {"tagCode": "open_world", "weight": 4},
-                    {"tagCode": "world_building", "weight": 4},
-                ],
-            },
-        ]
-        return {"recommendations": attach_debug_info(recommendations, debug)}
-
-    recommendations = [
-        {
-            "gameId": 201,
-            "name": {
-                "zh": "黑帝斯",
-                "en": "Hades",
-            },
-            "steamUrl": "https://store.steampowered.com/app/1145360/Hades/",
-            "reason": {
-                "zh": "你的回答更偏向节奏紧凑和高反馈的玩法。",
-                "en": "Your answers lean toward fast pacing and strong gameplay feedback.",
-            },
-        },
-        {
-            "gameId": 202,
-            "name": {
-                "zh": "怪物猎人：世界",
-                "en": "Monster Hunter: World",
-            },
-            "steamUrl": "https://store.steampowered.com/app/582010/Monster_Hunter_World/",
-            "reason": {
-                "zh": "你更能接受挑战与成长循环，这类游戏会更适合你。",
-                "en": "You seem more comfortable with challenge and progression loops, which suits this kind of game.",
-            },
-        },
-        {
-            "gameId": 203,
-            "name": {
-                "zh": "Apex Legends",
-                "en": "Apex Legends",
-            },
-            "steamUrl": "https://store.steampowered.com/app/1172470/Apex_Legends/",
-            "reason": {
-                "zh": "如果你喜欢快速反馈、紧张节奏和对抗性体验，这类作品通常也会匹配得更好。",
-                "en": "If you like fast feedback, tension, and competitive play, this type of game usually fits better as well.",
-            },
-        },
+    positive_candidates = [
+        item for item in scored_candidates if item["score"] > 0
     ]
-    debug = [
-        {
-            "score": 18.1,
-            "rankingMode": "rule_based",
-            "matchedTags": [
-                {"tagCode": "fast_paced", "weight": 5},
-                {"tagCode": "combat", "weight": 4},
-            ],
-        },
-        {
-            "score": 17.0,
-            "rankingMode": "rule_based",
-            "matchedTags": [
-                {"tagCode": "challenge", "weight": 5},
-                {"tagCode": "progression", "weight": 4},
-            ],
-        },
-        {
-            "score": 16.3,
-            "rankingMode": "rule_based",
-            "matchedTags": [
-                {"tagCode": "competitive", "weight": 4},
-                {"tagCode": "action", "weight": 4},
-            ],
-        },
-    ]
-    return {"recommendations": attach_debug_info(recommendations, debug)}
+
+    return positive_candidates[:limit]
+
+def build_recommend_response(reasoned_candidates: list[dict]) -> RecommendResponse:
+    recommendations = []
+
+    for candidate in reasoned_candidates:
+        game = candidate["game"]
+
+        recommendations.append(
+            {
+                "gameId": game.id,
+                "name": {
+                    "zh": game.name_zh,
+                    "en": game.name_en,
+                },
+                "steamUrl": game.steam_url,
+                "coverImageUrl": game.cover_image_url,
+                "reason": candidate["reason"],
+                "debug": {
+                    "score": candidate["score"],
+                    "rankingMode": "rule_based",
+                "matchedTags": [
+                    {
+                        "tagCode": item["tagCode"],
+                        "tagNameZh": item["tagNameZh"],
+                        "tagNameEn": item["tagNameEn"],
+                        "gameWeight": item["gameWeight"],
+                        "userWeight": item["userWeight"],
+                        "contribution": item["contribution"],
+                    }
+                    for item in candidate["matchedTags"]
+                ],
+                },
+            }
+        )
+
+    return RecommendResponse(recommendations=recommendations)

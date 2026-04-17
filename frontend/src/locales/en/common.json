@@ -10,7 +10,7 @@
   "language.chineseShort": "中文",
   "language.switchToEnglish": "Switch to English",
   "language.switchToChinese": "Switch to Chinese",
-  
+
   "home.engineBadge": "Rule-based Recommendation Engine",
   "home.heroTitleLine1": "GRS: Logic-Based",
   "home.heroTitleLine2": "Game Discovery",
@@ -41,5 +41,11 @@
   "debug.collapse": "Collapse debug panel",
 
   "loadingQuestions": "Loading questions...",
-  "questionsLoadError": "Failed to load questions. Please try again later."
+  "questionsLoadError": "Failed to load questions. Please try again later.",
+
+  "debug": {
+    "title": "DEBUG",
+    "analysis": "Analysis",
+    "noData": "No debug data"
+  }
 }
