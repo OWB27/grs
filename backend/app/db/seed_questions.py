@@ -1,3 +1,4 @@
+# deprecated
 from sqlmodel import Session, select
 
 from app.db.engine import engine
