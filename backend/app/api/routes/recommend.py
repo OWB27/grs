@@ -13,6 +13,7 @@ from app.services.recommendation_service import (
     score_games,
     select_top_candidates,
 )
+from app.services.rerank_service import rerank_candidates_with_fallback
 
 router = APIRouter()
 
@@ -31,11 +32,18 @@ def recommend(
     try:
         validated_answers = validate_answers(session, payload.answers)
         user_profile = build_user_profile(session, validated_answers)
+
         scored_candidates = score_games(session, user_profile)
         top_candidates = select_top_candidates(scored_candidates, limit=15)
+
         reasoned_candidates = generate_reasons(top_candidates, user_profile)
 
-        return build_recommend_response(reasoned_candidates)
+        rerank_result = rerank_candidates_with_fallback(
+            reasoned_candidates,
+            user_profile,
+        )
+
+        return build_recommend_response(rerank_result["ranked_candidates"])
 
     except AppError as error:
         raise HTTPException(
