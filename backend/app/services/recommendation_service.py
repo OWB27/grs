@@ -56,7 +56,7 @@ def score_games(session: Session, user_profile: dict[str, int]) -> list[dict]:
     scored_candidates.sort(key=lambda item: item["score"], reverse=True)
     return scored_candidates
 
-def select_top_candidates(scored_candidates: list[dict], limit: int = 3) -> list[dict]:
+def select_top_candidates(scored_candidates: list[dict], limit: int = 15) -> list[dict]:
     if limit <= 0:
         return []
 
