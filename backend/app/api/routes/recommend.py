@@ -39,6 +39,7 @@ def recommend(
         reasoned_candidates = generate_reasons(top_candidates, user_profile)
 
         rerank_result = rerank_candidates_with_fallback(
+            session,
             reasoned_candidates,
             user_profile,
         )

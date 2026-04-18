@@ -32,7 +32,6 @@ def upsert_games(session: Session) -> dict[str, Game]:
         existing_game = games_by_code.get(item["code"])
 
         if existing_game:
-            existing_game.steam_app_id = item.get("steam_app_id")
             existing_game.steam_url = item["steam_url"]
             existing_game.name_zh = item["name_zh"]
             existing_game.name_en = item["name_en"]
@@ -42,7 +41,6 @@ def upsert_games(session: Session) -> dict[str, Game]:
         else:
             new_game = Game(
                 code=item["code"],
-                steam_app_id=item.get("steam_app_id"),
                 steam_url=item["steam_url"],
                 name_zh=item["name_zh"],
                 name_en=item["name_en"],

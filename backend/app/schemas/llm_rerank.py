@@ -48,10 +48,14 @@ class LLMRerankInput(BaseModel):
         return value
 
 
+class LLMReasonText(BaseModel):
+    zh: str = Field(min_length=1)
+    en: str = Field(min_length=1)
+
+
 class LLMSelectedGameReason(BaseModel):
     game_id: int
-    reason_zh: str = Field(min_length=1)
-    reason_en: str = Field(min_length=1)
+    reason: LLMReasonText
 
 
 class LLMRerankOutput(BaseModel):
@@ -67,7 +71,7 @@ class LLMRerankOutput(BaseModel):
 
     @field_validator("top_3_reasons")
     @classmethod
-    def validate_top_3_reasons_not_empty(cls, value: list[LLMSelectedGameReason]) -> list[LLMSelectedGameReason]:
+    def validate_top_3_reasons_not_empty(cls, value: list[LLMSelectedGameReason]) -> list[LLMCandidateItem]:
         if not value:
             raise ValueError("top_3_reasons must not be empty")
         return value
