@@ -1,44 +1,19 @@
 # =========================
-# OS
+# OS / Editor
 # =========================
 .DS_Store
 Thumbs.db
-
-# =========================
-# Editor / IDE
-# =========================
 .vscode/
 .idea/
 
 # =========================
-# Frontend: Node / Vite
-# =========================
-frontend/node_modules/
-frontend/dist/
-frontend/.vite/
-
 # Logs
-frontend/npm-debug.log*
-frontend/yarn-debug.log*
-frontend/yarn-error.log*
-frontend/pnpm-debug.log*
-
 # =========================
-# Backend: Python / FastAPI
-# =========================
-backend/.venv/
-backend/venv/
-backend/env/
-
-__pycache__/
-*.py[cod]
-*.pyo
-*.pyd
-
-# Python tooling caches
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # =========================
 # Environment files
@@ -48,14 +23,71 @@ __pycache__/
 !.env.example
 
 # =========================
-# Build / coverage
+# Python
 # =========================
-coverage/
-htmlcov/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.python-version
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 .coverage
-.coverage.*
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
 
 # =========================
-# Misc
+# Backend build / local db
 # =========================
-*.log
+backend/test.db
+backend/*.db
+backend/*.sqlite
+backend/*.sqlite3
+
+# Alembic cache / misc
+backend/alembic/versions/__pycache__/
+
+# =========================
+# Node / Frontend
+# =========================
+node_modules/
+frontend/node_modules/
+
+# Vite / build output
+dist/
+build/
+frontend/dist/
+frontend/build/
+
+# Cache
+frontend/.vite/
+.pnpm-store/
+
+# =========================
+# Test / temp files
+# =========================
+tmp/
+temp/
+*.tmp
+
+# =========================
+# Runtime uploads / generated artifacts
+# =========================
+uploads/
+artifacts/
+
+# =========================
+# Optional local seed scratch files
+# =========================
+data_pipeline/tmp/
+data_pipeline/output/
+
+# =========================
+# Keep lockfiles
+# =========================
+!frontend/pnpm-lock.yaml
