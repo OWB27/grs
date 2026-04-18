@@ -40,6 +40,7 @@ jobs:
 
     env:
       OPENAI_RERANK_ENABLED: "false"
+      DATABASE_URL: "sqlite:///./test.db"  # Add this line for testing
 
     defaults:
       run:
