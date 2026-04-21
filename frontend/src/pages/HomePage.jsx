@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import AppShell from "../components/layout/AppShell";
@@ -6,9 +7,14 @@ import TopNav from "../components/common/TopNav";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import SecondaryButton from "../components/ui/SecondaryButton";
 import PipelinePanel from "../components/home/PipelinePanel";
+import { prefetchQuestions } from "../lib/api";
 
 export default function HomePage() {
   const { t } = useTranslation();
+
+  useEffect(() => {
+    prefetchQuestions();
+  }, []);
 
   return (
     <AppShell>

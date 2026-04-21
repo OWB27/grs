@@ -1,4 +1,4 @@
-﻿from fastapi import APIRouter, Depends, Query
+﻿from fastapi import APIRouter, Depends
 from sqlmodel import Session
 
 from app.db.session import get_session
@@ -10,7 +10,6 @@ router = APIRouter()
 
 @router.get("/questions", response_model=QuestionsResponse)
 def fetch_questions(
-    lang: str = Query(default="zh"),
     session: Session = Depends(get_session),
 ) -> QuestionsResponse:
     return QuestionsResponse(questions=get_questions(session))

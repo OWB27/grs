@@ -3,6 +3,9 @@ from sqlmodel import Session, select
 from app.db.models import Question, QuestionOption
 
 
+_questions_cache: list[dict] | None = None
+
+
 def serialize_question(question: Question, options: list[QuestionOption]) -> dict:
     return {
         "id": question.id,
@@ -27,18 +30,38 @@ def serialize_question(question: Question, options: list[QuestionOption]) -> dic
     }
 
 
-def get_questions(session: Session) -> list[dict]:
+def clear_questions_cache() -> None:
+    global _questions_cache
+    _questions_cache = None
+
+
+def build_questions_payload(session: Session) -> list[dict]:
     questions = session.exec(
         select(Question).order_by(Question.sort_order)
     ).all()
 
-    result = []
+    options = session.exec(
+        select(QuestionOption).order_by(
+            QuestionOption.question_id,
+            QuestionOption.sort_order,
+        )
+    ).all()
 
-    for question in questions:
-        options = session.exec(
-            select(QuestionOption).where(QuestionOption.question_id == question.id)
-        ).all()
+    options_by_question_id: dict[int, list[QuestionOption]] = {}
+    for option in options:
+        options_by_question_id.setdefault(option.question_id, []).append(option)
 
-        result.append(serialize_question(question, options))
+    return [
+        serialize_question(question, options_by_question_id.get(question.id, []))
+        for question in questions
+    ]
 
-    return result
+
+def get_questions(session: Session) -> list[dict]:
+    global _questions_cache
+
+    if _questions_cache is not None:
+        return _questions_cache
+
+    _questions_cache = build_questions_payload(session)
+    return _questions_cache

@@ -5,34 +5,46 @@ from openai import OpenAI
 from sqlmodel import Session, select
 
 from app.core.settings import settings
+from app.core.tag_descriptions import TAG_DESCRIPTIONS
 from app.db.models import Tag
 from app.schemas.llm_rerank import (
     LLMCandidateItem,
     LLMCandidateMatchedTag,
-    LLMReasonText,
     LLMRerankInput,
     LLMRerankOutput,
     LLMRerankTask,
-    LLMSelectedGameReason,
     LLMUserProfile,
     LLMUserProfileTag,
 )
 
-def build_tag_label_lookup(session: Session) -> dict[str, dict[str, str]]:
+
+def build_tag_metadata_lookup(session: Session) -> dict[str, dict[str, str]]:
     tags = session.exec(select(Tag)).all()
 
-    return {
-        tag.code: {
+    result: dict[str, dict[str, str]] = {}
+    for tag in tags:
+        description = TAG_DESCRIPTIONS.get(
+            tag.code,
+            {
+                "zh": tag.name_zh,
+                "en": tag.name_en,
+            },
+        )
+
+        result[tag.code] = {
             "zh": tag.name_zh,
             "en": tag.name_en,
+            "description_zh": description["zh"],
+            "description_en": description["en"],
         }
-        for tag in tags
-    }
+
+    return result
+
 
 def build_llm_rerank_input(
-    top_candidates: list[dict],
+    llm_candidates: list[dict],
     user_profile: dict[str, int],
-    tag_label_lookup: dict[str, dict[str, str]],
+    tag_metadata_lookup: dict[str, dict[str, str]],
 ) -> LLMRerankInput:
     sorted_profile_items = sorted(
         user_profile.items(),
@@ -42,44 +54,51 @@ def build_llm_rerank_input(
 
     top_profile_tags = []
     for tag_code, score in sorted_profile_items[:5]:
-        label = tag_label_lookup.get(
+        meta = tag_metadata_lookup.get(
             tag_code,
             {
                 "zh": tag_code,
                 "en": tag_code,
+                "description_zh": tag_code,
+                "description_en": tag_code,
             },
         )
 
         top_profile_tags.append(
             LLMUserProfileTag(
                 tag_code=tag_code,
-                tag_name_zh=label["zh"],
-                tag_name_en=label["en"],
+                tag_name_zh=meta["zh"],
+                tag_name_en=meta["en"],
+                tag_description_zh=meta["description_zh"],
+                tag_description_en=meta["description_en"],
                 score=score,
             )
         )
 
     candidate_items = []
-    for candidate in top_candidates:
+    for candidate in llm_candidates:
         game = candidate["game"]
 
         matched_tags = []
-        for item in candidate["matchedTags"][:4]:
+        for item in candidate["matchedTags"][:3]:
             tag_code = item["tagCode"]
-
-            label = tag_label_lookup.get(
+            meta = tag_metadata_lookup.get(
                 tag_code,
                 {
                     "zh": tag_code,
                     "en": tag_code,
+                    "description_zh": tag_code,
+                    "description_en": tag_code,
                 },
             )
 
             matched_tags.append(
                 LLMCandidateMatchedTag(
                     tag_code=tag_code,
-                    tag_name_zh=item.get("tagNameZh", label["zh"]),
-                    tag_name_en=item.get("tagNameEn", label["en"]),
+                    tag_name_zh=item.get("tagNameZh", meta["zh"]),
+                    tag_name_en=item.get("tagNameEn", meta["en"]),
+                    tag_description_zh=meta["description_zh"],
+                    tag_description_en=meta["description_en"],
                     contribution=item["contribution"],
                 )
             )
@@ -96,7 +115,7 @@ def build_llm_rerank_input(
 
     return LLMRerankInput(
         task=LLMRerankTask(
-            type="rerank_top_candidates",
+            type="select_top_3_from_top_6",
             candidate_limit=len(candidate_items),
             select_count=3,
         ),
@@ -112,9 +131,11 @@ def get_llm_rerank_output_schema() -> dict:
         "schema": {
             "type": "object",
             "properties": {
-                "ranked_game_ids": {
+                "selected_top_3_game_ids": {
                     "type": "array",
                     "items": {"type": "integer"},
+                    "minItems": 3,
+                    "maxItems": 3,
                 },
                 "top_3_reasons": {
                     "type": "array",
@@ -135,9 +156,11 @@ def get_llm_rerank_output_schema() -> dict:
                         "required": ["game_id", "reason"],
                         "additionalProperties": False,
                     },
+                    "minItems": 3,
+                    "maxItems": 3,
                 },
             },
-            "required": ["ranked_game_ids", "top_3_reasons"],
+            "required": ["selected_top_3_game_ids", "top_3_reasons"],
             "additionalProperties": False,
         },
     }
@@ -145,59 +168,28 @@ def get_llm_rerank_output_schema() -> dict:
 
 def build_developer_message() -> str:
     return """
-You are a reranking component inside a game recommendation backend.
+You are a reranking component in a game recommendation system.
 
-Your job:
-1. Re-rank the provided candidate games only.
-2. Return a full ordered list of candidate game IDs.
-3. Provide natural reasons for the top 3 games only.
+Task:
+- Select and order the best 3 games from the provided candidate list.
+- Use the user's highest-scoring preference tags as the main signal.
+- Respect rule_score as a prior, especially when score differences are large.
+- When candidates are close, prefer games that better match the user's top tags.
+- Write short, natural reasons for the selected top 3.
 
-Primary ranking goal:
-- Prioritize the user's highest-scoring preference tags.
-- Treat the user's top preference tags as the most important signal for final display order.
-- Use matched tag contributions to judge how strongly each candidate aligns with the user's profile.
-- Pay special attention to the top 3 user preference tags. These should influence ranking more than lower-priority tags.
-
-How to use rule_score:
-- The existing rule_score is an important prior signal and should usually be respected.
-- Do not ignore rule_score without a good reason.
-- When one game is clearly stronger in rule_score, keep the stronger rule-based ordering unless another candidate is meaningfully better aligned with the user's top preference tags.
-- When two or more games have similar rule_score, use the user's highest-priority tags to make a finer reranking decision.
-- In close-score situations, prefer the candidate whose strongest matched tags better reflect the user's core preferences.
-
-How to rerank:
-- Keep the ranking conservative and grounded.
-- Do not reorder aggressively without clear evidence from the user's top preference tags and candidate matched tags.
-- Make small, preference-sensitive adjustments rather than arbitrary reshuffling.
-- Favor candidates whose top matched tags overlap strongly with the user's most important preference tags.
-- If a candidate mainly matches lower-priority user tags, do not rank it above a candidate that better matches the user's top-priority tags unless the evidence is clearly stronger.
-
-Reason-writing rules:
-- Explain the recommendation in user-facing language.
-- Focus on why the game matches the user's strongest preferences.
-- Avoid repeating raw internal scoring language.
-- Avoid exposing internal tag codes directly.
-
-Language rules:
-- reason.zh must be written entirely in Simplified Chinese.
-- reason.en must be written entirely in English.
-- Do not mix Chinese and English in the same field.
-- Do not output internal tag codes like story_rich, immersive, or exploration directly.
-- Convert tag meanings into natural user-facing language.
-
-Hard constraints:
-- You must only use game IDs from the provided candidate list.
-- ranked_game_ids must contain every candidate exactly once.
-- top_3_reasons must correspond exactly to the first 3 game IDs in ranked_game_ids.
-- Do not invent new games.
-- Do not add extra fields.
+Rules:
+- Only choose from the provided candidates.
+- reason.zh must be fully in Simplified Chinese.
+- reason.en must be fully in English.
+- Keep reasons short and user-facing.
+- Do not expose internal tag codes.
 - Output valid JSON only.
 """.strip()
 
 
 def build_user_message(llm_input: LLMRerankInput) -> str:
     payload = llm_input.model_dump()
-    return json.dumps(payload, ensure_ascii=False, indent=2)
+    return json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
 
 
 def call_openai_llm_rerank(llm_input: LLMRerankInput) -> LLMRerankOutput:
@@ -232,33 +224,35 @@ def call_openai_llm_rerank(llm_input: LLMRerankInput) -> LLMRerankOutput:
     return LLMRerankOutput.model_validate(parsed)
 
 
-def validate_llm_rerank_output(llm_output: LLMRerankOutput, candidate_ids: list[int]) -> None:
-    ranked_ids = llm_output.ranked_game_ids
+def validate_llm_rerank_output(
+    llm_output: LLMRerankOutput,
+    candidate_ids: list[int],
+) -> None:
+    selected_ids = llm_output.selected_top_3_game_ids
 
-    if len(ranked_ids) != len(candidate_ids):
-        raise ValueError("ranked_game_ids length does not match candidate count")
+    if len(set(selected_ids)) != 3:
+        raise ValueError("selected_top_3_game_ids contains duplicates")
 
-    if len(set(ranked_ids)) != len(ranked_ids):
-        raise ValueError("ranked_game_ids contains duplicates")
+    if not set(selected_ids).issubset(set(candidate_ids)):
+        raise ValueError("selected_top_3_game_ids must be chosen from candidate ids")
 
-    if set(ranked_ids) != set(candidate_ids):
-        raise ValueError("ranked_game_ids must exactly match candidate ids")
-
-    top_3_ids = ranked_ids[:3]
     reason_ids = [item.game_id for item in llm_output.top_3_reasons]
-
-    if len(reason_ids) != 3:
-        raise ValueError("top_3_reasons must contain exactly 3 items")
-
-    if reason_ids != top_3_ids:
-        raise ValueError("top_3_reasons must match the first 3 ranked game ids")
+    if reason_ids != selected_ids:
+        raise ValueError("top_3_reasons must match selected_top_3_game_ids in order")
 
 
-def apply_llm_rerank(top_candidates: list[dict], llm_output: LLMRerankOutput) -> list[dict]:
-    candidates_by_game_id = {
+def apply_llm_rerank(
+    top_candidates: list[dict],
+    llm_candidates: list[dict],
+    llm_output: LLMRerankOutput,
+) -> list[dict]:
+    top_candidates_by_game_id = {
         candidate["game"].id: deepcopy(candidate)
         for candidate in top_candidates
     }
+
+    llm_candidate_ids = [candidate["game"].id for candidate in llm_candidates]
+    selected_top_3_ids = llm_output.selected_top_3_game_ids
 
     reasons_by_game_id = {
         item.game_id: {
@@ -268,16 +262,34 @@ def apply_llm_rerank(top_candidates: list[dict], llm_output: LLMRerankOutput) ->
         for item in llm_output.top_3_reasons
     }
 
-    reranked_candidates = []
-    for game_id in llm_output.ranked_game_ids:
-        candidate = candidates_by_game_id[game_id]
+    final_candidates = []
 
-        if game_id in reasons_by_game_id:
-            candidate["reason"] = reasons_by_game_id[game_id]
+    for game_id in selected_top_3_ids:
+        candidate = top_candidates_by_game_id[game_id]
+        candidate["reason"] = reasons_by_game_id[game_id]
+        candidate["rankingMode"] = "llm_reranked"
+        final_candidates.append(candidate)
 
-        reranked_candidates.append(candidate)
+    selected_set = set(selected_top_3_ids)
 
-    return reranked_candidates
+    remaining_llm_ids = [
+        game_id for game_id in llm_candidate_ids
+        if game_id not in selected_set
+    ]
+    remaining_rule_ids = [
+        candidate["game"].id
+        for candidate in top_candidates
+        if candidate["game"].id not in selected_set
+        and candidate["game"].id not in set(remaining_llm_ids)
+    ]
+
+    for game_id in remaining_llm_ids + remaining_rule_ids:
+        candidate = top_candidates_by_game_id[game_id]
+        candidate["rankingMode"] = "rule_based"
+        final_candidates.append(candidate)
+
+    return final_candidates
+
 
 def rerank_candidates_with_fallback(
     session: Session,
@@ -299,26 +311,29 @@ def rerank_candidates_with_fallback(
         }
 
     try:
-        tag_label_lookup = build_tag_label_lookup(session)
+        llm_candidates = top_candidates[:6]
+        candidate_ids = [candidate["game"].id for candidate in llm_candidates]
+
+        tag_metadata_lookup = build_tag_metadata_lookup(session)
         llm_input = build_llm_rerank_input(
-            top_candidates,
+            llm_candidates,
             user_profile,
-            tag_label_lookup,
+            tag_metadata_lookup,
         )
         print("llm_input built")
 
         llm_output = call_openai_llm_rerank(llm_input)
         print("llm_output received")
-        print("ranked_game_ids =", llm_output.ranked_game_ids)
-        print("top_3_reason_ids =", [item.game_id for item in llm_output.top_3_reasons])
-
-        candidate_ids = [candidate["game"].id for candidate in top_candidates]
-        print("candidate_ids =", candidate_ids)
+        print("selected_top_3_game_ids =", llm_output.selected_top_3_game_ids)
 
         validate_llm_rerank_output(llm_output, candidate_ids)
         print("llm_output validated")
 
-        reranked_candidates = apply_llm_rerank(top_candidates, llm_output)
+        reranked_candidates = apply_llm_rerank(
+            top_candidates,
+            llm_candidates,
+            llm_output,
+        )
         print("rerank applied")
 
         return {

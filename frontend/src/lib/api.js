@@ -8,6 +8,9 @@ class ApiError extends Error {
   }
 }
 
+let questionsCache = null;
+let questionsPromise = null;
+
 async function getErrorMessage(response) {
   try {
     const data = await response.json();
@@ -27,8 +30,38 @@ async function requestJson(path, options = {}) {
   return response.json();
 }
 
-export async function fetchQuestions() {
-  return requestJson("/questions");
+export function clearQuestionsCache() {
+  questionsCache = null;
+  questionsPromise = null;
+}
+
+export async function fetchQuestions({ forceRefresh = false } = {}) {
+  if (!forceRefresh && questionsCache) {
+    return questionsCache;
+  }
+
+  if (!forceRefresh && questionsPromise) {
+    return questionsPromise;
+  }
+
+  questionsPromise = requestJson("/questions")
+    .then((data) => {
+      questionsCache = data;
+      return data;
+    })
+    .finally(() => {
+      questionsPromise = null;
+    });
+
+  return questionsPromise;
+}
+
+export async function prefetchQuestions() {
+  try {
+    await fetchQuestions();
+  } catch (error) {
+    console.warn("Questions prefetch failed:", error);
+  }
 }
 
 export async function fetchRecommendations(payload) {

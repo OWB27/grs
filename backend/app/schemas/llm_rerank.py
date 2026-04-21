@@ -4,8 +4,8 @@ from pydantic import BaseModel, Field, field_validator
 
 
 class LLMRerankTask(BaseModel):
-    type: Literal["rerank_top_candidates"] = "rerank_top_candidates"
-    candidate_limit: int = 15
+    type: Literal["select_top_3_from_top_6"] = "select_top_3_from_top_6"
+    candidate_limit: int = 6
     select_count: int = 3
 
 
@@ -13,6 +13,8 @@ class LLMUserProfileTag(BaseModel):
     tag_code: str
     tag_name_zh: str
     tag_name_en: str
+    tag_description_zh: str
+    tag_description_en: str
     score: int = Field(ge=1)
 
 
@@ -24,6 +26,8 @@ class LLMCandidateMatchedTag(BaseModel):
     tag_code: str
     tag_name_zh: str
     tag_name_en: str
+    tag_description_zh: str
+    tag_description_en: str
     contribution: int = Field(ge=1)
 
 
@@ -49,8 +53,8 @@ class LLMRerankInput(BaseModel):
 
 
 class LLMReasonText(BaseModel):
-    zh: str = Field(min_length=1)
-    en: str = Field(min_length=1)
+    zh: str = Field(min_length=1, max_length=60)
+    en: str = Field(min_length=1, max_length=160)
 
 
 class LLMSelectedGameReason(BaseModel):
@@ -59,19 +63,21 @@ class LLMSelectedGameReason(BaseModel):
 
 
 class LLMRerankOutput(BaseModel):
-    ranked_game_ids: list[int]
+    selected_top_3_game_ids: list[int]
     top_3_reasons: list[LLMSelectedGameReason]
 
-    @field_validator("ranked_game_ids")
+    @field_validator("selected_top_3_game_ids")
     @classmethod
-    def validate_ranked_game_ids_not_empty(cls, value: list[int]) -> list[int]:
-        if not value:
-            raise ValueError("ranked_game_ids must not be empty")
+    def validate_selected_top_3_game_ids(cls, value: list[int]) -> list[int]:
+        if len(value) != 3:
+            raise ValueError("selected_top_3_game_ids must contain exactly 3 items")
+        if len(set(value)) != 3:
+            raise ValueError("selected_top_3_game_ids must not contain duplicates")
         return value
 
     @field_validator("top_3_reasons")
     @classmethod
-    def validate_top_3_reasons_not_empty(cls, value: list[LLMSelectedGameReason]) -> list[LLMCandidateItem]:
-        if not value:
-            raise ValueError("top_3_reasons must not be empty")
+    def validate_top_3_reasons_not_empty(cls, value: list[LLMSelectedGameReason]) -> list[LLMSelectedGameReason]:
+        if len(value) != 3:
+            raise ValueError("top_3_reasons must contain exactly 3 items")
         return value

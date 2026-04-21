@@ -3,6 +3,7 @@ from sqlmodel import Session, select
 from app.db.models import Game, GameTag, Tag
 from app.schemas.recommend import RecommendResponse
 
+
 def score_games(session: Session, user_profile: dict[str, int]) -> list[dict]:
     games = session.exec(
         select(Game).where(Game.is_active == True)  # noqa: E712
@@ -56,7 +57,8 @@ def score_games(session: Session, user_profile: dict[str, int]) -> list[dict]:
     scored_candidates.sort(key=lambda item: item["score"], reverse=True)
     return scored_candidates
 
-def select_top_candidates(scored_candidates: list[dict], limit: int = 15) -> list[dict]:
+
+def select_top_candidates(scored_candidates: list[dict], limit: int = 9) -> list[dict]:
     if limit <= 0:
         return []
 
@@ -65,6 +67,7 @@ def select_top_candidates(scored_candidates: list[dict], limit: int = 15) -> lis
     ]
 
     return positive_candidates[:limit]
+
 
 def build_recommend_response(reasoned_candidates: list[dict]) -> RecommendResponse:
     recommendations = []
@@ -84,18 +87,18 @@ def build_recommend_response(reasoned_candidates: list[dict]) -> RecommendRespon
                 "reason": candidate["reason"],
                 "debug": {
                     "score": candidate["score"],
-                    "rankingMode": "rule_based",
-                "matchedTags": [
-                    {
-                        "tagCode": item["tagCode"],
-                        "tagNameZh": item["tagNameZh"],
-                        "tagNameEn": item["tagNameEn"],
-                        "gameWeight": item["gameWeight"],
-                        "userWeight": item["userWeight"],
-                        "contribution": item["contribution"],
-                    }
-                    for item in candidate["matchedTags"]
-                ],
+                    "rankingMode": candidate.get("rankingMode", "rule_based"),
+                    "matchedTags": [
+                        {
+                            "tagCode": item["tagCode"],
+                            "tagNameZh": item["tagNameZh"],
+                            "tagNameEn": item["tagNameEn"],
+                            "gameWeight": item["gameWeight"],
+                            "userWeight": item["userWeight"],
+                            "contribution": item["contribution"],
+                        }
+                        for item in candidate["matchedTags"]
+                    ],
                 },
             }
         )

@@ -34,7 +34,7 @@ def recommend(
         user_profile = build_user_profile(session, validated_answers)
 
         scored_candidates = score_games(session, user_profile)
-        top_candidates = select_top_candidates(scored_candidates, limit=15)
+        top_candidates = select_top_candidates(scored_candidates, limit=9)
 
         reasoned_candidates = generate_reasons(top_candidates, user_profile)
 

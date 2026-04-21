@@ -94,9 +94,15 @@ export default function QuizPage() {
 
       <PageSection width="lg" className="flex flex-col items-center">
         {isLoadingQuestions ? (
-          <EmptyStatePanel code="LOADING_QUESTIONS" message={t("loadingQuestions")} />
+          <EmptyStatePanel
+            code="LOADING_QUESTIONS"
+            message={t("loadingQuestions")}
+          />
         ) : questionsError ? (
-          <EmptyStatePanel code="QUESTIONS_ERROR" message={questionsError} />
+          <EmptyStatePanel
+            code="QUESTIONS_ERROR"
+            message={questionsError}
+          />
         ) : currentQuestion ? (
           <>
             <div className="mb-10 md:mb-12">
@@ -124,7 +130,10 @@ export default function QuizPage() {
             />
           </>
         ) : (
-          <EmptyStatePanel code="NO_QUESTIONS" message={t("questionsLoadError")} />
+          <EmptyStatePanel
+            code="NO_QUESTIONS"
+            message={t("questionsLoadError")}
+          />
         )}
       </PageSection>
     </AppShell>
