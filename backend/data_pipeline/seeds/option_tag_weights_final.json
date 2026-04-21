@@ -1,847 +1,322 @@
 [
-  {
-    "option_code": "core_story_immersion",
-    "tag_code": "story_rich",
-    "weight": 5
-  },
-  {
-    "option_code": "core_story_immersion",
-    "tag_code": "immersive",
-    "weight": 4
-  },
-  {
-    "option_code": "core_story_immersion",
-    "tag_code": "character_growth",
-    "weight": 3
-  },
-  {
-    "option_code": "core_free_exploration",
-    "tag_code": "exploration",
-    "weight": 5
-  },
-  {
-    "option_code": "core_free_exploration",
-    "tag_code": "open_world",
-    "weight": 4
-  },
-  {
-    "option_code": "core_free_exploration",
-    "tag_code": "immersive",
-    "weight": 3
-  },
-  {
-    "option_code": "core_intense_action",
-    "tag_code": "fast_paced",
-    "weight": 5
-  },
-  {
-    "option_code": "core_intense_action",
-    "tag_code": "combat",
-    "weight": 4
-  },
-  {
-    "option_code": "core_intense_action",
-    "tag_code": "challenge",
-    "weight": 3
-  },
-  {
-    "option_code": "core_cozy_daily_life",
-    "tag_code": "cozy",
-    "weight": 5
-  },
-  {
-    "option_code": "core_cozy_daily_life",
-    "tag_code": "relaxed",
-    "weight": 4
-  },
-  {
-    "option_code": "core_cozy_daily_life",
-    "tag_code": "social_sim",
-    "weight": 3
-  },
-  {
-    "option_code": "agency_authored_story",
-    "tag_code": "story_rich",
-    "weight": 4
-  },
-  {
-    "option_code": "agency_authored_story",
-    "tag_code": "immersive",
-    "weight": 3
-  },
-  {
-    "option_code": "agency_choices_change_outcome",
-    "tag_code": "choices_matter",
-    "weight": 5
-  },
-  {
-    "option_code": "agency_choices_change_outcome",
-    "tag_code": "story_rich",
-    "weight": 4
-  },
-  {
-    "option_code": "agency_choices_change_outcome",
-    "tag_code": "character_growth",
-    "weight": 2
-  },
-  {
-    "option_code": "agency_build_defines_playstyle",
-    "tag_code": "build_variety",
-    "weight": 5
-  },
-  {
-    "option_code": "agency_build_defines_playstyle",
-    "tag_code": "character_growth",
-    "weight": 3
-  },
-  {
-    "option_code": "agency_build_defines_playstyle",
-    "tag_code": "combat",
-    "weight": 2
-  },
-  {
-    "option_code": "agency_systems_create_fun",
-    "tag_code": "strategy",
-    "weight": 4
-  },
-  {
-    "option_code": "agency_systems_create_fun",
-    "tag_code": "resource_management",
-    "weight": 3
-  },
-  {
-    "option_code": "agency_systems_create_fun",
-    "tag_code": "replayable",
-    "weight": 3
-  },
-  {
-    "option_code": "pace_slow_and_deliberate",
-    "tag_code": "immersive",
-    "weight": 3
-  },
-  {
-    "option_code": "pace_slow_and_deliberate",
-    "tag_code": "strategy",
-    "weight": 3
-  },
-  {
-    "option_code": "pace_slow_and_deliberate",
-    "tag_code": "relaxed",
-    "weight": 2
-  },
-  {
-    "option_code": "pace_balanced_journey",
-    "tag_code": "story_rich",
-    "weight": 3
-  },
-  {
-    "option_code": "pace_balanced_journey",
-    "tag_code": "exploration",
-    "weight": 3
-  },
-  {
-    "option_code": "pace_balanced_journey",
-    "tag_code": "immersive",
-    "weight": 3
-  },
-  {
-    "option_code": "pace_fast_and_intense",
-    "tag_code": "fast_paced",
-    "weight": 5
-  },
-  {
-    "option_code": "pace_fast_and_intense",
-    "tag_code": "combat",
-    "weight": 4
-  },
-  {
-    "option_code": "pace_turns_and_planning",
-    "tag_code": "strategy",
-    "weight": 5
-  },
-  {
-    "option_code": "pace_turns_and_planning",
-    "tag_code": "resource_management",
-    "weight": 3
-  },
-  {
-    "option_code": "pace_turns_and_planning",
-    "tag_code": "challenge",
-    "weight": 2
-  },
-  {
-    "option_code": "challenge_low_pressure",
-    "tag_code": "relaxed",
-    "weight": 5
-  },
-  {
-    "option_code": "challenge_low_pressure",
-    "tag_code": "cozy",
-    "weight": 4
-  },
-  {
-    "option_code": "challenge_moderate",
-    "tag_code": "challenge",
-    "weight": 2
-  },
-  {
-    "option_code": "challenge_moderate",
-    "tag_code": "story_rich",
-    "weight": 2
-  },
-  {
-    "option_code": "challenge_moderate",
-    "tag_code": "exploration",
-    "weight": 2
-  },
-  {
-    "option_code": "challenge_tough_but_fair",
-    "tag_code": "challenge",
-    "weight": 4
-  },
-  {
-    "option_code": "challenge_tough_but_fair",
-    "tag_code": "combat",
-    "weight": 3
-  },
-  {
-    "option_code": "challenge_tough_but_fair",
-    "tag_code": "build_variety",
-    "weight": 2
-  },
-  {
-    "option_code": "challenge_punishing_mastery",
-    "tag_code": "challenge",
-    "weight": 5
-  },
-  {
-    "option_code": "challenge_punishing_mastery",
-    "tag_code": "combat",
-    "weight": 3
-  },
-  {
-    "option_code": "challenge_punishing_mastery",
-    "tag_code": "fast_paced",
-    "weight": 3
-  },
-  {
-    "option_code": "combat_tactical_planning",
-    "tag_code": "strategy",
-    "weight": 5
-  },
-  {
-    "option_code": "combat_tactical_planning",
-    "tag_code": "combat",
-    "weight": 3
-  },
-  {
-    "option_code": "combat_tactical_planning",
-    "tag_code": "resource_management",
-    "weight": 2
-  },
-  {
-    "option_code": "combat_build_experimentation",
-    "tag_code": "build_variety",
-    "weight": 5
-  },
-  {
-    "option_code": "combat_build_experimentation",
-    "tag_code": "replayable",
-    "weight": 3
-  },
-  {
-    "option_code": "combat_build_experimentation",
-    "tag_code": "combat",
-    "weight": 2
-  },
-  {
-    "option_code": "combat_direct_execution",
-    "tag_code": "combat",
-    "weight": 5
-  },
-  {
-    "option_code": "combat_direct_execution",
-    "tag_code": "fast_paced",
-    "weight": 4
-  },
-  {
-    "option_code": "combat_direct_execution",
-    "tag_code": "challenge",
-    "weight": 3
-  },
-  {
-    "option_code": "combat_minimal_fighting",
-    "tag_code": "puzzle_solving",
-    "weight": 3
-  },
-  {
-    "option_code": "combat_minimal_fighting",
-    "tag_code": "story_rich",
-    "weight": 2
-  },
-  {
-    "option_code": "combat_minimal_fighting",
-    "tag_code": "relaxed",
-    "weight": 2
-  },
-  {
-    "option_code": "combat_minimal_fighting",
-    "tag_code": "exploration",
-    "weight": 2
-  },
-  {
-    "option_code": "world_vast_open_map",
-    "tag_code": "open_world",
-    "weight": 5
-  },
-  {
-    "option_code": "world_vast_open_map",
-    "tag_code": "exploration",
-    "weight": 4
-  },
-  {
-    "option_code": "world_vast_open_map",
-    "tag_code": "immersive",
-    "weight": 3
-  },
-  {
-    "option_code": "world_dense_interconnected_spaces",
-    "tag_code": "exploration",
-    "weight": 4
-  },
-  {
-    "option_code": "world_dense_interconnected_spaces",
-    "tag_code": "immersive",
-    "weight": 4
-  },
-  {
-    "option_code": "world_dense_interconnected_spaces",
-    "tag_code": "challenge",
-    "weight": 2
-  },
-  {
-    "option_code": "world_short_runs_or_matches",
-    "tag_code": "replayable",
-    "weight": 4
-  },
-  {
-    "option_code": "world_short_runs_or_matches",
-    "tag_code": "fast_paced",
-    "weight": 3
-  },
-  {
-    "option_code": "world_short_runs_or_matches",
-    "tag_code": "competitive",
-    "weight": 2
-  },
-  {
-    "option_code": "world_shared_social_spaces",
-    "tag_code": "social_sim",
-    "weight": 4
-  },
-  {
-    "option_code": "world_shared_social_spaces",
-    "tag_code": "immersive",
-    "weight": 3
-  },
-  {
-    "option_code": "world_shared_social_spaces",
-    "tag_code": "relaxed",
-    "weight": 2
-  },
-  {
-    "option_code": "puzzle_almost_none",
-    "tag_code": "fast_paced",
-    "weight": 3
-  },
-  {
-    "option_code": "puzzle_almost_none",
-    "tag_code": "combat",
-    "weight": 2
-  },
-  {
-    "option_code": "puzzle_light_variety",
-    "tag_code": "puzzle_solving",
-    "weight": 2
-  },
-  {
-    "option_code": "puzzle_light_variety",
-    "tag_code": "exploration",
-    "weight": 2
-  },
-  {
-    "option_code": "puzzle_light_variety",
-    "tag_code": "story_rich",
-    "weight": 2
-  },
-  {
-    "option_code": "puzzle_dedicated_logic",
-    "tag_code": "puzzle_solving",
-    "weight": 5
-  },
-  {
-    "option_code": "puzzle_dedicated_logic",
-    "tag_code": "challenge",
-    "weight": 3
-  },
-  {
-    "option_code": "puzzle_environmental_mystery",
-    "tag_code": "puzzle_solving",
-    "weight": 4
-  },
-  {
-    "option_code": "puzzle_environmental_mystery",
-    "tag_code": "exploration",
-    "weight": 3
-  },
-  {
-    "option_code": "puzzle_environmental_mystery",
-    "tag_code": "immersive",
-    "weight": 3
-  },
-  {
-    "option_code": "social_mostly_solo",
-    "tag_code": "immersive",
-    "weight": 3
-  },
-  {
-    "option_code": "social_mostly_solo",
-    "tag_code": "story_rich",
-    "weight": 2
-  },
-  {
-    "option_code": "social_mostly_solo",
-    "tag_code": "relaxed",
-    "weight": 2
-  },
-  {
-    "option_code": "social_small_group_coop",
-    "tag_code": "social_sim",
-    "weight": 4
-  },
-  {
-    "option_code": "social_small_group_coop",
-    "tag_code": "survival",
-    "weight": 2
-  },
-  {
-    "option_code": "social_small_group_coop",
-    "tag_code": "relaxed",
-    "weight": 2
-  },
-  {
-    "option_code": "social_party_coordination",
-    "tag_code": "social_sim",
-    "weight": 4
-  },
-  {
-    "option_code": "social_party_coordination",
-    "tag_code": "fast_paced",
-    "weight": 3
-  },
-  {
-    "option_code": "social_party_coordination",
-    "tag_code": "replayable",
-    "weight": 3
-  },
-  {
-    "option_code": "social_reading_people",
-    "tag_code": "social_sim",
-    "weight": 5
-  },
-  {
-    "option_code": "social_reading_people",
-    "tag_code": "competitive",
-    "weight": 3
-  },
-  {
-    "option_code": "social_reading_people",
-    "tag_code": "replayable",
-    "weight": 3
-  },
-  {
-    "option_code": "competition_none",
-    "tag_code": "relaxed",
-    "weight": 4
-  },
-  {
-    "option_code": "competition_none",
-    "tag_code": "cozy",
-    "weight": 3
-  },
-  {
-    "option_code": "competition_light_friendly",
-    "tag_code": "competitive",
-    "weight": 2
-  },
-  {
-    "option_code": "competition_light_friendly",
-    "tag_code": "replayable",
-    "weight": 2
-  },
-  {
-    "option_code": "competition_light_friendly",
-    "tag_code": "fast_paced",
-    "weight": 2
-  },
-  {
-    "option_code": "competition_ranked_teamplay",
-    "tag_code": "competitive",
-    "weight": 5
-  },
-  {
-    "option_code": "competition_ranked_teamplay",
-    "tag_code": "fast_paced",
-    "weight": 4
-  },
-  {
-    "option_code": "competition_ranked_teamplay",
-    "tag_code": "combat",
-    "weight": 3
-  },
-  {
-    "option_code": "competition_high_stakes_survival",
-    "tag_code": "competitive",
-    "weight": 5
-  },
-  {
-    "option_code": "competition_high_stakes_survival",
-    "tag_code": "survival",
-    "weight": 3
-  },
-  {
-    "option_code": "competition_high_stakes_survival",
-    "tag_code": "combat",
-    "weight": 3
-  },
-  {
-    "option_code": "management_none",
-    "tag_code": "story_rich",
-    "weight": 2
-  },
-  {
-    "option_code": "management_none",
-    "tag_code": "immersive",
-    "weight": 2
-  },
-  {
-    "option_code": "management_light_optimization",
-    "tag_code": "resource_management",
-    "weight": 2
-  },
-  {
-    "option_code": "management_light_optimization",
-    "tag_code": "strategy",
-    "weight": 2
-  },
-  {
-    "option_code": "management_light_optimization",
-    "tag_code": "relaxed",
-    "weight": 2
-  },
-  {
-    "option_code": "management_city_or_colony",
-    "tag_code": "strategy",
-    "weight": 5
-  },
-  {
-    "option_code": "management_city_or_colony",
-    "tag_code": "resource_management",
-    "weight": 4
-  },
-  {
-    "option_code": "management_city_or_colony",
-    "tag_code": "relaxed",
-    "weight": 2
-  },
-  {
-    "option_code": "management_scarcity_tradeoffs",
-    "tag_code": "resource_management",
-    "weight": 5
-  },
-  {
-    "option_code": "management_scarcity_tradeoffs",
-    "tag_code": "survival",
-    "weight": 3
-  },
-  {
-    "option_code": "management_scarcity_tradeoffs",
-    "tag_code": "challenge",
-    "weight": 3
-  },
-  {
-    "option_code": "survival_none",
-    "tag_code": "relaxed",
-    "weight": 4
-  },
-  {
-    "option_code": "survival_none",
-    "tag_code": "cozy",
-    "weight": 3
-  },
-  {
-    "option_code": "survival_light",
-    "tag_code": "survival",
-    "weight": 2
-  },
-  {
-    "option_code": "survival_light",
-    "tag_code": "exploration",
-    "weight": 2
-  },
-  {
-    "option_code": "survival_light",
-    "tag_code": "immersive",
-    "weight": 2
-  },
-  {
-    "option_code": "survival_preparing_and_enduring",
-    "tag_code": "survival",
-    "weight": 5
-  },
-  {
-    "option_code": "survival_preparing_and_enduring",
-    "tag_code": "resource_management",
-    "weight": 3
-  },
-  {
-    "option_code": "survival_preparing_and_enduring",
-    "tag_code": "challenge",
-    "weight": 2
-  },
-  {
-    "option_code": "survival_real_consequences",
-    "tag_code": "survival",
-    "weight": 5
-  },
-  {
-    "option_code": "survival_real_consequences",
-    "tag_code": "challenge",
-    "weight": 4
-  },
-  {
-    "option_code": "survival_real_consequences",
-    "tag_code": "horror_tension",
-    "weight": 2
-  },
-  {
-    "option_code": "horror_avoid",
-    "tag_code": "cozy",
-    "weight": 3
-  },
-  {
-    "option_code": "horror_avoid",
-    "tag_code": "relaxed",
-    "weight": 3
-  },
-  {
-    "option_code": "horror_light_tension",
-    "tag_code": "horror_tension",
-    "weight": 2
-  },
-  {
-    "option_code": "horror_light_tension",
-    "tag_code": "immersive",
-    "weight": 3
-  },
-  {
-    "option_code": "horror_light_tension",
-    "tag_code": "puzzle_solving",
-    "weight": 2
-  },
-  {
-    "option_code": "horror_sustained_dread",
-    "tag_code": "horror_tension",
-    "weight": 5
-  },
-  {
-    "option_code": "horror_sustained_dread",
-    "tag_code": "immersive",
-    "weight": 4
-  },
-  {
-    "option_code": "horror_sustained_dread",
-    "tag_code": "survival",
-    "weight": 2
-  },
-  {
-    "option_code": "horror_terror_under_pressure",
-    "tag_code": "horror_tension",
-    "weight": 5
-  },
-  {
-    "option_code": "horror_terror_under_pressure",
-    "tag_code": "survival",
-    "weight": 3
-  },
-  {
-    "option_code": "horror_terror_under_pressure",
-    "tag_code": "challenge",
-    "weight": 3
-  },
-  {
-    "option_code": "replay_one_memorable_journey",
-    "tag_code": "story_rich",
-    "weight": 4
-  },
-  {
-    "option_code": "replay_one_memorable_journey",
-    "tag_code": "immersive",
-    "weight": 3
-  },
-  {
-    "option_code": "replay_different_paths",
-    "tag_code": "choices_matter",
-    "weight": 5
-  },
-  {
-    "option_code": "replay_different_paths",
-    "tag_code": "replayable",
-    "weight": 3
-  },
-  {
-    "option_code": "replay_different_paths",
-    "tag_code": "story_rich",
-    "weight": 2
-  },
-  {
-    "option_code": "replay_new_builds_each_run",
-    "tag_code": "build_variety",
-    "weight": 5
-  },
-  {
-    "option_code": "replay_new_builds_each_run",
-    "tag_code": "replayable",
-    "weight": 4
-  },
-  {
-    "option_code": "replay_new_builds_each_run",
-    "tag_code": "combat",
-    "weight": 2
-  },
-  {
-    "option_code": "replay_endless_optimization",
-    "tag_code": "replayable",
-    "weight": 5
-  },
-  {
-    "option_code": "replay_endless_optimization",
-    "tag_code": "strategy",
-    "weight": 4
-  },
-  {
-    "option_code": "replay_endless_optimization",
-    "tag_code": "resource_management",
-    "weight": 3
-  },
-  {
-    "option_code": "character_world_over_people",
-    "tag_code": "exploration",
-    "weight": 3
-  },
-  {
-    "option_code": "character_world_over_people",
-    "tag_code": "immersive",
-    "weight": 3
-  },
-  {
-    "option_code": "character_world_over_people",
-    "tag_code": "open_world",
-    "weight": 2
-  },
-  {
-    "option_code": "character_party_bonds",
-    "tag_code": "character_growth",
-    "weight": 4
-  },
-  {
-    "option_code": "character_party_bonds",
-    "tag_code": "social_sim",
-    "weight": 3
-  },
-  {
-    "option_code": "character_party_bonds",
-    "tag_code": "story_rich",
-    "weight": 3
-  },
-  {
-    "option_code": "character_personal_growth_arc",
-    "tag_code": "character_growth",
-    "weight": 5
-  },
-  {
-    "option_code": "character_personal_growth_arc",
-    "tag_code": "story_rich",
-    "weight": 3
-  },
-  {
-    "option_code": "character_personal_growth_arc",
-    "tag_code": "challenge",
-    "weight": 2
-  },
-  {
-    "option_code": "character_self_shaped_identity",
-    "tag_code": "build_variety",
-    "weight": 4
-  },
-  {
-    "option_code": "character_self_shaped_identity",
-    "tag_code": "choices_matter",
-    "weight": 3
-  },
-  {
-    "option_code": "character_self_shaped_identity",
-    "tag_code": "open_world",
-    "weight": 2
-  },
-  {
-    "option_code": "tone_calm_and_healing",
-    "tag_code": "cozy",
-    "weight": 5
-  },
-  {
-    "option_code": "tone_calm_and_healing",
-    "tag_code": "relaxed",
-    "weight": 4
-  },
-  {
-    "option_code": "tone_cinematic_and_absorbing",
-    "tag_code": "immersive",
-    "weight": 5
-  },
-  {
-    "option_code": "tone_cinematic_and_absorbing",
-    "tag_code": "story_rich",
-    "weight": 3
-  },
-  {
-    "option_code": "tone_dark_and_oppressive",
-    "tag_code": "horror_tension",
-    "weight": 4
-  },
-  {
-    "option_code": "tone_dark_and_oppressive",
-    "tag_code": "survival",
-    "weight": 2
-  },
-  {
-    "option_code": "tone_dark_and_oppressive",
-    "tag_code": "challenge",
-    "weight": 2
-  },
-  {
-    "option_code": "tone_adrenaline_first",
-    "tag_code": "fast_paced",
-    "weight": 5
-  },
-  {
-    "option_code": "tone_adrenaline_first",
-    "tag_code": "combat",
-    "weight": 3
-  },
-  {
-    "option_code": "tone_adrenaline_first",
-    "tag_code": "competitive",
-    "weight": 2
-  }
+  { "option_code": "core_story_characters", "tag_code": "story_rich", "weight": 5 },
+  { "option_code": "core_story_characters", "tag_code": "immersive", "weight": 4 },
+  { "option_code": "core_story_characters", "tag_code": "character_growth", "weight": 3 },
+
+  { "option_code": "core_exploring_unknown_world", "tag_code": "exploration", "weight": 5 },
+  { "option_code": "core_exploring_unknown_world", "tag_code": "open_world", "weight": 4 },
+  { "option_code": "core_exploring_unknown_world", "tag_code": "immersive", "weight": 3 },
+
+  { "option_code": "core_action_adrenaline", "tag_code": "fast_paced", "weight": 5 },
+  { "option_code": "core_action_adrenaline", "tag_code": "combat", "weight": 4 },
+  { "option_code": "core_action_adrenaline", "tag_code": "challenge", "weight": 3 },
+
+  { "option_code": "core_cozy_everyday_life", "tag_code": "cozy", "weight": 5 },
+  { "option_code": "core_cozy_everyday_life", "tag_code": "relaxed", "weight": 4 },
+  { "option_code": "core_cozy_everyday_life", "tag_code": "social_sim", "weight": 3 },
+
+  { "option_code": "agency_follow_authored_story", "tag_code": "story_rich", "weight": 4 },
+  { "option_code": "agency_follow_authored_story", "tag_code": "immersive", "weight": 3 },
+  { "option_code": "agency_follow_authored_story", "tag_code": "character_growth", "weight": 2 },
+
+  { "option_code": "agency_choices_change_people_and_endings", "tag_code": "choices_matter", "weight": 5 },
+  { "option_code": "agency_choices_change_people_and_endings", "tag_code": "story_rich", "weight": 4 },
+  { "option_code": "agency_choices_change_people_and_endings", "tag_code": "character_growth", "weight": 2 },
+
+  { "option_code": "agency_shape_build_and_role", "tag_code": "build_variety", "weight": 5 },
+  { "option_code": "agency_shape_build_and_role", "tag_code": "character_growth", "weight": 3 },
+  { "option_code": "agency_shape_build_and_role", "tag_code": "combat", "weight": 2 },
+
+  { "option_code": "agency_emergent_systems", "tag_code": "strategy", "weight": 4 },
+  { "option_code": "agency_emergent_systems", "tag_code": "resource_management", "weight": 3 },
+  { "option_code": "agency_emergent_systems", "tag_code": "replayable", "weight": 3 },
+
+  { "option_code": "pace_slow_reflective", "tag_code": "immersive", "weight": 3 },
+  { "option_code": "pace_slow_reflective", "tag_code": "strategy", "weight": 3 },
+  { "option_code": "pace_slow_reflective", "tag_code": "relaxed", "weight": 2 },
+
+  { "option_code": "pace_balanced_story_explore", "tag_code": "story_rich", "weight": 3 },
+  { "option_code": "pace_balanced_story_explore", "tag_code": "exploration", "weight": 3 },
+  { "option_code": "pace_balanced_story_explore", "tag_code": "immersive", "weight": 3 },
+
+  { "option_code": "pace_fast_reactive", "tag_code": "fast_paced", "weight": 5 },
+  { "option_code": "pace_fast_reactive", "tag_code": "combat", "weight": 4 },
+  { "option_code": "pace_fast_reactive", "tag_code": "challenge", "weight": 2 },
+
+  { "option_code": "pace_turn_based_planning", "tag_code": "strategy", "weight": 5 },
+  { "option_code": "pace_turn_based_planning", "tag_code": "resource_management", "weight": 3 },
+  { "option_code": "pace_turn_based_planning", "tag_code": "challenge", "weight": 2 },
+
+  { "option_code": "challenge_low_pressure", "tag_code": "relaxed", "weight": 5 },
+  { "option_code": "challenge_low_pressure", "tag_code": "cozy", "weight": 4 },
+  { "option_code": "challenge_low_pressure", "tag_code": "immersive", "weight": 2 },
+
+  { "option_code": "challenge_moderate_engaging", "tag_code": "challenge", "weight": 2 },
+  { "option_code": "challenge_moderate_engaging", "tag_code": "story_rich", "weight": 2 },
+  { "option_code": "challenge_moderate_engaging", "tag_code": "exploration", "weight": 2 },
+
+  { "option_code": "challenge_tough_but_learnable", "tag_code": "challenge", "weight": 4 },
+  { "option_code": "challenge_tough_but_learnable", "tag_code": "combat", "weight": 3 },
+  { "option_code": "challenge_tough_but_learnable", "tag_code": "build_variety", "weight": 2 },
+
+  { "option_code": "challenge_punishing_mastery", "tag_code": "challenge", "weight": 5 },
+  { "option_code": "challenge_punishing_mastery", "tag_code": "combat", "weight": 3 },
+  { "option_code": "challenge_punishing_mastery", "tag_code": "fast_paced", "weight": 3 },
+
+  { "option_code": "loop_tactical_planning", "tag_code": "strategy", "weight": 5 },
+  { "option_code": "loop_tactical_planning", "tag_code": "combat", "weight": 3 },
+  { "option_code": "loop_tactical_planning", "tag_code": "resource_management", "weight": 2 },
+
+  { "option_code": "loop_build_experimentation", "tag_code": "build_variety", "weight": 5 },
+  { "option_code": "loop_build_experimentation", "tag_code": "replayable", "weight": 3 },
+  { "option_code": "loop_build_experimentation", "tag_code": "combat", "weight": 2 },
+
+  { "option_code": "loop_direct_execution", "tag_code": "combat", "weight": 5 },
+  { "option_code": "loop_direct_execution", "tag_code": "fast_paced", "weight": 4 },
+  { "option_code": "loop_direct_execution", "tag_code": "challenge", "weight": 3 },
+
+  { "option_code": "loop_minimal_fighting", "tag_code": "puzzle_solving", "weight": 3 },
+  { "option_code": "loop_minimal_fighting", "tag_code": "story_rich", "weight": 2 },
+  { "option_code": "loop_minimal_fighting", "tag_code": "exploration", "weight": 2 },
+  { "option_code": "loop_minimal_fighting", "tag_code": "relaxed", "weight": 2 },
+
+  { "option_code": "world_vast_open_map", "tag_code": "open_world", "weight": 5 },
+  { "option_code": "world_vast_open_map", "tag_code": "exploration", "weight": 4 },
+  { "option_code": "world_vast_open_map", "tag_code": "immersive", "weight": 3 },
+
+  { "option_code": "world_dense_interconnected_spaces", "tag_code": "exploration", "weight": 4 },
+  { "option_code": "world_dense_interconnected_spaces", "tag_code": "immersive", "weight": 4 },
+  { "option_code": "world_dense_interconnected_spaces", "tag_code": "challenge", "weight": 2 },
+
+  { "option_code": "world_short_runs_matches", "tag_code": "replayable", "weight": 4 },
+  { "option_code": "world_short_runs_matches", "tag_code": "fast_paced", "weight": 3 },
+  { "option_code": "world_short_runs_matches", "tag_code": "competitive", "weight": 2 },
+
+  { "option_code": "world_shared_social_spaces", "tag_code": "social_sim", "weight": 4 },
+  { "option_code": "world_shared_social_spaces", "tag_code": "immersive", "weight": 3 },
+  { "option_code": "world_shared_social_spaces", "tag_code": "relaxed", "weight": 2 },
+
+  { "option_code": "puzzle_avoid", "tag_code": "fast_paced", "weight": 3 },
+  { "option_code": "puzzle_avoid", "tag_code": "combat", "weight": 2 },
+  { "option_code": "puzzle_avoid", "tag_code": "relaxed", "weight": 1 },
+
+  { "option_code": "puzzle_light_variety", "tag_code": "puzzle_solving", "weight": 2 },
+  { "option_code": "puzzle_light_variety", "tag_code": "exploration", "weight": 2 },
+  { "option_code": "puzzle_light_variety", "tag_code": "story_rich", "weight": 2 },
+
+  { "option_code": "puzzle_dedicated_logic", "tag_code": "puzzle_solving", "weight": 5 },
+  { "option_code": "puzzle_dedicated_logic", "tag_code": "challenge", "weight": 3 },
+  { "option_code": "puzzle_dedicated_logic", "tag_code": "strategy", "weight": 2 },
+
+  { "option_code": "puzzle_environmental_observation", "tag_code": "puzzle_solving", "weight": 4 },
+  { "option_code": "puzzle_environmental_observation", "tag_code": "exploration", "weight": 3 },
+  { "option_code": "puzzle_environmental_observation", "tag_code": "immersive", "weight": 3 },
+
+  { "option_code": "social_mainly_solo", "tag_code": "immersive", "weight": 3 },
+  { "option_code": "social_mainly_solo", "tag_code": "story_rich", "weight": 2 },
+  { "option_code": "social_mainly_solo", "tag_code": "relaxed", "weight": 2 },
+
+  { "option_code": "social_small_group_coop", "tag_code": "social_sim", "weight": 4 },
+  { "option_code": "social_small_group_coop", "tag_code": "survival", "weight": 2 },
+  { "option_code": "social_small_group_coop", "tag_code": "relaxed", "weight": 2 },
+
+  { "option_code": "social_team_coordination", "tag_code": "social_sim", "weight": 4 },
+  { "option_code": "social_team_coordination", "tag_code": "fast_paced", "weight": 3 },
+  { "option_code": "social_team_coordination", "tag_code": "replayable", "weight": 3 },
+
+  { "option_code": "social_reading_people", "tag_code": "social_sim", "weight": 5 },
+  { "option_code": "social_reading_people", "tag_code": "competitive", "weight": 3 },
+  { "option_code": "social_reading_people", "tag_code": "replayable", "weight": 3 },
+
+  { "option_code": "competition_none", "tag_code": "relaxed", "weight": 4 },
+  { "option_code": "competition_none", "tag_code": "cozy", "weight": 3 },
+  { "option_code": "competition_none", "tag_code": "immersive", "weight": 1 },
+
+  { "option_code": "competition_light_friendly", "tag_code": "competitive", "weight": 2 },
+  { "option_code": "competition_light_friendly", "tag_code": "replayable", "weight": 2 },
+  { "option_code": "competition_light_friendly", "tag_code": "fast_paced", "weight": 2 },
+
+  { "option_code": "competition_ranked_teamplay", "tag_code": "competitive", "weight": 5 },
+  { "option_code": "competition_ranked_teamplay", "tag_code": "fast_paced", "weight": 4 },
+  { "option_code": "competition_ranked_teamplay", "tag_code": "combat", "weight": 3 },
+
+  { "option_code": "competition_high_stakes_last_standing", "tag_code": "competitive", "weight": 5 },
+  { "option_code": "competition_high_stakes_last_standing", "tag_code": "survival", "weight": 3 },
+  { "option_code": "competition_high_stakes_last_standing", "tag_code": "combat", "weight": 3 },
+
+  { "option_code": "management_very_light", "tag_code": "story_rich", "weight": 2 },
+  { "option_code": "management_very_light", "tag_code": "immersive", "weight": 2 },
+  { "option_code": "management_very_light", "tag_code": "relaxed", "weight": 1 },
+
+  { "option_code": "management_light_optimization", "tag_code": "resource_management", "weight": 2 },
+  { "option_code": "management_light_optimization", "tag_code": "strategy", "weight": 2 },
+  { "option_code": "management_light_optimization", "tag_code": "relaxed", "weight": 2 },
+
+  { "option_code": "management_build_and_plan", "tag_code": "strategy", "weight": 5 },
+  { "option_code": "management_build_and_plan", "tag_code": "resource_management", "weight": 4 },
+  { "option_code": "management_build_and_plan", "tag_code": "relaxed", "weight": 2 },
+
+  { "option_code": "management_scarcity_tradeoffs", "tag_code": "resource_management", "weight": 5 },
+  { "option_code": "management_scarcity_tradeoffs", "tag_code": "survival", "weight": 3 },
+  { "option_code": "management_scarcity_tradeoffs", "tag_code": "challenge", "weight": 3 },
+
+  { "option_code": "survival_none", "tag_code": "relaxed", "weight": 4 },
+  { "option_code": "survival_none", "tag_code": "cozy", "weight": 3 },
+  { "option_code": "survival_none", "tag_code": "immersive", "weight": 1 },
+
+  { "option_code": "survival_light", "tag_code": "survival", "weight": 2 },
+  { "option_code": "survival_light", "tag_code": "exploration", "weight": 2 },
+  { "option_code": "survival_light", "tag_code": "immersive", "weight": 2 },
+
+  { "option_code": "survival_preparing_enduring", "tag_code": "survival", "weight": 5 },
+  { "option_code": "survival_preparing_enduring", "tag_code": "resource_management", "weight": 3 },
+  { "option_code": "survival_preparing_enduring", "tag_code": "challenge", "weight": 2 },
+
+  { "option_code": "survival_real_consequences", "tag_code": "survival", "weight": 5 },
+  { "option_code": "survival_real_consequences", "tag_code": "challenge", "weight": 4 },
+  { "option_code": "survival_real_consequences", "tag_code": "horror_tension", "weight": 2 },
+
+  { "option_code": "horror_avoid", "tag_code": "cozy", "weight": 3 },
+  { "option_code": "horror_avoid", "tag_code": "relaxed", "weight": 3 },
+  { "option_code": "horror_avoid", "tag_code": "story_rich", "weight": 1 },
+
+  { "option_code": "horror_light_tension", "tag_code": "horror_tension", "weight": 2 },
+  { "option_code": "horror_light_tension", "tag_code": "immersive", "weight": 3 },
+  { "option_code": "horror_light_tension", "tag_code": "puzzle_solving", "weight": 2 },
+
+  { "option_code": "horror_sustained_dread", "tag_code": "horror_tension", "weight": 5 },
+  { "option_code": "horror_sustained_dread", "tag_code": "immersive", "weight": 4 },
+  { "option_code": "horror_sustained_dread", "tag_code": "survival", "weight": 2 },
+
+  { "option_code": "horror_terror_under_pressure", "tag_code": "horror_tension", "weight": 5 },
+  { "option_code": "horror_terror_under_pressure", "tag_code": "survival", "weight": 3 },
+  { "option_code": "horror_terror_under_pressure", "tag_code": "challenge", "weight": 3 },
+
+  { "option_code": "replay_memorable_single_journey", "tag_code": "story_rich", "weight": 4 },
+  { "option_code": "replay_memorable_single_journey", "tag_code": "immersive", "weight": 3 },
+  { "option_code": "replay_memorable_single_journey", "tag_code": "character_growth", "weight": 1 },
+
+  { "option_code": "replay_different_story_outcomes", "tag_code": "choices_matter", "weight": 5 },
+  { "option_code": "replay_different_story_outcomes", "tag_code": "replayable", "weight": 3 },
+  { "option_code": "replay_different_story_outcomes", "tag_code": "story_rich", "weight": 2 },
+
+  { "option_code": "replay_new_builds_and_routes", "tag_code": "build_variety", "weight": 5 },
+  { "option_code": "replay_new_builds_and_routes", "tag_code": "replayable", "weight": 4 },
+  { "option_code": "replay_new_builds_and_routes", "tag_code": "combat", "weight": 2 },
+
+  { "option_code": "replay_endless_system_optimization", "tag_code": "replayable", "weight": 5 },
+  { "option_code": "replay_endless_system_optimization", "tag_code": "strategy", "weight": 4 },
+  { "option_code": "replay_endless_system_optimization", "tag_code": "resource_management", "weight": 3 },
+
+  { "option_code": "attachment_world_and_place", "tag_code": "exploration", "weight": 3 },
+  { "option_code": "attachment_world_and_place", "tag_code": "immersive", "weight": 3 },
+  { "option_code": "attachment_world_and_place", "tag_code": "open_world", "weight": 2 },
+
+  { "option_code": "attachment_party_bonds", "tag_code": "character_growth", "weight": 4 },
+  { "option_code": "attachment_party_bonds", "tag_code": "social_sim", "weight": 3 },
+  { "option_code": "attachment_party_bonds", "tag_code": "story_rich", "weight": 3 },
+
+  { "option_code": "attachment_personal_growth_arc", "tag_code": "character_growth", "weight": 5 },
+  { "option_code": "attachment_personal_growth_arc", "tag_code": "story_rich", "weight": 3 },
+  { "option_code": "attachment_personal_growth_arc", "tag_code": "challenge", "weight": 2 },
+
+  { "option_code": "attachment_self_defined_identity", "tag_code": "build_variety", "weight": 4 },
+  { "option_code": "attachment_self_defined_identity", "tag_code": "choices_matter", "weight": 3 },
+  { "option_code": "attachment_self_defined_identity", "tag_code": "open_world", "weight": 2 },
+
+  { "option_code": "tone_calm_healing", "tag_code": "cozy", "weight": 5 },
+  { "option_code": "tone_calm_healing", "tag_code": "relaxed", "weight": 4 },
+  { "option_code": "tone_calm_healing", "tag_code": "social_sim", "weight": 1 },
+
+  { "option_code": "tone_cinematic_absorbing", "tag_code": "immersive", "weight": 5 },
+  { "option_code": "tone_cinematic_absorbing", "tag_code": "story_rich", "weight": 3 },
+  { "option_code": "tone_cinematic_absorbing", "tag_code": "character_growth", "weight": 1 },
+
+  { "option_code": "tone_dark_unsettling", "tag_code": "horror_tension", "weight": 4 },
+  { "option_code": "tone_dark_unsettling", "tag_code": "survival", "weight": 2 },
+  { "option_code": "tone_dark_unsettling", "tag_code": "challenge", "weight": 2 },
+
+  { "option_code": "tone_adrenaline_first", "tag_code": "fast_paced", "weight": 5 },
+  { "option_code": "tone_adrenaline_first", "tag_code": "combat", "weight": 3 },
+  { "option_code": "tone_adrenaline_first", "tag_code": "competitive", "weight": 2 },
+
+  { "option_code": "onboarding_immediate", "tag_code": "relaxed", "weight": 4 },
+  { "option_code": "onboarding_immediate", "tag_code": "cozy", "weight": 2 },
+  { "option_code": "onboarding_immediate", "tag_code": "fast_paced", "weight": 1 },
+
+  { "option_code": "onboarding_some_depth", "tag_code": "story_rich", "weight": 2 },
+  { "option_code": "onboarding_some_depth", "tag_code": "exploration", "weight": 2 },
+  { "option_code": "onboarding_some_depth", "tag_code": "combat", "weight": 2 },
+
+  { "option_code": "onboarding_willing_to_learn", "tag_code": "strategy", "weight": 3 },
+  { "option_code": "onboarding_willing_to_learn", "tag_code": "build_variety", "weight": 3 },
+  { "option_code": "onboarding_willing_to_learn", "tag_code": "resource_management", "weight": 2 },
+
+  { "option_code": "onboarding_deep_mastery", "tag_code": "strategy", "weight": 5 },
+  { "option_code": "onboarding_deep_mastery", "tag_code": "resource_management", "weight": 4 },
+  { "option_code": "onboarding_deep_mastery", "tag_code": "challenge", "weight": 3 },
+
+  { "option_code": "session_short", "tag_code": "replayable", "weight": 4 },
+  { "option_code": "session_short", "tag_code": "fast_paced", "weight": 3 },
+  { "option_code": "session_short", "tag_code": "competitive", "weight": 2 },
+
+  { "option_code": "session_medium", "tag_code": "combat", "weight": 2 },
+  { "option_code": "session_medium", "tag_code": "puzzle_solving", "weight": 2 },
+  { "option_code": "session_medium", "tag_code": "relaxed", "weight": 2 },
+
+  { "option_code": "session_long", "tag_code": "story_rich", "weight": 3 },
+  { "option_code": "session_long", "tag_code": "exploration", "weight": 3 },
+  { "option_code": "session_long", "tag_code": "immersive", "weight": 3 },
+
+  { "option_code": "session_very_long", "tag_code": "open_world", "weight": 3 },
+  { "option_code": "session_very_long", "tag_code": "strategy", "weight": 3 },
+  { "option_code": "session_very_long", "tag_code": "character_growth", "weight": 2 },
+
+  { "option_code": "failure_gentle_reset", "tag_code": "relaxed", "weight": 4 },
+  { "option_code": "failure_gentle_reset", "tag_code": "cozy", "weight": 3 },
+  { "option_code": "failure_gentle_reset", "tag_code": "story_rich", "weight": 1 },
+
+  { "option_code": "failure_light_penalty", "tag_code": "challenge", "weight": 2 },
+  { "option_code": "failure_light_penalty", "tag_code": "story_rich", "weight": 2 },
+  { "option_code": "failure_light_penalty", "tag_code": "exploration", "weight": 2 },
+
+  { "option_code": "failure_meaningful_learning", "tag_code": "challenge", "weight": 4 },
+  { "option_code": "failure_meaningful_learning", "tag_code": "combat", "weight": 3 },
+  { "option_code": "failure_meaningful_learning", "tag_code": "build_variety", "weight": 2 },
+
+  { "option_code": "failure_high_risk_high_cost", "tag_code": "survival", "weight": 4 },
+  { "option_code": "failure_high_risk_high_cost", "tag_code": "challenge", "weight": 4 },
+  { "option_code": "failure_high_risk_high_cost", "tag_code": "horror_tension", "weight": 2 },
+
+  { "option_code": "progress_story_and_discovery", "tag_code": "story_rich", "weight": 4 },
+  { "option_code": "progress_story_and_discovery", "tag_code": "character_growth", "weight": 3 },
+  { "option_code": "progress_story_and_discovery", "tag_code": "exploration", "weight": 2 },
+
+  { "option_code": "progress_mastery_and_skill", "tag_code": "challenge", "weight": 4 },
+  { "option_code": "progress_mastery_and_skill", "tag_code": "combat", "weight": 3 },
+  { "option_code": "progress_mastery_and_skill", "tag_code": "fast_paced", "weight": 2 },
+
+  { "option_code": "progress_builds_and_experimentation", "tag_code": "build_variety", "weight": 5 },
+  { "option_code": "progress_builds_and_experimentation", "tag_code": "replayable", "weight": 3 },
+  { "option_code": "progress_builds_and_experimentation", "tag_code": "combat", "weight": 2 },
+
+  { "option_code": "progress_optimization_and_growth", "tag_code": "strategy", "weight": 4 },
+  { "option_code": "progress_optimization_and_growth", "tag_code": "resource_management", "weight": 4 },
+  { "option_code": "progress_optimization_and_growth", "tag_code": "replayable", "weight": 3 },
+
+  { "option_code": "dealbreaker_too_much_combat_pressure", "tag_code": "combat", "weight": -3 },
+  { "option_code": "dealbreaker_too_much_combat_pressure", "tag_code": "fast_paced", "weight": -2 },
+  { "option_code": "dealbreaker_too_much_combat_pressure", "tag_code": "challenge", "weight": -2 },
+
+  { "option_code": "dealbreaker_too_many_complex_systems", "tag_code": "strategy", "weight": -3 },
+  { "option_code": "dealbreaker_too_many_complex_systems", "tag_code": "resource_management", "weight": -3 },
+  { "option_code": "dealbreaker_too_many_complex_systems", "tag_code": "build_variety", "weight": -1 },
+
+  { "option_code": "dealbreaker_too_much_horror_and_stress", "tag_code": "horror_tension", "weight": -4 },
+  { "option_code": "dealbreaker_too_much_horror_and_stress", "tag_code": "survival", "weight": -2 },
+  { "option_code": "dealbreaker_too_much_horror_and_stress", "tag_code": "challenge", "weight": -1 },
+
+  { "option_code": "dealbreaker_too_much_social_or_pvp", "tag_code": "competitive", "weight": -3 },
+  { "option_code": "dealbreaker_too_much_social_or_pvp", "tag_code": "social_sim", "weight": -3 },
+  { "option_code": "dealbreaker_too_much_social_or_pvp", "tag_code": "fast_paced", "weight": -1 }
 ]
