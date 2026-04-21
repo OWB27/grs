@@ -4,57 +4,74 @@ from app.db.models import Game, GameTag, Tag
 from app.schemas.recommend import RecommendResponse
 
 
+from sqlmodel import Session, select
+
+from app.db.models import Game, GameTag, Tag
+
+
 def score_games(session: Session, user_profile: dict[str, int]) -> list[dict]:
-    games = session.exec(
-        select(Game).where(Game.is_active == True)  # noqa: E712
-    ).all()
+    positive_profile = {
+        tag_code: score
+        for tag_code, score in user_profile.items()
+        if score > 0
+    }
 
-    scored_candidates: list[dict] = []
+    if not positive_profile:
+        return []
 
-    for game in games:
-        statement = (
-            select(GameTag, Tag)
-            .join(Tag, Tag.id == GameTag.tag_id)
-            .where(GameTag.game_id == game.id)
-        )
-        rows = session.exec(statement).all()
+    statement = (
+        select(Game, GameTag, Tag)
+        .join(GameTag, GameTag.game_id == Game.id)
+        .join(Tag, Tag.id == GameTag.tag_id)
+        .where(Game.is_active == True)  # noqa: E712
+        .where(Tag.code.in_(list(positive_profile.keys())))
+    )
 
-        total_score = 0
-        matched_tags: list[dict] = []
+    rows = session.exec(statement).all()
 
-        for game_tag, tag in rows:
-            user_weight = user_profile.get(tag.code, 0)
+    scored_by_game_id: dict[int, dict] = {}
 
-            if user_weight <= 0:
-                continue
+    for game, game_tag, tag in rows:
+        user_weight = positive_profile.get(tag.code, 0)
+        if user_weight <= 0:
+            continue
 
-            contribution = user_weight * game_tag.weight
-            total_score += contribution
+        contribution = user_weight * game_tag.weight
 
-            matched_tags.append(
-                {
-                    "tagCode": tag.code,
-                    "tagNameZh": tag.name_zh,
-                    "tagNameEn": tag.name_en,
-                    "gameWeight": game_tag.weight,
-                    "userWeight": user_weight,
-                    "contribution": contribution,
-                }
-            )
-
-        scored_candidates.append(
-            {
+        existing = scored_by_game_id.get(game.id)
+        if not existing:
+            existing = {
                 "game": game,
-                "score": total_score,
-                "matchedTags": sorted(
-                    matched_tags,
-                    key=lambda item: item["contribution"],
-                    reverse=True,
-                ),
+                "score": 0,
+                "matchedTags": [],
+            }
+            scored_by_game_id[game.id] = existing
+
+        existing["score"] += contribution
+        existing["matchedTags"].append(
+            {
+                "tagCode": tag.code,
+                "tagNameZh": tag.name_zh,
+                "tagNameEn": tag.name_en,
+                "gameWeight": game_tag.weight,
+                "userWeight": user_weight,
+                "contribution": contribution,
             }
         )
 
-    scored_candidates.sort(key=lambda item: item["score"], reverse=True)
+    scored_candidates = list(scored_by_game_id.values())
+
+    for candidate in scored_candidates:
+        candidate["matchedTags"].sort(
+            key=lambda item: item["contribution"],
+            reverse=True,
+        )
+
+    scored_candidates.sort(
+        key=lambda item: item["score"],
+        reverse=True,
+    )
+
     return scored_candidates
 
 
