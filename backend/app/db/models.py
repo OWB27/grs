@@ -1,5 +1,6 @@
 from typing import Optional
 
+from sqlalchemy import UniqueConstraint
 from sqlmodel import SQLModel, Field, Relationship
 
 
@@ -81,6 +82,9 @@ class Tag(SQLModel, table=True):
 
 class GameTag(SQLModel, table=True):
     __tablename__ = "game_tags"
+    __table_args__ = (
+        UniqueConstraint("game_id", "tag_id", name="uq_game_tags_game_id_tag_id"),
+    )
 
     id: Optional[int] = Field(default=None, primary_key=True)
 
