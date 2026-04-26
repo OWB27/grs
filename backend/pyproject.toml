@@ -1,0 +1,25 @@
+[project]
+name = "grs-backend"
+version = "0.1.0"
+description = "Backend service for the Game Recommendation System."
+requires-python = ">=3.12"
+dependencies = [
+    "alembic==1.18.4",
+    "deepagents>=0.5.3",
+    "fastapi==0.135.3",
+    "langchain==1.2.15",
+    "langchain-openai>=1.2.1",
+    "openai==2.32.0",
+    "psycopg==3.3.3",
+    "psycopg-binary==3.3.3",
+    "pydantic==2.13.0",
+    "python-dotenv==1.2.2",
+    "sqlalchemy==2.0.49",
+    "sqlmodel==0.0.38",
+    "uvicorn==0.44.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest==9.0.3",
+]
