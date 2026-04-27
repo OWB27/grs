@@ -1,12 +1,11 @@
-import json
 from copy import deepcopy
 
-from openai import OpenAI
 from sqlmodel import Session, select
 
 from app.core.settings import settings
 from app.core.tag_descriptions import TAG_DESCRIPTIONS
 from app.db.models import Tag
+from app.llm.rerank_client import call_openai_llm_rerank
 from app.schemas.llm_rerank import (
     LLMCandidateItem,
     LLMCandidateMatchedTag,
@@ -122,106 +121,6 @@ def build_llm_rerank_input(
         user_profile=LLMUserProfile(top_tags=top_profile_tags),
         candidates=candidate_items,
     )
-
-
-def get_llm_rerank_output_schema() -> dict:
-    return {
-        "name": "llm_rerank_output",
-        "strict": True,
-        "schema": {
-            "type": "object",
-            "properties": {
-                "selected_top_3_game_ids": {
-                    "type": "array",
-                    "items": {"type": "integer"},
-                    "minItems": 3,
-                    "maxItems": 3,
-                },
-                "top_3_reasons": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "game_id": {"type": "integer"},
-                            "reason": {
-                                "type": "object",
-                                "properties": {
-                                    "zh": {"type": "string"},
-                                    "en": {"type": "string"},
-                                },
-                                "required": ["zh", "en"],
-                                "additionalProperties": False,
-                            },
-                        },
-                        "required": ["game_id", "reason"],
-                        "additionalProperties": False,
-                    },
-                    "minItems": 3,
-                    "maxItems": 3,
-                },
-            },
-            "required": ["selected_top_3_game_ids", "top_3_reasons"],
-            "additionalProperties": False,
-        },
-    }
-
-
-def build_developer_message() -> str:
-    return """
-You are a reranking component in a game recommendation system.
-
-Task:
-- Select and order the best 3 games from the provided candidate list.
-- Use the user's highest-scoring preference tags as the main signal.
-- Respect rule_score as a prior, especially when score differences are large.
-- When candidates are close, prefer games that better match the user's top tags.
-- Write short, natural reasons for the selected top 3.
-
-Rules:
-- Only choose from the provided candidates.
-- reason.zh must be fully in Simplified Chinese.
-- reason.en must be fully in English.
-- Keep reasons short and user-facing.
-- Do not expose internal tag codes.
-- Output valid JSON only.
-""".strip()
-
-
-def build_user_message(llm_input: LLMRerankInput) -> str:
-    payload = llm_input.model_dump()
-    return json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
-
-
-def call_openai_llm_rerank(llm_input: LLMRerankInput) -> LLMRerankOutput:
-    if not settings.OPENAI_API_KEY:
-        raise RuntimeError("OPENAI_API_KEY is not configured")
-
-    client = OpenAI(api_key=settings.OPENAI_API_KEY)
-
-    response = client.chat.completions.create(
-        model=settings.OPENAI_RERANK_MODEL,
-        messages=[
-            {
-                "role": "developer",
-                "content": build_developer_message(),
-            },
-            {
-                "role": "user",
-                "content": build_user_message(llm_input),
-            },
-        ],
-        response_format={
-            "type": "json_schema",
-            "json_schema": get_llm_rerank_output_schema(),
-        },
-    )
-
-    content = response.choices[0].message.content
-    if not content:
-        raise ValueError("LLM returned empty content")
-
-    parsed = json.loads(content)
-    return LLMRerankOutput.model_validate(parsed)
 
 
 def validate_llm_rerank_output(
