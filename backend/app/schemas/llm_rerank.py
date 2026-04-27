@@ -64,7 +64,6 @@ class LLMSelectedGameReason(BaseModel):
 
 class LLMRerankOutput(BaseModel):
     selected_top_3_game_ids: list[int]
-    top_3_reasons: list[LLMSelectedGameReason]
 
     @field_validator("selected_top_3_game_ids")
     @classmethod
@@ -74,6 +73,28 @@ class LLMRerankOutput(BaseModel):
         if len(set(value)) != 3:
             raise ValueError("selected_top_3_game_ids must not contain duplicates")
         return value
+
+
+class LLMReasonsTask(BaseModel):
+    type: Literal["generate_reasons_for_top_3"] = "generate_reasons_for_top_3"
+    candidate_limit: int = 3
+
+
+class LLMReasonsInput(BaseModel):
+    task: LLMReasonsTask
+    user_profile: LLMUserProfile
+    candidates: list[LLMCandidateItem]
+
+    @field_validator("candidates")
+    @classmethod
+    def validate_candidates_count(cls, value: list[LLMCandidateItem]) -> list[LLMCandidateItem]:
+        if len(value) != 3:
+            raise ValueError("candidates must contain exactly 3 items")
+        return value
+
+
+class LLMReasonsOutput(BaseModel):
+    top_3_reasons: list[LLMSelectedGameReason]
 
     @field_validator("top_3_reasons")
     @classmethod

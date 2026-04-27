@@ -6,10 +6,14 @@ from sqlmodel import Session, select
 from app.core.settings import settings
 from app.core.tag_descriptions import TAG_DESCRIPTIONS
 from app.db.models import Tag
+from app.llm.reason_client import call_llm_reason_generation
 from app.llm.rerank_client import call_llm_rerank
 from app.schemas.llm_rerank import (
     LLMCandidateItem,
     LLMCandidateMatchedTag,
+    LLMReasonsInput,
+    LLMReasonsOutput,
+    LLMReasonsTask,
     LLMRerankInput,
     LLMRerankOutput,
     LLMRerankTask,
@@ -139,7 +143,35 @@ def validate_llm_rerank_output(
     if not set(selected_ids).issubset(set(candidate_ids)):
         raise ValueError("selected_top_3_game_ids must be chosen from candidate ids")
 
-    reason_ids = [item.game_id for item in llm_output.top_3_reasons]
+
+def build_llm_reasons_input(
+    llm_input: LLMRerankInput,
+    selected_top_3_game_ids: list[int],
+) -> LLMReasonsInput:
+    candidates_by_game_id = {
+        candidate.game_id: candidate
+        for candidate in llm_input.candidates
+    }
+
+    selected_candidates = [
+        candidates_by_game_id[game_id]
+        for game_id in selected_top_3_game_ids
+    ]
+
+    return LLMReasonsInput(
+        task=LLMReasonsTask(),
+        user_profile=llm_input.user_profile,
+        candidates=selected_candidates,
+    )
+
+
+def validate_llm_reasons_output(
+    llm_output: LLMRerankOutput,
+    reasons_output: LLMReasonsOutput,
+) -> None:
+    selected_ids = llm_output.selected_top_3_game_ids
+    reason_ids = [item.game_id for item in reasons_output.top_3_reasons]
+
     if reason_ids != selected_ids:
         raise ValueError("top_3_reasons must match selected_top_3_game_ids in order")
 
@@ -148,6 +180,7 @@ def apply_llm_rerank(
     top_candidates: list[dict],
     llm_candidates: list[dict],
     llm_output: LLMRerankOutput,
+    reasons_output: LLMReasonsOutput,
 ) -> list[dict]:
     top_candidates_by_game_id = {
         candidate["game"].id: deepcopy(candidate)
@@ -162,7 +195,7 @@ def apply_llm_rerank(
             "zh": item.reason.zh,
             "en": item.reason.en,
         }
-        for item in llm_output.top_3_reasons
+        for item in reasons_output.top_3_reasons
     }
 
     final_candidates = []
@@ -236,10 +269,23 @@ def rerank_candidates_with_fallback(
         validate_llm_rerank_output(llm_output, candidate_ids)
         logger.info("llm rerank output validated")
 
+        reasons_input = build_llm_reasons_input(
+            llm_input,
+            llm_output.selected_top_3_game_ids,
+        )
+        logger.info("llm reasons input built candidate_count=%s", len(reasons_input.candidates))
+
+        reasons_output = call_llm_reason_generation(reasons_input)
+        logger.info("llm reasons output received")
+
+        validate_llm_reasons_output(llm_output, reasons_output)
+        logger.info("llm reasons output validated")
+
         reranked_candidates = apply_llm_rerank(
             top_candidates,
             llm_candidates,
             llm_output,
+            reasons_output,
         )
         logger.info("llm rerank applied")
 

@@ -12,13 +12,9 @@ Task:
 - Use the user's highest-scoring preference tags as the main signal.
 - Respect rule_score as a prior, especially when score differences are large.
 - When candidates are close, prefer games that better match the user's top tags.
-- Write short, natural reasons for the selected top 3.
 
 Rules:
 - Only choose from the provided candidates.
-- reason.zh must be fully in Simplified Chinese.
-- reason.en must be fully in English.
-- Keep reasons short and user-facing.
 - Do not expose internal tag codes.
 - Output valid JSON only.
 """.strip()
