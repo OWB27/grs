@@ -1,3 +1,4 @@
+import logging
 from copy import deepcopy
 
 from sqlmodel import Session, select
@@ -15,6 +16,9 @@ from app.schemas.llm_rerank import (
     LLMUserProfile,
     LLMUserProfileTag,
 )
+
+
+logger = logging.getLogger(__name__)
 
 
 def build_tag_metadata_lookup(session: Session) -> dict[str, dict[str, str]]:
@@ -195,14 +199,16 @@ def rerank_candidates_with_fallback(
     top_candidates: list[dict],
     user_profile: dict[str, int],
 ) -> dict:
-    print("=== RERANK START ===")
-    print("OPENAI_RERANK_ENABLED =", settings.OPENAI_RERANK_ENABLED)
-    print("OPENAI_RERANK_MODEL =", settings.OPENAI_RERANK_MODEL)
-    print("OPENAI_API_KEY loaded =", bool(settings.OPENAI_API_KEY))
-    print("candidate_count =", len(top_candidates))
+    logger.info(
+        "rerank start enabled=%s model=%s api_key_loaded=%s candidate_count=%s",
+        settings.OPENAI_RERANK_ENABLED,
+        settings.OPENAI_RERANK_MODEL,
+        bool(settings.OPENAI_API_KEY),
+        len(top_candidates),
+    )
 
     if not settings.OPENAI_RERANK_ENABLED:
-        print("fallback: llm_disabled")
+        logger.info("rerank fallback reason=llm_disabled")
         return {
             "llm_used": False,
             "ranked_candidates": top_candidates,
@@ -219,21 +225,23 @@ def rerank_candidates_with_fallback(
             user_profile,
             tag_metadata_lookup,
         )
-        print("llm_input built")
+        logger.info("llm rerank input built candidate_count=%s", len(llm_candidates))
 
         llm_output = call_llm_rerank(llm_input)
-        print("llm_output received")
-        print("selected_top_3_game_ids =", llm_output.selected_top_3_game_ids)
+        logger.info(
+            "llm rerank output received selected_top_3_game_ids=%s",
+            llm_output.selected_top_3_game_ids,
+        )
 
         validate_llm_rerank_output(llm_output, candidate_ids)
-        print("llm_output validated")
+        logger.info("llm rerank output validated")
 
         reranked_candidates = apply_llm_rerank(
             top_candidates,
             llm_candidates,
             llm_output,
         )
-        print("rerank applied")
+        logger.info("llm rerank applied")
 
         return {
             "llm_used": True,
@@ -241,8 +249,7 @@ def rerank_candidates_with_fallback(
             "fallback_reason": None,
         }
     except Exception as error:
-        print("=== RERANK FAILED ===")
-        print(repr(error))
+        logger.exception("rerank fallback reason=llm_rerank_failed error=%r", error)
 
         return {
             "llm_used": False,

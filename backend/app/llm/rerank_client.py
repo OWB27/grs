@@ -1,3 +1,5 @@
+import logging
+
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 
@@ -7,6 +9,9 @@ from app.llm.prompts.rerank_prompt import (
     build_rerank_user_message,
 )
 from app.schemas.llm_rerank import LLMRerankInput, LLMRerankOutput
+
+
+logger = logging.getLogger(__name__)
 
 
 def build_rerank_chain():
@@ -20,6 +25,8 @@ def build_rerank_chain():
     model = ChatOpenAI(
         model=settings.OPENAI_RERANK_MODEL,
         api_key=settings.OPENAI_API_KEY,
+        timeout=settings.OPENAI_RERANK_TIMEOUT_SECONDS,
+        max_retries=settings.OPENAI_RERANK_MAX_RETRIES,
     )
 
     structured_model = model.with_structured_output(
@@ -36,6 +43,14 @@ def call_llm_rerank(llm_input: LLMRerankInput) -> LLMRerankOutput:
         raise RuntimeError("OPENAI_API_KEY is not configured")
 
     chain = build_rerank_chain()
+    logger.info(
+        "calling llm rerank model=%s candidate_count=%s timeout_seconds=%s max_retries=%s",
+        settings.OPENAI_RERANK_MODEL,
+        len(llm_input.candidates),
+        settings.OPENAI_RERANK_TIMEOUT_SECONDS,
+        settings.OPENAI_RERANK_MAX_RETRIES,
+    )
+
     result = chain.invoke(
         {
             "rerank_input_json": build_rerank_user_message(llm_input),
