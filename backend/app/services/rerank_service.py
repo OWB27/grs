@@ -5,7 +5,7 @@ from sqlmodel import Session, select
 from app.core.settings import settings
 from app.core.tag_descriptions import TAG_DESCRIPTIONS
 from app.db.models import Tag
-from app.llm.rerank_client import call_openai_llm_rerank
+from app.llm.rerank_client import call_llm_rerank
 from app.schemas.llm_rerank import (
     LLMCandidateItem,
     LLMCandidateMatchedTag,
@@ -221,7 +221,7 @@ def rerank_candidates_with_fallback(
         )
         print("llm_input built")
 
-        llm_output = call_openai_llm_rerank(llm_input)
+        llm_output = call_llm_rerank(llm_input)
         print("llm_output received")
         print("selected_top_3_game_ids =", llm_output.selected_top_3_game_ids)
 

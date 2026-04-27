@@ -1,6 +1,5 @@
-import json
-
-from openai import OpenAI
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_openai import ChatOpenAI
 
 from app.core.settings import settings
 from app.llm.prompts.rerank_prompt import (
@@ -10,75 +9,40 @@ from app.llm.prompts.rerank_prompt import (
 from app.schemas.llm_rerank import LLMRerankInput, LLMRerankOutput
 
 
-def get_llm_rerank_output_schema() -> dict:
-    return {
-        "name": "llm_rerank_output",
-        "strict": True,
-        "schema": {
-            "type": "object",
-            "properties": {
-                "selected_top_3_game_ids": {
-                    "type": "array",
-                    "items": {"type": "integer"},
-                    "minItems": 3,
-                    "maxItems": 3,
-                },
-                "top_3_reasons": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "game_id": {"type": "integer"},
-                            "reason": {
-                                "type": "object",
-                                "properties": {
-                                    "zh": {"type": "string"},
-                                    "en": {"type": "string"},
-                                },
-                                "required": ["zh", "en"],
-                                "additionalProperties": False,
-                            },
-                        },
-                        "required": ["game_id", "reason"],
-                        "additionalProperties": False,
-                    },
-                    "minItems": 3,
-                    "maxItems": 3,
-                },
-            },
-            "required": ["selected_top_3_game_ids", "top_3_reasons"],
-            "additionalProperties": False,
-        },
-    }
+def build_rerank_chain():
+    prompt = ChatPromptTemplate.from_messages(
+        [
+            ("system", build_rerank_developer_message()),
+            ("user", "{rerank_input_json}"),
+        ]
+    )
+
+    model = ChatOpenAI(
+        model=settings.OPENAI_RERANK_MODEL,
+        api_key=settings.OPENAI_API_KEY,
+    )
+
+    structured_model = model.with_structured_output(
+        LLMRerankOutput,
+        method="json_schema",
+        strict=True,
+    )
+
+    return prompt | structured_model
 
 
-def call_openai_llm_rerank(llm_input: LLMRerankInput) -> LLMRerankOutput:
+def call_llm_rerank(llm_input: LLMRerankInput) -> LLMRerankOutput:
     if not settings.OPENAI_API_KEY:
         raise RuntimeError("OPENAI_API_KEY is not configured")
 
-    client = OpenAI(api_key=settings.OPENAI_API_KEY)
-
-    response = client.chat.completions.create(
-        model=settings.OPENAI_RERANK_MODEL,
-        messages=[
-            {
-                "role": "developer",
-                "content": build_rerank_developer_message(),
-            },
-            {
-                "role": "user",
-                "content": build_rerank_user_message(llm_input),
-            },
-        ],
-        response_format={
-            "type": "json_schema",
-            "json_schema": get_llm_rerank_output_schema(),
-        },
+    chain = build_rerank_chain()
+    result = chain.invoke(
+        {
+            "rerank_input_json": build_rerank_user_message(llm_input),
+        }
     )
 
-    content = response.choices[0].message.content
-    if not content:
-        raise ValueError("LLM returned empty content")
+    if isinstance(result, LLMRerankOutput):
+        return result
 
-    parsed = json.loads(content)
-    return LLMRerankOutput.model_validate(parsed)
+    return LLMRerankOutput.model_validate(result)
