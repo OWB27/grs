@@ -23,10 +23,10 @@ def build_rerank_chain():
     )
 
     model = ChatOpenAI(
-        model=settings.OPENAI_RERANK_MODEL,
-        api_key=settings.OPENAI_API_KEY,
-        timeout=settings.OPENAI_RERANK_TIMEOUT_SECONDS,
-        max_retries=settings.OPENAI_RERANK_MAX_RETRIES,
+        model=settings.LLM_RERANK_MODEL,
+        api_key=settings.LLM_API_KEY,
+        timeout=settings.LLM_RERANK_TIMEOUT_SECONDS,
+        max_retries=settings.LLM_RERANK_MAX_RETRIES,
     )
 
     structured_model = model.with_structured_output(
@@ -39,16 +39,16 @@ def build_rerank_chain():
 
 
 def call_llm_rerank(llm_input: LLMRerankInput) -> LLMRerankOutput:
-    if not settings.OPENAI_API_KEY:
-        raise RuntimeError("OPENAI_API_KEY is not configured")
+    if not settings.LLM_API_KEY:
+        raise RuntimeError("LLM_API_KEY is not configured")
 
     chain = build_rerank_chain()
     logger.info(
         "calling llm rerank model=%s candidate_count=%s timeout_seconds=%s max_retries=%s",
-        settings.OPENAI_RERANK_MODEL,
+        settings.LLM_RERANK_MODEL,
         len(llm_input.candidates),
-        settings.OPENAI_RERANK_TIMEOUT_SECONDS,
-        settings.OPENAI_RERANK_MAX_RETRIES,
+        settings.LLM_RERANK_TIMEOUT_SECONDS,
+        settings.LLM_RERANK_MAX_RETRIES,
     )
 
     result = chain.invoke(

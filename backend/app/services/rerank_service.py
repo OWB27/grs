@@ -233,14 +233,14 @@ def rerank_candidates_with_fallback(
     user_profile: dict[str, int],
 ) -> dict:
     logger.info(
-        "rerank start enabled=%s model=%s api_key_loaded=%s candidate_count=%s",
-        settings.OPENAI_RERANK_ENABLED,
-        settings.OPENAI_RERANK_MODEL,
-        bool(settings.OPENAI_API_KEY),
+        "rerank start enabled=%s model=%s llm_api_key_loaded=%s candidate_count=%s",
+        settings.LLM_RERANK_ENABLED,
+        settings.LLM_RERANK_MODEL,
+        bool(settings.LLM_API_KEY),
         len(top_candidates),
     )
 
-    if not settings.OPENAI_RERANK_ENABLED:
+    if not settings.LLM_RERANK_ENABLED:
         logger.info("rerank fallback reason=llm_disabled")
         return {
             "llm_used": False,

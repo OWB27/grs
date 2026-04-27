@@ -36,7 +36,7 @@ grs/
 | --- | --- |
 | Frontend | React, Vite, React Router, i18next, Tailwind CSS |
 | Backend | FastAPI, SQLModel, SQLAlchemy, Alembic, PostgreSQL, pytest |
-| LLM Layer | OpenAI API, top-15 candidate reranking, top-3 explanation enhancement, rule-based fallback |
+| LLM Layer | LangChain + LLM API, candidate reranking, top-3 explanation enhancement, rule-based fallback |
 
 ## Current Features
 
@@ -128,17 +128,21 @@ Example:
 
 ```env
 DATABASE_URL=postgresql+psycopg://postgres:password@localhost:5432/grs
-OPENAI_API_KEY=
-OPENAI_RERANK_MODEL=gpt-5.4-mini
-OPENAI_RERANK_ENABLED=false
+LLM_API_KEY=
+LLM_RERANK_MODEL=gpt-5.4-mini
+LLM_RERANK_ENABLED=false
+LLM_RERANK_TIMEOUT_SECONDS=20
+LLM_RERANK_MAX_RETRIES=2
 ```
 
 | Variable | Description |
 | --- | --- |
 | `DATABASE_URL` | PostgreSQL connection string |
-| `OPENAI_API_KEY` | OpenAI API key |
-| `OPENAI_RERANK_MODEL` | Model used for reranking |
-| `OPENAI_RERANK_ENABLED` | Whether LLM reranking is enabled |
+| `LLM_API_KEY` | LLM provider API key |
+| `LLM_RERANK_MODEL` | Model used for reranking and reason generation |
+| `LLM_RERANK_ENABLED` | Whether LLM reranking is enabled |
+| `LLM_RERANK_TIMEOUT_SECONDS` | Timeout for each LLM call |
+| `LLM_RERANK_MAX_RETRIES` | Retry count for each LLM call |
 
 ## Database and Migrations
 
@@ -300,9 +304,11 @@ uvicorn app.main:app --reload
 关键变量包括：
 
 - `DATABASE_URL`
-- `OPENAI_API_KEY`
-- `OPENAI_RERANK_MODEL`
-- `OPENAI_RERANK_ENABLED`
+- `LLM_API_KEY`
+- `LLM_RERANK_MODEL`
+- `LLM_RERANK_ENABLED`
+- `LLM_RERANK_TIMEOUT_SECONDS`
+- `LLM_RERANK_MAX_RETRIES`
 
 ### 测试与数据脚本
 
