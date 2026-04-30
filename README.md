@@ -133,6 +133,9 @@ LLM_RERANK_MODEL=gpt-5.4-mini
 LLM_RERANK_ENABLED=false
 LLM_RERANK_TIMEOUT_SECONDS=20
 LLM_RERANK_MAX_RETRIES=2
+LANGSMITH_TRACING=false
+LANGSMITH_API_KEY=
+LANGSMITH_PROJECT=grs-llm-dev
 ```
 
 | Variable | Description |
@@ -143,6 +146,9 @@ LLM_RERANK_MAX_RETRIES=2
 | `LLM_RERANK_ENABLED` | Whether LLM reranking is enabled |
 | `LLM_RERANK_TIMEOUT_SECONDS` | Timeout for each LLM call |
 | `LLM_RERANK_MAX_RETRIES` | Retry count for each LLM call |
+| `LANGSMITH_TRACING` | Whether LangSmith tracing is enabled |
+| `LANGSMITH_API_KEY` | LangSmith API key for trace upload |
+| `LANGSMITH_PROJECT` | LangSmith project name |
 
 ## Database and Migrations
 
@@ -309,6 +315,9 @@ uvicorn app.main:app --reload
 - `LLM_RERANK_ENABLED`
 - `LLM_RERANK_TIMEOUT_SECONDS`
 - `LLM_RERANK_MAX_RETRIES`
+- `LANGSMITH_TRACING`
+- `LANGSMITH_API_KEY`
+- `LANGSMITH_PROJECT`
 
 ### 测试与数据脚本
 

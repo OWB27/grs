@@ -5,6 +5,7 @@ from langchain_openai import ChatOpenAI
 
 from app.core.settings import settings
 from app.llm.prompts.reason_prompt import (
+    REASON_PROMPT_VERSION,
     build_reason_developer_message,
     build_reason_user_message,
 )
@@ -54,6 +55,16 @@ def call_llm_reason_generation(llm_input: LLMReasonsInput) -> LLMReasonsOutput:
     result = chain.invoke(
         {
             "reason_input_json": build_reason_user_message(llm_input),
+        },
+        config={
+            "run_name": "GenerateRecommendationReasonsChain",
+            "tags": ["grs", "llm", "reasons"],
+            "metadata": {
+                "model": settings.LLM_RERANK_MODEL,
+                "prompt_version": REASON_PROMPT_VERSION,
+                "candidate_count": len(llm_input.candidates),
+                "profile_tag_count": len(llm_input.user_profile.top_tags),
+            },
         }
     )
 

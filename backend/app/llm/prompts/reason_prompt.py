@@ -3,6 +3,9 @@ import json
 from app.schemas.llm_rerank import LLMReasonsInput
 
 
+REASON_PROMPT_VERSION = "reason-v1"
+
+
 def build_reason_developer_message() -> str:
     return """
 You are a reason-writing component in a game recommendation system.

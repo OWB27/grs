@@ -9,6 +9,7 @@ dependencies = [
     "fastapi==0.135.3",
     "langchain==1.2.15",
     "langchain-openai>=1.2.1",
+    "langsmith[openai-agents]>=0.7.36",
     "openai==2.32.0",
     "psycopg==3.3.3",
     "psycopg-binary==3.3.3",

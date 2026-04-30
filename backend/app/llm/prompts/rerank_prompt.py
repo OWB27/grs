@@ -3,6 +3,9 @@ import json
 from app.schemas.llm_rerank import LLMRerankInput
 
 
+RERANK_PROMPT_VERSION = "rerank-v1"
+
+
 def build_rerank_developer_message() -> str:
     return """
 You are a reranking component in a game recommendation system.
