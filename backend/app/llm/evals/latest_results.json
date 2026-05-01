@@ -1,0 +1,66 @@
+[
+  {
+    "case_name": "story_immersion",
+    "input_summary": {
+      "top_tags": [
+        {
+          "tag_code": "story_rich",
+          "score": 9
+        },
+        {
+          "tag_code": "exploration",
+          "score": 7
+        },
+        {
+          "tag_code": "choices_matter",
+          "score": 6
+        }
+      ],
+      "candidate_ids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "rerank": {
+      "selected_top_3_game_ids": [
+        1,
+        2,
+        3
+      ],
+      "latency_ms": 2394
+    },
+    "reasons": {
+      "top_3_reasons": [
+        {
+          "game_id": 1,
+          "reason": {
+            "zh": "沉浸式主线与支线把角色塑造得很扎实，开放世界也鼓励你自由探索；你的选择会推动关系与走向。",
+            "en": "A richly told main story and side quests make the characters feel vivid, and the open world invites self-directed exploration; your choices meaningfully affect."
+          }
+        },
+        {
+          "game_id": 2,
+          "reason": {
+            "zh": "以对话与调查驱动的叙事为核心，角色与世界观非常有吸引力；不同选项能改变剧情走向与互动关系。",
+            "en": "Dialogue- and investigation-driven storytelling at its core, with highly engaging characters and worldbuilding; your choices can steer the plot and outcomes. "
+          }
+        },
+        {
+          "game_id": 3,
+          "reason": {
+            "zh": "史诗级叙事与人物情感贯穿始终，剧情厚度很高；同时拥有大量可自由游玩与发现的内容。",
+            "en": "Epic storytelling with deeply human character moments throughout, delivering strong narrative weight; plus plenty of space to roam and discover on your own."
+          }
+        }
+      ],
+      "latency_ms": 3043
+    },
+    "warnings": [
+      "reason_exposes_tag_code_for_game_1"
+    ]
+  }
+]
