@@ -6,6 +6,7 @@ from sqlmodel import Session, select
 from app.core.settings import settings
 from app.core.tag_descriptions import TAG_DESCRIPTIONS
 from app.db.models import Tag
+from app.llm.quality_checks import get_llm_output_hard_failures, get_llm_output_soft_warnings
 from app.llm.reason_client import call_llm_reason_generation
 from app.llm.rerank_client import call_llm_rerank
 from app.schemas.llm_rerank import (
@@ -176,6 +177,20 @@ def validate_llm_reasons_output(
         raise ValueError("top_3_reasons must match selected_top_3_game_ids in order")
 
 
+def validate_llm_output_quality(
+    llm_input: LLMRerankInput,
+    llm_output: LLMRerankOutput,
+    reasons_output: LLMReasonsOutput,
+) -> None:
+    hard_failures = get_llm_output_hard_failures(llm_input, llm_output, reasons_output)
+    if hard_failures:
+        raise ValueError(f"LLM output failed quality checks: {hard_failures}")
+
+    soft_warnings = get_llm_output_soft_warnings(llm_input, reasons_output)
+    if soft_warnings:
+        logger.warning("llm output quality warnings=%s", soft_warnings)
+
+
 def apply_llm_rerank(
     top_candidates: list[dict],
     llm_candidates: list[dict],
@@ -280,6 +295,9 @@ def rerank_candidates_with_fallback(
 
         validate_llm_reasons_output(llm_output, reasons_output)
         logger.info("llm reasons output validated")
+
+        validate_llm_output_quality(llm_input, llm_output, reasons_output)
+        logger.info("llm output quality checked")
 
         reranked_candidates = apply_llm_rerank(
             top_candidates,
