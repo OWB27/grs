@@ -133,6 +133,9 @@ LLM_RERANK_MODEL=gpt-5.4-mini
 LLM_RERANK_ENABLED=false
 LLM_RERANK_TIMEOUT_SECONDS=20
 LLM_RERANK_MAX_RETRIES=2
+LLM_RERANK_CANDIDATE_COUNT=6
+LLM_PROFILE_TAG_COUNT=5
+LLM_MATCHED_TAG_COUNT=3
 LANGSMITH_TRACING=false
 LANGSMITH_API_KEY=
 LANGSMITH_PROJECT=grs-llm-dev
@@ -146,6 +149,9 @@ LANGSMITH_PROJECT=grs-llm-dev
 | `LLM_RERANK_ENABLED` | Whether LLM reranking is enabled |
 | `LLM_RERANK_TIMEOUT_SECONDS` | Timeout for each LLM call |
 | `LLM_RERANK_MAX_RETRIES` | Retry count for each LLM call |
+| `LLM_RERANK_CANDIDATE_COUNT` | Number of rule-based candidates passed to LLM rerank |
+| `LLM_PROFILE_TAG_COUNT` | Number of user profile tags passed to LLM prompts |
+| `LLM_MATCHED_TAG_COUNT` | Number of matched tags kept for each LLM candidate |
 | `LANGSMITH_TRACING` | Whether LangSmith tracing is enabled |
 | `LANGSMITH_API_KEY` | LangSmith API key for trace upload |
 | `LANGSMITH_PROJECT` | LangSmith project name |
@@ -315,6 +321,9 @@ uvicorn app.main:app --reload
 - `LLM_RERANK_ENABLED`
 - `LLM_RERANK_TIMEOUT_SECONDS`
 - `LLM_RERANK_MAX_RETRIES`
+- `LLM_RERANK_CANDIDATE_COUNT`
+- `LLM_PROFILE_TAG_COUNT`
+- `LLM_MATCHED_TAG_COUNT`
 - `LANGSMITH_TRACING`
 - `LANGSMITH_API_KEY`
 - `LANGSMITH_PROJECT`

@@ -60,7 +60,7 @@ def build_llm_rerank_input(
     )
 
     top_profile_tags = []
-    for tag_code, score in sorted_profile_items[:5]:
+    for tag_code, score in sorted_profile_items[: settings.LLM_PROFILE_TAG_COUNT]:
         meta = tag_metadata_lookup.get(
             tag_code,
             {
@@ -87,7 +87,7 @@ def build_llm_rerank_input(
         game = candidate["game"]
 
         matched_tags = []
-        for item in candidate["matchedTags"][:3]:
+        for item in candidate["matchedTags"][: settings.LLM_MATCHED_TAG_COUNT]:
             tag_code = item["tagCode"]
             meta = tag_metadata_lookup.get(
                 tag_code,
@@ -122,7 +122,7 @@ def build_llm_rerank_input(
 
     return LLMRerankInput(
         task=LLMRerankTask(
-            type="select_top_3_from_top_6",
+            type="select_top_3_from_candidates",
             candidate_limit=len(candidate_items),
             select_count=3,
         ),
@@ -249,7 +249,7 @@ def rerank_candidates_with_fallback(
         }
 
     try:
-        llm_candidates = top_candidates[:6]
+        llm_candidates = top_candidates[: settings.LLM_RERANK_CANDIDATE_COUNT]
         candidate_ids = [candidate["game"].id for candidate in llm_candidates]
 
         tag_metadata_lookup = build_tag_metadata_lookup(session)

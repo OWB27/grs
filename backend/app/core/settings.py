@@ -51,6 +51,9 @@ class Settings:
         2,
         "OPENAI_RERANK_MAX_RETRIES",
     )
+    LLM_RERANK_CANDIDATE_COUNT: int = _get_int_env("LLM_RERANK_CANDIDATE_COUNT", 6)
+    LLM_PROFILE_TAG_COUNT: int = _get_int_env("LLM_PROFILE_TAG_COUNT", 5)
+    LLM_MATCHED_TAG_COUNT: int = _get_int_env("LLM_MATCHED_TAG_COUNT", 3)
 
 
 settings = Settings()

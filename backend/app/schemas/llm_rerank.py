@@ -4,7 +4,7 @@ from pydantic import BaseModel, Field, field_validator
 
 
 class LLMRerankTask(BaseModel):
-    type: Literal["select_top_3_from_top_6"] = "select_top_3_from_top_6"
+    type: Literal["select_top_3_from_candidates"] = "select_top_3_from_candidates"
     candidate_limit: int = 6
     select_count: int = 3
 
