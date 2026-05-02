@@ -13,10 +13,22 @@
   "nextBatch": "Show Another Batch",
 
   "home.engineBadge": "Rule-based Recommendation Engine",
-  "home.heroTitleLine1": "GRS: Logic-Based",
+  "home.heroTitleLine1": "GameScope: Logic-Based",
   "home.heroTitleLine2": "Game Discovery",
   "home.heroSubtitle": "Discover better-fitting games through transparent questionnaire analysis and rule-based matching.",
   "home.methodology": "Methodology",
+
+  "methodology.code": "Methodology",
+  "methodology.title": "How recommendations work",
+  "methodology.subtitle": "GameScope combines rule-based matching with a bounded LLM layer. The model only works on candidates already selected by the recommendation system.",
+  "methodology.step.profile": "Your answers are converted into a weighted preference profile.",
+  "methodology.step.matching": "Games are scored by matching your profile against database tags.",
+  "methodology.step.rerank": "The LLM reranks the strongest candidates and writes short reasons for the top results.",
+  "methodology.step.fallback": "If the LLM fails, GameScope falls back to the rule-based ranking.",
+  "methodology.principlesTitle": "Design principles",
+  "methodology.principle.transparent": "Rule scores remain the backbone.",
+  "methodology.principle.bounded": "The LLM cannot recommend games outside the candidate set.",
+  "methodology.principle.stable": "Fallback keeps recommendations available.",
 
   "pipeline.title": "Recommendation Pipeline",
   "pipeline.step.survey": "Survey",

@@ -52,7 +52,7 @@ export default function HomePage() {
             </svg>
           </PrimaryButton>
 
-          <SecondaryButton>
+          <SecondaryButton to="/methodology">
             {t("home.methodology")}
           </SecondaryButton>
         </div>

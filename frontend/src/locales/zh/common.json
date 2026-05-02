@@ -12,11 +12,23 @@
   "language.switchToChinese": "切换到中文",
   "nextBatch": "换一批游戏",
 
-  "home.engineBadge": "Rule-based Recommendation Engine",
-  "home.heroTitleLine1": "GRS: 逻辑驱动的",
+  "home.engineBadge": "规则推荐引擎",
+  "home.heroTitleLine1": "GameScope: 逻辑驱动的",
   "home.heroTitleLine2": "游戏发现引擎",
   "home.heroSubtitle": "通过透明的问卷分析和规则匹配，找到真正适合你的游戏。",
   "home.methodology": "推荐方法论",
+
+  "methodology.code": "推荐方法论",
+  "methodology.title": "推荐是如何生成的",
+  "methodology.subtitle": "GameScope 结合规则匹配和受约束的 LLM 增强层。模型只会处理推荐系统已经筛出的候选游戏。",
+  "methodology.step.profile": "你的问卷答案会被转换成带权重的偏好画像。",
+  "methodology.step.matching": "系统根据数据库中的游戏标签，对候选游戏进行规则打分。",
+  "methodology.step.rerank": "LLM 会在强候选集内重新排序，并为 Top 结果生成简短理由。",
+  "methodology.step.fallback": "如果 LLM 不可用，系统会自动回退到规则排序结果。",
+  "methodology.principlesTitle": "设计原则",
+  "methodology.principle.transparent": "规则分数是推荐主干。",
+  "methodology.principle.bounded": "LLM 不能推荐候选集之外的游戏。",
+  "methodology.principle.stable": "fallback 保证推荐始终可用。",
 
   "pipeline.title": "推荐流程",
   "pipeline.step.survey": "问卷",
@@ -33,17 +45,17 @@
   "result.emptyCode": "EMPTY_RESULT",
   "result.emptyText": "当前没有推荐结果，请先完成问卷。",
 
-  "result.whyThis": "为什么推荐?",
+  "result.whyThis": "为什么推荐？",
   "result.steamStore": "Steam 商店",
 
   "debug.title": "DEBUG",
-  "debug.analysis": "Tag Match Analysis",
+  "debug.analysis": "标签匹配分析",
   "debug.expand": "展开调试面板",
   "debug.collapse": "收起调试面板",
 
   "loadingQuestions": "题目加载中...",
-  "questionsLoadError": "获取题目失败，请稍后重试。"
-  ,
+  "questionsLoadError": "获取题目失败，请稍后重试。",
+
   "debug": {
     "title": "DEBUG",
     "analysis": "分析信息",

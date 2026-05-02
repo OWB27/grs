@@ -15,7 +15,7 @@ export default function TopNav({ homeLink = true }) {
         >
           <BrandMark />
           <span className="text-2xl font-semibold tracking-tight text-white">
-            GRS
+            GameScope
           </span>
         </BrandWrapper>
 
