@@ -138,6 +138,7 @@ LLM_PROFILE_TAG_COUNT=5
 LLM_MATCHED_TAG_COUNT=3
 LLM_CACHE_ENABLED=false
 LLM_CACHE_MAX_SIZE=128
+ENABLE_RECOMMEND_DIAGNOSTICS=false
 LANGSMITH_TRACING=false
 LANGSMITH_API_KEY=
 LANGSMITH_PROJECT=grs-llm-dev
@@ -156,6 +157,7 @@ LANGSMITH_PROJECT=grs-llm-dev
 | `LLM_MATCHED_TAG_COUNT` | Number of matched tags kept for each LLM candidate |
 | `LLM_CACHE_ENABLED` | Whether in-process LLM response caching is enabled |
 | `LLM_CACHE_MAX_SIZE` | Maximum number of successful LLM responses kept in memory |
+| `ENABLE_RECOMMEND_DIAGNOSTICS` | Whether `/recommend` includes internal recommendation diagnostics |
 | `LANGSMITH_TRACING` | Whether LangSmith tracing is enabled |
 | `LANGSMITH_API_KEY` | LangSmith API key for trace upload |
 | `LANGSMITH_PROJECT` | LangSmith project name |
@@ -330,6 +332,7 @@ uvicorn app.main:app --reload
 - `LLM_MATCHED_TAG_COUNT`
 - `LLM_CACHE_ENABLED`
 - `LLM_CACHE_MAX_SIZE`
+- `ENABLE_RECOMMEND_DIAGNOSTICS`
 - `LANGSMITH_TRACING`
 - `LANGSMITH_API_KEY`
 - `LANGSMITH_PROJECT`

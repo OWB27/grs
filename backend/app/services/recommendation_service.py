@@ -1,12 +1,7 @@
 from sqlmodel import Session, select
 
 from app.db.models import Game, GameTag, Tag
-from app.schemas.recommend import RecommendResponse
-
-
-from sqlmodel import Session, select
-
-from app.db.models import Game, GameTag, Tag
+from app.schemas.recommend import RecommendDiagnostics, RecommendResponse
 
 
 def score_games(session: Session, user_profile: dict[str, int]) -> list[dict]:
@@ -86,7 +81,10 @@ def select_top_candidates(scored_candidates: list[dict], limit: int = 9) -> list
     return positive_candidates[:limit]
 
 
-def build_recommend_response(reasoned_candidates: list[dict]) -> RecommendResponse:
+def build_recommend_response(
+    reasoned_candidates: list[dict],
+    diagnostics: RecommendDiagnostics | None = None,
+) -> RecommendResponse:
     recommendations = []
 
     for candidate in reasoned_candidates:
@@ -120,4 +118,7 @@ def build_recommend_response(reasoned_candidates: list[dict]) -> RecommendRespon
             }
         )
 
-    return RecommendResponse(recommendations=recommendations)
+    if diagnostics is None:
+        return RecommendResponse(recommendations=recommendations)
+
+    return RecommendResponse(recommendations=recommendations, diagnostics=diagnostics)

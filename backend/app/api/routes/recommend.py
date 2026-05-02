@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session
 
 from app.core.exceptions import AppError
+from app.core.settings import settings
 from app.db.session import get_session
 from app.schemas.common import ErrorResponse
 from app.schemas.recommend import RecommendRequest, RecommendResponse
@@ -21,6 +22,7 @@ router = APIRouter()
 @router.post(
     "/recommend",
     response_model=RecommendResponse,
+    response_model_exclude_unset=True,
     responses={
         400: {"model": ErrorResponse},
     },
@@ -44,7 +46,16 @@ def recommend(
             user_profile,
         )
 
-        return build_recommend_response(rerank_result["ranked_candidates"])
+        diagnostics = (
+            rerank_result["diagnostics"]
+            if settings.ENABLE_RECOMMEND_DIAGNOSTICS
+            else None
+        )
+
+        return build_recommend_response(
+            rerank_result["ranked_candidates"],
+            diagnostics=diagnostics,
+        )
 
     except AppError as error:
         raise HTTPException(

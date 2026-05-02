@@ -26,9 +26,58 @@ from app.schemas.llm_rerank import (
     LLMUserProfile,
     LLMUserProfileTag,
 )
+from app.schemas.recommend import RecommendDiagnostics
 
 
 logger = logging.getLogger(__name__)
+
+
+def build_recommend_diagnostics(
+    *,
+    llm_enabled: bool,
+    llm_used: bool,
+    fallback_reason: str | None,
+    user_profile: dict[str, int],
+    top_candidates: list[dict],
+    llm_candidates: list[dict],
+    ranked_candidates: list[dict],
+    selected_top_3_game_ids: list[int] | None = None,
+) -> RecommendDiagnostics:
+    rule_candidate_game_ids = [
+        candidate["game"].id
+        for candidate in top_candidates
+    ]
+    llm_candidate_game_ids = [
+        candidate["game"].id
+        for candidate in llm_candidates
+    ]
+    final_game_ids = [
+        candidate["game"].id
+        for candidate in ranked_candidates
+    ]
+    sorted_profile_items = sorted(
+        user_profile.items(),
+        key=lambda item: item[1],
+        reverse=True,
+    )
+
+    return RecommendDiagnostics(
+        llmEnabled=llm_enabled,
+        llmUsed=llm_used,
+        fallbackReason=fallback_reason,
+        rerankChangedOrder=rule_candidate_game_ids[:3] != final_game_ids[:3],
+        ruleCandidateGameIds=rule_candidate_game_ids,
+        llmCandidateGameIds=llm_candidate_game_ids,
+        finalGameIds=final_game_ids,
+        selectedTop3GameIds=selected_top_3_game_ids,
+        userTopTags=[
+            {
+                "tagCode": tag_code,
+                "score": score,
+            }
+            for tag_code, score in sorted_profile_items[: settings.LLM_PROFILE_TAG_COUNT]
+        ],
+    )
 
 
 def build_tag_metadata_lookup(session: Session) -> dict[str, dict[str, str]]:
@@ -260,7 +309,19 @@ def rerank_candidates_with_fallback(
             "llm_used": False,
             "ranked_candidates": top_candidates,
             "fallback_reason": "llm_disabled",
+            "diagnostics": build_recommend_diagnostics(
+                llm_enabled=False,
+                llm_used=False,
+                fallback_reason="llm_disabled",
+                user_profile=user_profile,
+                top_candidates=top_candidates,
+                llm_candidates=[],
+                ranked_candidates=top_candidates,
+            ),
         }
+
+    llm_candidates: list[dict] = []
+    selected_top_3_game_ids: list[int] | None = None
 
     try:
         llm_candidates = top_candidates[: settings.LLM_RERANK_CANDIDATE_COUNT]
@@ -273,9 +334,10 @@ def rerank_candidates_with_fallback(
         logger.info("llm rerank input built candidate_count=%s", len(llm_candidates))
 
         llm_output = call_llm_rerank(llm_input)
+        selected_top_3_game_ids = llm_output.selected_top_3_game_ids
         logger.info(
             "llm rerank output received selected_top_3_game_ids=%s",
-            llm_output.selected_top_3_game_ids,
+            selected_top_3_game_ids,
         )
 
         validate_llm_rerank_output(llm_input, llm_output)
@@ -308,6 +370,16 @@ def rerank_candidates_with_fallback(
             "llm_used": True,
             "ranked_candidates": reranked_candidates,
             "fallback_reason": None,
+            "diagnostics": build_recommend_diagnostics(
+                llm_enabled=True,
+                llm_used=True,
+                fallback_reason=None,
+                user_profile=user_profile,
+                top_candidates=top_candidates,
+                llm_candidates=llm_candidates,
+                ranked_candidates=reranked_candidates,
+                selected_top_3_game_ids=selected_top_3_game_ids,
+            ),
         }
     except Exception as error:
         logger.exception("rerank fallback reason=llm_rerank_failed error=%r", error)
@@ -316,4 +388,14 @@ def rerank_candidates_with_fallback(
             "llm_used": False,
             "ranked_candidates": top_candidates,
             "fallback_reason": "llm_rerank_failed",
+            "diagnostics": build_recommend_diagnostics(
+                llm_enabled=True,
+                llm_used=False,
+                fallback_reason="llm_rerank_failed",
+                user_profile=user_profile,
+                top_candidates=top_candidates,
+                llm_candidates=llm_candidates,
+                ranked_candidates=top_candidates,
+                selected_top_3_game_ids=selected_top_3_game_ids,
+            ),
         }

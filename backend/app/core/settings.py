@@ -56,6 +56,7 @@ class Settings:
     LLM_MATCHED_TAG_COUNT: int = _get_int_env("LLM_MATCHED_TAG_COUNT", 3)
     LLM_CACHE_ENABLED: bool = _get_bool_env("LLM_CACHE_ENABLED", False)
     LLM_CACHE_MAX_SIZE: int = _get_int_env("LLM_CACHE_MAX_SIZE", 128)
+    ENABLE_RECOMMEND_DIAGNOSTICS: bool = _get_bool_env("ENABLE_RECOMMEND_DIAGNOSTICS", False)
 
 
 settings = Settings()
