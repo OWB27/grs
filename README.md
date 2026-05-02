@@ -136,6 +136,8 @@ LLM_RERANK_MAX_RETRIES=2
 LLM_RERANK_CANDIDATE_COUNT=6
 LLM_PROFILE_TAG_COUNT=5
 LLM_MATCHED_TAG_COUNT=3
+LLM_CACHE_ENABLED=false
+LLM_CACHE_MAX_SIZE=128
 LANGSMITH_TRACING=false
 LANGSMITH_API_KEY=
 LANGSMITH_PROJECT=grs-llm-dev
@@ -152,6 +154,8 @@ LANGSMITH_PROJECT=grs-llm-dev
 | `LLM_RERANK_CANDIDATE_COUNT` | Number of rule-based candidates passed to LLM rerank |
 | `LLM_PROFILE_TAG_COUNT` | Number of user profile tags passed to LLM prompts |
 | `LLM_MATCHED_TAG_COUNT` | Number of matched tags kept for each LLM candidate |
+| `LLM_CACHE_ENABLED` | Whether in-process LLM response caching is enabled |
+| `LLM_CACHE_MAX_SIZE` | Maximum number of successful LLM responses kept in memory |
 | `LANGSMITH_TRACING` | Whether LangSmith tracing is enabled |
 | `LANGSMITH_API_KEY` | LangSmith API key for trace upload |
 | `LANGSMITH_PROJECT` | LangSmith project name |
@@ -324,6 +328,8 @@ uvicorn app.main:app --reload
 - `LLM_RERANK_CANDIDATE_COUNT`
 - `LLM_PROFILE_TAG_COUNT`
 - `LLM_MATCHED_TAG_COUNT`
+- `LLM_CACHE_ENABLED`
+- `LLM_CACHE_MAX_SIZE`
 - `LANGSMITH_TRACING`
 - `LANGSMITH_API_KEY`
 - `LANGSMITH_PROJECT`
