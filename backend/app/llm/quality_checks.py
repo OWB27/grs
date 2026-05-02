@@ -23,10 +23,9 @@ def contains_any(text: str, values: list[str]) -> bool:
     return any(value.lower() in lowered for value in values)
 
 
-def get_llm_output_hard_failures(
+def get_rerank_output_hard_failures(
     rerank_input: LLMRerankInput,
     rerank_output: LLMRerankOutput,
-    reasons_output: LLMReasonsOutput,
 ) -> list[str]:
     failures: list[str] = []
     candidate_ids = [candidate.game_id for candidate in rerank_input.candidates]
@@ -41,7 +40,17 @@ def get_llm_output_hard_failures(
     if not set(selected_ids).issubset(set(candidate_ids)):
         failures.append("selected_top_3_game_ids_contains_unknown_candidate")
 
+    return failures
+
+
+def get_reasons_output_hard_failures(
+    rerank_output: LLMRerankOutput,
+    reasons_output: LLMReasonsOutput,
+) -> list[str]:
+    failures: list[str] = []
+    selected_ids = rerank_output.selected_top_3_game_ids
     reason_ids = [item.game_id for item in reasons_output.top_3_reasons]
+
     if reason_ids != selected_ids:
         failures.append("reason_ids_do_not_match_selected_order")
 
@@ -52,6 +61,17 @@ def get_llm_output_hard_failures(
             failures.append(f"empty_en_reason_for_game_{item.game_id}")
 
     return failures
+
+
+def get_llm_output_hard_failures(
+    rerank_input: LLMRerankInput,
+    rerank_output: LLMRerankOutput,
+    reasons_output: LLMReasonsOutput,
+) -> list[str]:
+    return [
+        *get_rerank_output_hard_failures(rerank_input, rerank_output),
+        *get_reasons_output_hard_failures(rerank_output, reasons_output),
+    ]
 
 
 def get_llm_output_soft_warnings(
