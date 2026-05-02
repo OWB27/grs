@@ -4,11 +4,8 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 
 from app.core.settings import settings
-from app.llm.prompts.rerank_prompt import (
-    RERANK_PROMPT_VERSION,
-    build_rerank_developer_message,
-    build_rerank_user_message,
-)
+from app.llm.prompts.registry import RERANK_PROMPT_INFO
+from app.llm.prompts.rerank_prompt import build_rerank_developer_message, build_rerank_user_message
 from app.schemas.llm_rerank import LLMRerankInput, LLMRerankOutput
 
 
@@ -61,7 +58,8 @@ def call_llm_rerank(llm_input: LLMRerankInput) -> LLMRerankOutput:
             "tags": ["grs", "llm", "rerank"],
             "metadata": {
                 "model": settings.LLM_RERANK_MODEL,
-                "prompt_version": RERANK_PROMPT_VERSION,
+                "prompt_name": RERANK_PROMPT_INFO.name,
+                "prompt_version": RERANK_PROMPT_INFO.version,
                 "candidate_count": len(llm_input.candidates),
                 "profile_tag_count": len(llm_input.user_profile.top_tags),
             },

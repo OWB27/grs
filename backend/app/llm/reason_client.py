@@ -4,11 +4,8 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 
 from app.core.settings import settings
-from app.llm.prompts.reason_prompt import (
-    REASON_PROMPT_VERSION,
-    build_reason_developer_message,
-    build_reason_user_message,
-)
+from app.llm.prompts.reason_prompt import build_reason_developer_message, build_reason_user_message
+from app.llm.prompts.registry import REASON_PROMPT_INFO
 from app.schemas.llm_rerank import LLMReasonsInput, LLMReasonsOutput
 
 
@@ -61,7 +58,8 @@ def call_llm_reason_generation(llm_input: LLMReasonsInput) -> LLMReasonsOutput:
             "tags": ["grs", "llm", "reasons"],
             "metadata": {
                 "model": settings.LLM_RERANK_MODEL,
-                "prompt_version": REASON_PROMPT_VERSION,
+                "prompt_name": REASON_PROMPT_INFO.name,
+                "prompt_version": REASON_PROMPT_INFO.version,
                 "candidate_count": len(llm_input.candidates),
                 "profile_tag_count": len(llm_input.user_profile.top_tags),
             },

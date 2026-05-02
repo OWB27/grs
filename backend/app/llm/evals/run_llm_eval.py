@@ -7,6 +7,7 @@ from typing import Any
 from app.llm.reason_client import call_llm_reason_generation
 from app.llm.rerank_client import call_llm_rerank
 from app.llm.evals.sample_cases import EVAL_CASES
+from app.llm.prompts.registry import REASON_PROMPT_INFO, RERANK_PROMPT_INFO
 from app.schemas.llm_rerank import LLMReasonsInput, LLMReasonsTask, LLMRerankInput
 
 
@@ -49,7 +50,7 @@ def _contains_cjk(text: str) -> bool:
 
 def _looks_complete_sentence(text: str) -> bool:
     stripped = text.strip()
-    return stripped.endswith((".", "!", "?", "。", "！", "？"))
+    return stripped.endswith((".", "!", "?"))
 
 
 def _evaluate_result(
@@ -117,6 +118,10 @@ def _run_case(case_name: str, rerank_input: LLMRerankInput) -> dict[str, Any]:
 
     return {
         "case_name": case_name,
+        "prompt_versions": {
+            RERANK_PROMPT_INFO.name: RERANK_PROMPT_INFO.version,
+            REASON_PROMPT_INFO.name: REASON_PROMPT_INFO.version,
+        },
         "input_summary": {
             "top_tags": [
                 {
@@ -180,3 +185,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
